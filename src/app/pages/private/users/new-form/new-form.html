@@ -1,0 +1,39 @@
+<form 
+[formGroup]="formData" 
+(submit)="onSubmit()"
+class="container" 
+>
+
+    <h1>Register users</h1>
+
+    <div class="field">
+        <label for="users-name">name</label>
+        <input type="text" formControlName="name" id="users-name">
+    </div>
+    <div class="field">
+        <label for="users-username">username</label>
+        <input type="text" formControlName="username" id="users-username">
+    </div>
+    <div class="field">
+        <label for="users-password">password</label>
+        <input type="password" formControlName="password" id="users-password">
+    </div>
+    
+    <div class="field">
+        <label for="users-email">email</label>
+        <input type="email" formControlName="email" id="users-email">
+    </div>
+    <div class="field">
+        <label for="users-role">role</label>
+        <select formControlName="role" id="users-role">
+            <option value="">Selected</option>
+            <option value="users">User</option>
+            <option value="artists">Artist</option>
+            <option value="manager">Manager</option>
+            <option value="company">Company</option>
+        </select>
+    </div>
+    <div class="field">
+        <button type="submit">Register user</button>
+    </div>
+</form>
