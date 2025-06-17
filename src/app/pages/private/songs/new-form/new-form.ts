@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Albums } from '../../albums/albums';
 
 @Component({
   selector: 'app-new-form',
@@ -14,17 +15,35 @@ formData!: FormGroup ;
 
 constructor(){
   this.formData = new FormGroup({
-    title: new FormControl(),
-    coverUrl: new FormControl(),
-    fileUrl: new FormControl(),
-    releaseDate: new FormControl(),
+    title: new FormControl('', [Validators.required]),
+    coverUrl: new FormControl('', [Validators.required]),
+    fileUrl: new FormControl('', [Validators.required]),
+    releaseDate: new FormControl('', [Validators.required]),
+    
 
   });
 }
 
 onSubmit(){
   console.log(this.formData.value);
+  console.log(
+    this.formData.valid,
+    this.formData.invalid,
+    this.formData.pristine,
+    this.formData.dirty,
+    this.formData.touched
+  );
+
+  if(this.formData.valid){
+
+    console.log(this.formData.value);
+  }
+
+  this.formData.reset() // limpiamos los campos del formulario
 }
+
+
+
 }
 
 
