@@ -1,0 +1,27 @@
+<form 
+    [formGroup] = "formData"
+    (submit) = "onSubmit()" 
+    class="form-form-albums" action=""
+>
+    <h1>Registrar Álbumes</h1>
+    <div class="field">
+        <label for="title">Album Name</label>
+        <input type="text" formControlName = "title" id = "album-name">
+    </div>
+    <!-- <div class="field">
+        <label for="album-cover">Album Cover</label>
+        <input type="file" name = "" id = "album-cover">
+    </div> -->
+    <div class="field">
+        <label for = "coverUrl">Album File</label>
+        <input type="text" formControlName = "coverUrl" id = "cover-file">
+    </div>
+    <div class="field">
+        <label for="releaseDate">Release Date</label>
+        <input type="date" formControlName = "releaseDate" id = "release-date">
+    </div>
+    <div class="field">
+        <button type = "submit">Register Album</button>
+    </div>
+</form>
+
