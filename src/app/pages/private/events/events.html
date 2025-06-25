@@ -1,0 +1,32 @@
+<form 
+[formGroup]="formData" 
+(submit)="onSubmit()"
+class="container" 
+>
+
+
+    <h1>Register events</h1>
+
+    <div class="field">
+        <label for="events-title">title</label>
+        <input type="text" formControlName="title" id="events-title">
+    </div>
+    <div class="field">
+        <label for="events-description">description</label>
+        <input type="text" formControlName="description" id="events-description">
+    </div>
+    <div class="field">
+        <label for="events-date">date</label>
+        <input type="text" formControlName="date" id="events-date">
+    </div>
+    
+    <div class="field">
+        <label for="events-address">date</label>
+        <input type="string" formControlName="address" id="events-address">
+    </div>
+    <div class="field">
+        <button type="submit">Register events</button>
+    </div>
+</form>
+
+<h2>aaaaaaa</h2>

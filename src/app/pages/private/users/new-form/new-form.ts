@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-form',
@@ -12,15 +12,57 @@ formData!: FormGroup;
 
   constructor() {
     this.formData = new FormGroup({
-      name: new FormControl(),
-      username: new FormControl(),
-      password: new FormControl(),
-      email: new FormControl(),
-      role: new FormControl()
+      name: new FormControl('', [Validators.required ]),
+      username: new FormControl('',[Validators.required]),
+      password: new FormControl('',[Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      role: new FormControl('', [Validators.required])
     });
   }
 
   onSubmit(){
-    console.log(this.formData.value);
+    console.log(
+      this.formData.valid,
+      this.formData.invalid,
+      this.formData.pristine,
+      this.formData.dirty,
+      this.formData.touched
+    );
+
+    if(this.formData.valid){
+      console.log(this.formData.value);
+    }
+    
+
+    this.formData.reset();  //limpiamos los campos del formulario 
   }
+  ngOnChanges() {
+    console.log( 'ngOnChanges' );
+  }
+  ngOnInit() {
+    console.log( 'ngOnInit' );
+  }
+  ngDoCheck() {
+    console.log( 'ngDoCheck' );
+  }
+  ngAfterContentInit() {
+    console.log( 'ngAfterContentInit' );
+  }
+  ngAfterContentChecked() {
+    console.log( 'ngAfterContentChecked' );
+  }
+  ngAfterViewInit() {
+    console.log( 'ngAfterViewInit' );
+  }
+  ngAfterViewChecked() {
+    console.log( 'ngAfterViewChecked' );
+  }
+  afterEveryRender() {
+    console.log( 'afterEveryRender' );
+  }
+  ngOnDestroy() {
+    console.log( 'ngOnDestroy' );
+  }
+
+
 }
