@@ -4,11 +4,10 @@ import { Injectable } from '@angular/core';
 @Injectable({
     providedIn: 'root'
 })
-export class UsersServices {
+export class EventsServices {
 
     constructor(private http: HttpClient) { }
 
-    getUsers() {
-        return this.http.get('http://localhost:3000/api/users')
-    }
+
+    // TODO: Revisar todo el flujo de la entidad Eventos
 }

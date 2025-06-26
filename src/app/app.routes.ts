@@ -12,7 +12,7 @@ export const routes: Routes = [
     { path: 'login', component: Login },
     { path: 'register', component: Register },
     { path: 'albums', component: Albums },
-    {path:'dashboard/users', component:Users},
+    {path:'dashboard/users', component: Users},
     {path: 'dashboard/events/new', component:Events, pathMatch : 'full'},
     {path: 'dashboard/users/new', component: UserNewForm},
     { path: '**', redirectTo: 'home', pathMatch: 'full' },

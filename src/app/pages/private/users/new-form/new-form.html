@@ -27,10 +27,12 @@ class="container"
         <label for="users-role">role</label>
         <select formControlName="role" id="users-role">
             <option value="">Selected</option>
-            <option value="users">User</option>
-            <option value="artists">Artist</option>
-            <option value="manager">Manager</option>
-            <option value="company">Company</option>
+            @for (user of users; track $index) {
+                <option [value]="user">{{ user }}</option>
+            }
+
+            
+
         </select>
     </div>
     <div class="field">

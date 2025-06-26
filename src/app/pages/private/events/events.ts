@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UsersServices } from '../../services/user-services';
+
 
 @Component({
   selector: 'app-events',
@@ -9,58 +9,58 @@ import { UsersServices } from '../../services/user-services';
   styleUrl: './events.css'
 })
 export class Events {
-
-  formData!: FormGroup;
-  users: any = [];
-
-
-  constructor(private usersservices: UsersServices) {
-    this.formData = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-      date: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
-    });
-  }
+// TODO: Revisar todo el flujo de la entidad Eventos
+  // formData!: FormGroup;
+  // users: any = [];
 
 
-  onSubmit() {
-    console.log(
-      this.formData.valid,
-      this.formData.invalid,
-      this.formData.pristine,
-      this.formData.dirty,
-      this.formData.touched
-    );
+  // constructor(private usersservices: UsersServices) {
+  //   this.formData = new FormGroup({
+  //     title: new FormControl('', [Validators.required]),
+  //     description: new FormControl('', [Validators.required]),
+  //     date: new FormControl('', [Validators.required]),
+  //     address: new FormControl('', [Validators.required]),
+  //   });
+  // }
 
-    if (this.formData.valid) {
-      console.log(this.formData.value);
-    }
 
-    if (this.formData.valid) {
+  // onSubmit() {
+  //   console.log(
+  //     this.formData.valid,
+  //     this.formData.invalid,
+  //     this.formData.pristine,
+  //     this.formData.dirty,
+  //     this.formData.touched
+  //   );
 
-      console.log(this.formData.value);
-    }
+  //   if (this.formData.valid) {
+  //     console.log(this.formData.value);
+  //   }
 
-    this.formData.reset() // limpiamos los campos del formulario
-  }
+  //   if (this.formData.valid) {
 
-  ngOnInit() {
-    this.usersservices.getUsers().subscribe({
-      next: (data) => {
-        console.log(data);
-        this.users = data;
-      },
-      error: (error) => {
-        console.log(error)
-      },
-      complete: () => {
-        console.log('Complete')
-      }
-    })
-  }
-  ngOnDestroy() {
-    console.log('ngOnDestroy');
-  }
+  //     console.log(this.formData.value);
+  //   }
+
+  //   this.formData.reset() // limpiamos los campos del formulario
+  // }
+
+  // ngOnInit() {
+  //   this.usersservices.getUsers().subscribe({
+  //     next: (data) => {
+  //       console.log(data);
+  //       this.users = data;
+  //     },
+  //     error: (error) => {
+  //       console.log(error)
+  //     },
+  //     complete: () => {
+  //       console.log('Complete')
+  //     }
+  //   })
+  // }
+  // ngOnDestroy() {
+  //   console.log('ngOnDestroy');
+  // }
 
 }
