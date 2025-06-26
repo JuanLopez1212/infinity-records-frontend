@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UsersServices } from '../../../../services/users-services';
+import { Albums } from '../../../../services/albums';
 
 @Component({
   selector: 'app-new-form',
@@ -9,11 +11,15 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class AlbumNewForm {
   formData!: FormGroup;
+  users: any = []
 
-  constructor () {
+  constructor ( 
+    private userService: UsersServices, 
+    private albumService: Albums 
+  ) {
     this.formData = new FormGroup({
       title: new FormControl ( '', [ Validators.required ] ),
-      coverUrl: new FormControl ( '', [ Validators.required ] ),
+      cover_url: new FormControl ( '', [ Validators.required ] ),
       releaseDate: new FormControl ()
     });
   }
@@ -30,12 +36,36 @@ export class AlbumNewForm {
 
     if ( this.formData.valid ) {
       console.log ( this.formData.value )
+      this.albumService.registerAlbum( this.formData.value ).subscribe({
+        next: ( data ) => {
+          console.log ( data )
+        },
+        error: ( error ) => {
+          console.error ( error )
+        },
+        complete: () => {
+          this.formData.reset() // Limpiamos los campos del formulario
+        }
+      })
     }
-    
-    this.formData.reset() // Limpiamos los campos del formulario
   }
 
-  ngOnChanges () {
-    
+
+  ngOnInit() {
+    this.userService.getUsers().subscribe({
+      next: ( data ) => {
+        console.log ( data )
+        this.users = data 
+      },
+      error: ( error ) => {
+        console.log ( error )
+      },
+      complete: () => {
+        console.log ( 'Complete' )
+      }
+    })
+  }
+  ngOnDestroy() {
+    console.log( 'ngOnDestroy' );
   }
 }
