@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Songs } from '../../../services/songs';
 
 
 @Component({
@@ -8,11 +9,18 @@ import { Component } from '@angular/core';
   styleUrl: './songs.css'
 })
 
-export class Songs{
+export class Song{
+
+  constructor(private songsServices: Songs  ){}
 
 
-
-
+  ngOnInit(){
+    this.songsServices.getSongs().subscribe({
+      next: () => {},
+      error: ()=> {},
+      complete: () => {}
+    });
+  }
 }
 
 

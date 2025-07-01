@@ -9,6 +9,6 @@ export class AlbumsService {
   constructor( private http :HttpClient) { }
 
   getAlbums(){
-    this.http.get('http://localhost:3000/api/albums/')
+     return this.http.get('http://localhost:3000/api/albums')
   }
 }

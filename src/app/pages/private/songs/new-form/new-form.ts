@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Albums } from '../../albums/albums';
+import { AlbumsService } from '../../../../services/albums-services';
+import { Songs } from '../../../../services/songs';
+
+
 
 @Component({
   selector: 'app-new-form',
@@ -10,17 +13,23 @@ import { Albums } from '../../albums/albums';
 })
 
 export class SongsNewForm {
-
 formData!: FormGroup ;
+albums: any = [];
 
-constructor(){
+constructor(
+  private albumsServices: AlbumsService,
+  private songsServices: Songs
+  )
+  {
   this.formData = new FormGroup({
     title: new FormControl('', [Validators.required]),
     coverUrl: new FormControl('', [Validators.required]),
     fileUrl: new FormControl('', [Validators.required]),
     releaseDate: new FormControl('', [Validators.required]),
-    
-
+    genre: new FormControl('', [Validators.required]),
+    authors:new FormControl('',[Validators.required]),
+    productors:new FormControl('',[Validators.required]),
+    albumId: new FormControl('',[Validators.required])
   });
 }
 
@@ -37,13 +46,39 @@ onSubmit(){
   if(this.formData.valid){
 
     console.log(this.formData.value);
+    this.songsServices.registerSongs(this.formData.value).subscribe({
+      next: ( data ) => {
+        console.log(data);
+      },
+      error:(error)=> {
+        console.error(error);
+      },
+      complete:()=>{
+        this.formData.reset(); //limpiamos los campos del formulario
+      }
+    });
+  }
+}
+
+ngOnInit() {
+    this.albumsServices.getAlbums().subscribe({
+      next: ( data ) => {
+        console.log ( data );
+        this.albums = data;
+      },
+      error: ( error ) => {
+        console.log ( error )
+      },
+      complete: () => {
+        console.log ( 'Complete' )
+      }
+    })
+  }
+  ngOnDestroy() {
+    console.log( 'ngOnDestroy' );
   }
 
-  this.formData.reset() // limpiamos los campos del formulario
 }
 
-
-
-}
 
 

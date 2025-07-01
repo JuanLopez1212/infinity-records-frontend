@@ -33,17 +33,35 @@
             <label for="song-release">Release Date: </label>
             <input type="date" formControlName="releaseDate" id="song-release"  value="">
         </div>
+
+        <div class="field">
+            <label for="song-genre">Genero: </label>
+            <input type="String" formControlName="genre" id="song-genre"  value="">
+        </div>
+
+        <div class="field">
+            <label for="song-authors">Autores: </label>
+            <input type="String" formControlName="authors" id="song-authors"  value="">
+        </div>
+
+        <div class="field">
+            <label for="song-productors">Productores: </label>
+            <input type="String" formControlName="productors" id="song-productors"  value="">
+        </div>
+
+
         
-        <!-- <div class="field">
-        <label for="song-album">Album: </label>
-        <select formControlName="album" id="song-album">
+        <div class="field">
+        <label for="song-albums">Album: </label>
+        <select formControlName="albumId" id="song-albums">
             <option value="">Selected</option>
-            <option value="users">User</option>
-            <option value="artists">Artist</option>
-            <option value="manager">Macnager</option>
-            <option value="company">Company</option>
+            
+            @for (objAlbum of albums ; track $index) {
+                <option [value]="objAlbum._id">{{objAlbum.title}}</option>
+            }
         </select>
-    </div> -->
+        
+    </div>
 
 
         <div class="field">
