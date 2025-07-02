@@ -1,1 +1,48 @@
-<p>login works!</p>
+<form 
+    class="form form-login"
+    [formGroup]="formData"
+    (ngSubmit)="onsubmit()"
+>
+    <h1>Login</h1>
+
+    <div class="form-content">
+        <div class="field">
+            <label for="username">Username *</label>
+            <input type="text" placeholder="Ej: manuela@correo.co" id="username" formControlName="username">
+            <div class="error">
+                @if ( formData.get('username')?.invalid && (formData.get(
+                'username')?.dirty) || formData.get('username')?.touched ) {
+                    <!-- Validar las reglas para elcampo -->
+                    @if(formData.get('username')?.errors?.['required']) {
+                        <span>El username es obligatorio</span>
+                    }
+                    @if( formData.get('username')?.errors?.['email']) {
+                        <span>Formato de correo no valido</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="password">Password *</label>
+            <input type="password" placeholder="Ej: 123456789" id="password" formControlName="password">
+            <div class="error">
+                @if ( formData.get('password')?.invalid && (formData.get(
+                'password')?.dirty) || formData.get('password')?.touched ) {
+                    <!-- Validar las reglas para elcampo -->
+                    @if(formData.get('password')?.errors?.['required']) {
+                        <span>la contraseña es obligatorio</span>
+                    }
+                    @if(formData.get('password')?.errors?.['minlength']) {
+                        <span>la contraseña debe tener al menos 6 caracteres</span>
+                    }
+                    @if(formData.get('password')?.errors?.['maxlength']) {
+                        <span>la contraseña debe tener maximo 12 caracteres</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <button type="submit" [disabled]="formData.invalid">Login</button>
+        </div>
+    </div>
+</form>
