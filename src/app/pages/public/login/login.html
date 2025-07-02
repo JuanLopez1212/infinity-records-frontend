@@ -8,15 +8,15 @@
     <div class="form-content">
         <div class="field">
             <label for="username">Username *</label>
-            <input type="text" placeholder="Ej: manuela@correo.co" id="username" formControlName="username">
+            <input type="text" placeholder="Ej: manuela@correo.co" id="email" formControlName="email">
             <div class="error">
-                @if ( formData.get('username')?.invalid && (formData.get(
-                'username')?.dirty) || formData.get('username')?.touched ) {
+                @if ( formData.get('email')?.invalid && (formData.get(
+                'email')?.dirty) || formData.get('email')?.touched ) {
                     <!-- Validar las reglas para elcampo -->
-                    @if(formData.get('username')?.errors?.['required']) {
-                        <span>El username es obligatorio</span>
+                    @if(formData.get('email')?.errors?.['required']) {
+                        <span>El email es obligatorio</span>
                     }
-                    @if( formData.get('username')?.errors?.['email']) {
+                    @if( formData.get('email')?.errors?.['email']) {
                         <span>Formato de correo no valido</span>
                     }
                 }
