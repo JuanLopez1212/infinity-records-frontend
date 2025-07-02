@@ -8,18 +8,18 @@
     <h1>LOGIN</h1>
     <div class="form-content">
         <div class="field">
-            <label for="username">Username</label>
-            <input type="text" placeholder="Ej: manuela@correo.co" id="username" formControlName="username">
+            <label for="username">Email</label>
+            <input type="text" placeholder="Ej: manuela@correo.co" id="username" formControlName="email">
             <div class="error">
-                <!-- Validar el estado del campo actual (username) -->
-                @if(formData.get('username')?.invalid 
-                && (formData.get('username')?.dirty 
-                || formData.get('username')?.touched)){
+                <!-- Validar el estado del campo actual (email) -->
+                @if(formData.get('email')?.invalid 
+                && (formData.get('email')?.dirty 
+                || formData.get('email')?.touched)){
                     <!-- Validar las reglas para el campo -->
-                @if( formData.get('username')?.errors?.['required']){
+                @if( formData.get('email')?.errors?.['required']){
                     <span>El correo es obligatorio</span>
                 }
-                @if(formData.get('username')?.errors?.['email']){
+                @if(formData.get('email')?.errors?.['email']){
                     <span>El formato de correo es invalido</span>
                 }
                 }
