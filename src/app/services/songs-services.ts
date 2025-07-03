@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class Songs {
+export class SongsServices {
 
     constructor(private http: HttpClient){}
 
@@ -13,7 +13,7 @@ export class Songs {
     }
 
     getSongs(){
-     return this.http.get('http://localhost:3000/api/songs')
+     return this.http.get('http://localhost:3000/api/songs', )
     }
 
 

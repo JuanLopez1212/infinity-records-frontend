@@ -1,0 +1,15 @@
+.cover-image{
+    width: 9rem;
+    height: 9rem;
+    border-radius: 7rem;
+    border: 2px solid lightgray;
+    padding:1rem ;
+}
+
+
+.song-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem ;
+}

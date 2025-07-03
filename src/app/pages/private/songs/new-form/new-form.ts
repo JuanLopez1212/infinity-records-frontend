@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlbumsService } from '../../../../services/albums-services';
-import { Songs } from '../../../../services/songs';
+import { SongsServices } from '../../../../services/songs-services';
+
 
 
 
@@ -18,7 +19,7 @@ albums: any = [];
 
 constructor(
   private albumsServices: AlbumsService,
-  private songsServices: Songs
+  private songsServices: SongsServices
   )
   {
   this.formData = new FormGroup({
