@@ -1,19 +1,27 @@
-import { CanActivateFn } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { AuthServices } from '../services/auth-services';
 import { inject } from '@angular/core';
+import { catchError, map, of } from 'rxjs';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject( AuthServices);
-  authService.veryfyAuthenticateUser().subscribe ({
-    next: (data) => {
-      console.log(data);
-    },
-    error: (error) => {
-      console.error(error);
-    },
-    complete: ()=> {}
+  const router = inject(Router);
 
-  });
+  return authService.veryfyAuthenticateUser() 
+  .pipe(
+    map((data) =>{
+      console.log('Guard',data);
 
-  return true;
+      if(!data){
+        router.navigateByUrl('Register');
+        return false;
+      }
+
+      return true;
+    }),
+    catchError(() =>{
+      return of(false);
+    })
+  );
+  
 };
