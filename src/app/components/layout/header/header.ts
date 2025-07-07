@@ -13,7 +13,8 @@ export class Header {
   constructor ( private authService: AuthServices, private router: Router ) {}
 
   logout () {
-    this.authService.deleteLocalStorage ( 'token' )
+    this.authService.deleteLocalStorage ( 'token' );
+    this.authService.deleteLocalStorage ( 'userData' );
     this.router.navigateByUrl ( 'home' )  // Esta ruta debe existir
   }
 }

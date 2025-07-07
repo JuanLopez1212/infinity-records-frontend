@@ -1,0 +1,47 @@
+<!-- <pre>{{ albums | json }}</pre>   -->
+
+<div class="page-songs list">
+    <h1>Albums List</h1>
+
+    <div class="album-list">
+        <a href="#" routerLink="/dashboard/albums/new">Crear nuevo album</a>
+        <table border="1">
+        <thead>
+            <th>
+                Image Cover
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                release Date
+            </th>
+        </thead>
+        <tbody>
+            @if( albums.length > 0 ) {
+                @for ( album of albums; track $index ) {
+                    <tr>
+                        <td>
+                            <img class="cover-image" [src]="album.cover_url" alt="">
+                        </td>
+                        <td>{{ album.title }}</td>
+                        <td>
+                            <a class="btn btn-primary"  href="#">Edit 1</a>
+                            <a class="btn btn-primary"  href="#">Edit 2</a>
+                            <a class="btn btn-secondary">Delete </a>
+                        </td>
+                    </tr>
+                }   
+            }
+            @else {
+                <p>No hay albumnes registrados</p>
+            }
+
+        
+        </tbody>
+    </table>
+
+    </div>
+
+    
+</div>

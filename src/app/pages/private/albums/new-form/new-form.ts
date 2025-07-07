@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersServices } from '../../../../services/users-services';
 import { Albums } from '../../../../services/albums';
-import { Route } from '@angular/router';
+
 
 @Component({
   selector: 'app-new-form',
@@ -16,7 +16,7 @@ export class AlbumNewForm {
 
   constructor ( 
     private userService: UsersServices, 
-    private albumService: Albums, 
+    private albumService: Albums
   ) {
     this.formData = new FormGroup({
       title: new FormControl ( '', [ Validators.required ] ),

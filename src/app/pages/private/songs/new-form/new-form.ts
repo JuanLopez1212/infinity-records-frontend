@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AlbumsService } from '../../../../services/albums-services';
 import { SongsServices } from '../../../../services/songs-services';
 
 
@@ -18,7 +17,6 @@ formData!: FormGroup ;
 albums: any = [];
 
 constructor(
-  private albumsServices: AlbumsService,
   private songsServices: SongsServices
   )
   {
@@ -62,7 +60,7 @@ onSubmit(){
 }
 
 ngOnInit() {
-    this.albumsServices.getAlbums().subscribe({
+    this.songsServices.getSongs().subscribe({
       next: ( data ) => {
         console.log ( data );
         this.albums = data;
