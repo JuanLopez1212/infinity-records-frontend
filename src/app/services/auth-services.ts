@@ -6,7 +6,7 @@ import { catchError, map, of, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthServices {
-
+  
   constructor( private http: HttpClient )  { }
 
   loginUser ( credentials: any ) {    // Credenciales: 
@@ -58,3 +58,4 @@ export class AuthServices {
     return new HttpHeaders().set( 'X-Token', token )  // Envuelve el token en una Header tipo Http
   }
 }
+

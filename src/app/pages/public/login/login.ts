@@ -3,8 +3,6 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 
 import { AuthServices } from '../../../services/auth-services';
-
-
 @Component({
   selector: 'app-login',
   imports: [ ReactiveFormsModule ],

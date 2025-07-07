@@ -1,5 +1,12 @@
-<a routerLink= "dashboard/albums/new">Nuevo Album</a>
-<a routerLink= "dashboard/albums">Listar álbumes</a>
+<div class="header__search">
+    <nav class="navbar-menu">
+        <ul class="main-menu">
+            <li><a routerLink="dashboard/users">peooo</a></li>
+            <li><a routerLink="dashboard/users/new">users</a></li>
+            <li><a routerLink="dashboard/events/new">Events</a></li>
 
-<button class="menu-item"><a class="btn btn-primary" routerLink="login">Login</a></button>
-<button class="menu-item"><a class="btn btn-primary" (click)="logout()">Logout</a></button>
+            <button class="btn btn-primary"routerLink="login">login</button>
+            <button class="btn btn-primary"(click)="logout()">logout</button>    
+        </ul>
+    </nav>
+</div>
