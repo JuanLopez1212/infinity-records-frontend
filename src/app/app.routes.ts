@@ -8,6 +8,8 @@ import { Dashboard } from './pages/private/dashboard/dashboard';
 import { UserNewForm } from './pages/private/users/new-form/new-form';
 import { Users } from './pages/private/users/users';
 import { Events } from './pages/private/events/events';
+import { SongsNewForm } from './pages/private/songs/new-form/new-form';
+import { Song } from './pages/private/songs/songs';
 
 import { authGuard } from './guards/auth-guard';
 
@@ -18,10 +20,11 @@ export const routes: Routes = [
     { path: 'dashboard', component: Dashboard, canActivate: [ authGuard ] },
     { path: 'dashboard/users', component: Users,canActivate:[authGuard]},
     { path: 'dashboard/albums', component: Album, canActivate: [ authGuard ] },
+    { path: 'dashboard/songs', component:Song ,canActivate:[authGuard] },
     { path: 'dashboard/events/new', component:Events, pathMatch : 'full'},
+    { path: 'dashboard/songs/new', component:SongsNewForm, canActivate:[authGuard]},
     { path: 'dashboard/users/new', component: UserNewForm,canActivate:[authGuard]},
     { path: 'dashboard/albums/new', component: AlbumNewForm, canActivate: [ authGuard ] },
     { path: '**', redirectTo: 'home', pathMatch: 'full' },
     { path: '', redirectTo: 'home', pathMatch: 'full' } 
-
 ];

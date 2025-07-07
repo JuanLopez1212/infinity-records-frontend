@@ -1,43 +1,46 @@
 <form 
-    class = "form form-login"
-    [formGroup] = "formData"
-    (ngSubmit) = "onSubmit()"
->
-    <h1>Login</h1>
+    class="form form-login"
+    [formGroup]="formData"
+    (ngSubmit)="onSubmit()"
+    >
 
-    <div class = "form-content">
-        <div class = "field">
-            <label for = "username">Email *</label>
-            <input type = "text" placeholder = "Ej: registrado@correo.co" id = "username" formControlName = "email">
-            <div class = "error">
+    <h1>LOGIN</h1>
+    <div class="form-content">
+        <div class="field">
+            <label for="username">Email</label>
+            <input type="text" placeholder="Ej: manuela@correo.co" id="username" formControlName="email">
+            <div class="error">
                 <!-- Validar el estado del campo actual (email) -->
-                @if ( formData.get( 'email' )?.invalid && ( formData.get( 'email' )?.dirty || formData.get( 'email' )?.touched) ) {
+                @if(formData.get('email')?.invalid 
+                && (formData.get('email')?.dirty 
+                || formData.get('email')?.touched)){
                     <!-- Validar las reglas para el campo -->
-                    @if ( formData.get( 'email' )?.errors?.[ 'required' ] ) {
-                        <span>El correo es obligatorio</span>
-                    }
-                    @if ( formData.get( 'email' )?.errors?.[ 'email' ] ) {
-                        <span>Formato de correo no válido</span>
-                    }
+                @if( formData.get('email')?.errors?.['required']){
+                    <span>El correo es obligatorio</span>
+                }
+                @if(formData.get('email')?.errors?.['email']){
+                    <span>El formato de correo es invalido</span>
+                }
                 }
             </div>
         </div>
-
         <div class="field">
-            <label for="password">Password *</label>
+            <label for="password">Password</label>
             <input type="password" placeholder="Ej: 123456789" id="password" formControlName="password">
             <div class="error">
-                @if ( formData.get('password')?.invalid && (formData.get(
-                'password')?.dirty) || formData.get('password')?.touched ) {
-                    <!-- Validar las reglas para elcampo -->
-                    @if(formData.get('password')?.errors?.['required']) {
-                        <span>la contraseña es obligatorio</span>
+                <!-- Validar el estado del campo actual (username) -->
+                @if(formData.get('password')?.invalid 
+                && (formData.get('password')?.dirty 
+                || formData.get('password')?.touched)){
+                    <!-- Validar las reglas para el campo -->
+                    @if(formData.get('password')?.errors?.['required']){
+                        <span>La contraseña es obligatoria</span>
                     }
-                    @if(formData.get('password')?.errors?.['minlength']) {
-                        <span>la contraseña debe tener al menos 6 caracteres</span>
+                    @if(formData.get('password')?.errors?.['minlength']){
+                        <span>La contraseña debe tener al menos 6 caracteres</span>
                     }
-                    @if(formData.get('password')?.errors?.['maxlength']) {
-                        <span>la contraseña debe tener maximo 12 caracteres</span>
+                    @if(formData.get('password')?.errors?.['maxlength']){
+                        <span>La contraseña debe tener maximo 12 caracteres</span>
                     }
                 }
             </div>

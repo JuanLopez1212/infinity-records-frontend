@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { AuthServices } from '../../../services/auth-services';
+
 @Component({
   selector: 'app-login',
   imports: [ ReactiveFormsModule ],
@@ -40,3 +40,4 @@ export class Login {
     }
   }
 }
+

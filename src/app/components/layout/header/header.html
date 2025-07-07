@@ -1,12 +1,18 @@
+
 <div class="header__search">
     <nav class="navbar-menu">
         <ul class="main-menu">
+            <!-- TODO: Reorganizar lista de enlaces -->
             <li><a routerLink="dashboard/users">peooo</a></li>
             <li><a routerLink="dashboard/users/new">users</a></li>
             <li><a routerLink="dashboard/events/new">Events</a></li>
-
-            <button class="btn btn-primary"routerLink="login">login</button>
-            <button class="btn btn-primary"(click)="logout()">logout</button>    
+            <li><a routerLink='dashboard/songs'>List Songs</a></li>
+            <li><a routerLink='dashboard/songs/new'>Create Songs</a></li>
+            <li><a routerLink= "dashboard/albums/new">Nuevo Album</a></li>
+            <li><a routerLink= "dashboard/albums">Listar álbumes</a></li>
+            
+            <a class="btn btn-primary"routerLink="login">login</a>
+            <a href="#" class="btn btn-primary"(click)="logout(); $event.preventDefault();">logout</a>    
         </ul>
     </nav>
 </div>

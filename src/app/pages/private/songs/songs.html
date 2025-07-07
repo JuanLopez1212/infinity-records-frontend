@@ -1,0 +1,59 @@
+<div class="page-songs list">
+    <h1>Songs List</h1>
+
+    <div class="song-list">
+
+        <table border="1">
+        <thead>
+            <th>
+                title
+            </th>
+            <th>
+                Cover Url
+            </th>
+            <th>
+                File Url
+            </th>
+            <th>
+                release Date
+            </th>
+            <th>
+                Genre
+            </th>
+            <th>
+                authors
+            </th>
+            <th>
+                productors
+            </th>
+            <th>
+                Album
+            </th>
+        </thead>
+        <tbody>
+            @for (song of songs; track $index) {
+            <tr>
+                <td>
+                    <img class="cover-image" [src]="song.coverUrl" alt="item.name">
+                </td>
+                <td>{{ song.coverUrl }}</td>
+                <td>{{ song.fileUrl }}</td>
+                <td>{{ song.releaseDate }}</td>
+                <td>{{ song.genre }}</td>
+                <td>{{ song.authors }}</td>
+                <td>{{ song.productors }}</td>
+                <td>{{ song.albumId }}</td>
+                <td>
+                    <a class="btn btn-primary"  href="#">Edit 1</a>
+                    <a class="btn btn-primary"  href="#">Edit 2</a>
+                    <a class="btn btn-secondary" (click)="onDelete(song._id)">Delete </a>
+                </td>
+            </tr>
+            }           
+        </tbody>
+    </table>
+
+    </div>
+
+    
+</div>

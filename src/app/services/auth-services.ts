@@ -58,4 +58,3 @@ export class AuthServices {
     return new HttpHeaders().set( 'X-Token', token )  // Envuelve el token en una Header tipo Http
   }
 }
-
