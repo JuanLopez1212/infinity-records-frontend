@@ -11,7 +11,7 @@ import { UsersService } from '../../../../services/users';
 })
 export class UserNewForm {
 formData!: FormGroup;
-users:any=["users", "artists", "manager", "company"]
+users:any=["users", "artists"]
 categories:any  = [];
 
   constructor(
@@ -37,7 +37,7 @@ categories:any  = [];
 
     if(this.formData.valid){
       console.log(this.formData.value);
-      this.usersServices.registerProduct(this.formData.value).subscribe({
+      this.usersServices.registerUsers (this.formData.value).subscribe({
         next: ( data ) => {
           console.log( data );
         },

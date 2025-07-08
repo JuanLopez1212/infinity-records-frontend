@@ -1,3 +1,663 @@
+
+/* css general
+
+
+
+/*  Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700;900&display=swap');
+
+/* Variables globales */
+:root {
+  /* 🎨 Colores */
+  --color-primary: #0ff;  /* Cian neon */
+  --color-accent: #0f0;   /* Verde neon */
+  --color-bg: #000;       /* Fondo negro */
+  --color-bg-section: #111; /* Fondo secciones */
+  --color-text: #fff;     /* Texto blanco */
+  --color-btn-hover: #0f0;
+
+  /* Fuentes */
+  --font-primary: 'Orbitron', sans-serif;
+  --font-secondary: 'Be Vietnam Pro', sans-serif;
+}
+
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+}
+
+header h1 {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+nav {
+  position: relative;
+  left: -147px;
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+header nav a {
+  margin-left: 20px;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+header nav a:hover {
+  color: var(--color-accent);
+}
+
+/*HERO*/
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#bg-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.4);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 60px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 22px;
+  margin-top: 10px;
+  font-family: var(--font-secondary);
+}
+
+.hero button {
+  margin-top: 30px;
+  background: var(--color-primary);
+  border: none;
+  padding: 15px 40px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.hero button:hover {
+  background: var(--color-btn-hover);
+}
+
+/* Secciones Generales*/
+section {
+  padding: 100px 50px;
+}
+
+.featured-artists,
+.upcoming-events {
+  background: var(--color-bg-section);
+  margin-top: -5px;
+}
+
+.featured-artists h3,
+.upcoming-events h3 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: var(--font-secondary);
+}
+
+/* Carrusel*/
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 30px;
+  transition: transform 0.5s ease;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 255, 255, 0.5);
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: var(--color-text);
+  padding: 10px;
+  border-radius: 50%;
+  transition: background 0.3s;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 255, 0, 0.7);
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+/*Cards Artistas*/
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.4s, box-shadow 0.4s;
+  min-width: 250px;
+  margin: 44px 16px;
+}
+
+.card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 0 30px var(--color-primary);
+}
+
+/* Eventos*/
+
+.events-list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.event-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  padding: 20px 40px;
+  border-radius: 15px;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px var(--color-accent);
+}
+
+/*Footer*/
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: var(--color-bg);
+  font-family: var(--font-secondary);
+}
+
+/* Artists Section */
+
+.carrusel-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 40px;
+}
+
+.carrusel-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+}
+
+.artista-card {
+  flex: 0 0 250px;
+  margin-right: 20px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.artista-card:hover {
+  transform: scale(1.05);
+}
+
+.artista-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.artista-card .info {
+  padding: 15px;
+}
+
+.artista-card .info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--Old-Gold);
+}
+
+.artista-card .info p {
+  margin-top: 5px;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+button#prev,
+button#next {
+  background: var(--Old-Gold);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+button#prev:hover,
+button#next:hover {
+  background: var(--Old-Gold)
+}
+
+button#prev {
+  left: 10px;
+}
+
+button#next {
+  right: 10px;
+}
+
+/* Top artistas */
+.top-artistas-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.top-artistas-section h2 {
+  margin-bottom: 30px;
+  color: var(--Old-Gold);
+}
+
+.top-artistas-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.top-artista-card {
+  width: 220px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.top-artista-card:hover {
+  transform: scale(1.05);
+}
+
+.top-artista-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.top-artista-card h3 {
+  margin: 10px 0 5px;
+  color: var(--Old-Gold);
+}
+
+.top-artista-card p {
+  padding: 0 10px 15px;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* Colaboraciones */
+.collabs-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.collabs-section h2 {
+  margin-bottom: 30px;
+  color: var(--Old-Gold);
+}
+
+.collabs-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.collab-card {
+  width: 260px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.collab-card:hover {
+  transform: scale(1.05);
+}
+
+.collab-card h3 {
+  margin: 0 0 10px;
+  color: var(--Old-Gold);
+}
+
+.collab-card p {
+  margin: 0;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* Nuevos talentos */
+.nuevos-talentos-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.nuevos-talentos-section h2 {
+  margin-bottom: 30px;
+  color: var(--Old-Gold);
+}
+
+.nuevos-talentos-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.talento-card {
+  width: 220px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.talento-card:hover {
+  transform: scale(1.05);
+}
+
+.talento-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.talento-card h3 {
+  margin: 10px 0 5px;
+  color: var(--Old-Gold);
+}
+
+.talento-card p {
+  padding: 0 10px 15px;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* Albums Section  */
+
+.albums-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+}
+
+.album-card {
+  width: 200px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.album-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.album-card .info {
+  padding: 15px;
+}
+
+.album-card .info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--Old-Gold);
+}
+
+.album-card .info p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Sección noticias */
+.news-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.news-section h2 {
+  margin-bottom: 30px;
+  color: var(--Old-Gold);
+}
+
+.news-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.news-card {
+  width: 220px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+  transform: scale(1.05);
+}
+
+.news-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.news-card h3 {
+  margin: 10px 0 5px;
+  color: var(--Old-Gold);
+}
+
+.news-card p {
+  padding: 0 10px 15px;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* Media queries para tablets  */
+
+@media (max-width: 1024px) {
+  .albums-container,
+  .news-cards,
+  .top-artistas-cards,
+  .collabs-cards,
+  .nuevos-talentos-cards {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .album-card,
+  .news-card,
+  .top-artista-card,
+  .collab-card,
+  .talento-card {
+    width: 180px;
+  }
+
+  .album-card img,
+  .news-card img,
+  .top-artista-card img,
+  .talento-card img {
+    height: 160px;
+  }
+}
+
+/* Media Queries para móviles grandes */
+
+@media (max-width: 768px) {
+  .albums-container,
+  .news-cards,
+  .top-artistas-cards,
+  .collabs-cards,
+  .nuevos-talentos-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .album-card,
+  .news-card,
+  .top-artista-card,
+  .collab-card,
+  .talento-card {
+    width: 150px;
+  }
+
+  .album-card img,
+  .news-card img,
+  .top-artista-card img,
+  .talento-card img {
+    height: 140px;
+  }
+
+  .about-section p,
+  .valores-section p {
+    padding: 0 10px;
+  }
+}
+
+/* Media Queries para móviles pequeños  */
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .album-card,
+  .news-card,
+  .top-artista-card,
+  .collab-card,
+  .talento-card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .album-card img,
+  .news-card img,
+  .top-artista-card img,
+  .talento-card img {
+    height: 180px;
+  }
+
+  .about-section,
+  .valores-section,
+  .news-section,
+  .top-artistas-section,
+  .collabs-section,
+  .nuevos-talentos-section,
+  .albums-container,
+  .artists-container {
+    padding: 40px 10px;
+  }
+
+  .eventos-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .evento-card {
+    width: 90%;
+  }
+}
+
+
 /** CSS: Forms */
 .form h1 {
     text-align: center;

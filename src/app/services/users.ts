@@ -8,7 +8,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  registerProduct (newUsers: any) {
+  registerUsers (newUsers: any) {
     return this.http.post('http://localhost:3000/api/users', newUsers)
   }
 
