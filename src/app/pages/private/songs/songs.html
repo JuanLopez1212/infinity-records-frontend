@@ -33,10 +33,10 @@
         <tbody>
             @for (song of songs; track $index) {
             <tr>
+                <td>{{ song.title }}</td>
                 <td>
-                    <img class="cover-image" [src]="song.coverUrl" alt="item.name">
+                    <img class="cover-image" [src]="song.coverUrl" [alt]="song.title">
                 </td>
-                <td>{{ song.coverUrl }}</td>
                 <td>{{ song.fileUrl }}</td>
                 <td>{{ song.releaseDate }}</td>
                 <td>{{ song.genre }}</td>
