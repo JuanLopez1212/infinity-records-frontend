@@ -28,9 +28,9 @@
                         
                         <td>{{album.release_date}}</td>
                         <td>
-                            <a class="btn btn-primary"  href="#">Edit 1</a>
-                            <a class="btn btn-primary"  href="#">Edit 2</a>
-                            <a class="btn btn-secondary">Delete </a>
+                        <a class="btn btn-primary" href="#" [routerLink]="['/dashboard', 'albums', 'edit', album._id]">Actualizar</a>
+                        <a class="btn btn-secondary" href="#"
+                            (click)="onDelete(album._id); $event.preventDefault()">Delete </a>
                         </td>
                     </tr>
                 }   

@@ -21,7 +21,7 @@ export class AlbumNewForm {
     this.formData = new FormGroup({
       title: new FormControl ( '', [ Validators.required ] ),
       cover_url: new FormControl ( '', [ Validators.required ] ),
-      releaseDate: new FormControl ()
+      date_release: new FormControl ()
     });
   }
 

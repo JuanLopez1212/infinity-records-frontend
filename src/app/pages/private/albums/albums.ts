@@ -17,10 +17,27 @@ export class Album {
   constructor ( private albumService: Albums ) {}
   
   ngOnInit() {
+    this.onLoadData();
+  }
+
+  onLoadData() {
     this.albumService.getAlbums().subscribe ({
       next: ( data ) => {
         console.log ( data )
         this.albums = data;
+      },
+      error: ( error ) => {
+        console.error ( error )
+      },
+      complete: () => {}
+    })
+  }
+
+  onDelete ( id: string ) {
+    this.albumService.deleteAlbum( id ).subscribe ({
+      next: ( data ) => {
+        console.log ( data )
+        this.onLoadData();
       },
       error: ( error ) => {
         console.error ( error )
