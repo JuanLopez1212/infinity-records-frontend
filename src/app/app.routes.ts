@@ -24,7 +24,7 @@ export const routes: Routes = [
     { path: 'dashboard/users', component: Users,canActivate:[authGuard]},
     { path: 'dashboard/albums', component: Album, canActivate: [ authGuard ] },
     { path: 'dashboard/songs', component:Song ,canActivate:[authGuard] },
-    { path: 'dashboard/events', component:Events, canActivate:[authGuard] },
+    { path: 'dashboard/events', component: Events, canActivate:[authGuard] },
     { path: 'dashboard/events/new', component: EventNew, canActivate:[authGuard] },
     { path: 'dashboard/events/edit/:id', component: EventEdit, canActivate: [authGuard]},
     { path: 'dashboard/songs/new', component:SongsNewForm, canActivate:[authGuard]},

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersService } from '../../../../services/users';
 import { EventsServices } from '../../../../services/events';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-event-edit',
@@ -30,7 +30,7 @@ formData!: FormGroup;
         });
     }
 
-    formatDateToYMD(dateStr: string): string {
+  formatDateToYMD(dateStr: string): string {
     const date = new Date(dateStr);
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0'); // meses 0-11
