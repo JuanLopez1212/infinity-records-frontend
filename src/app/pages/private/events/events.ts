@@ -1,66 +1,48 @@
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { EventsServices } from '../../../services/events';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-events',
-  imports: [ReactiveFormsModule],
+  imports: [RouterLink],
   templateUrl: './events.html',
   styleUrl: './events.css'
 })
 export class Events {
-// TODO: Revisar todo el flujo de la entidad Eventos
-  // formData!: FormGroup;
-  // users: any = [];
+  events: any = [];
+  getEvents: any;
 
+  constructor ( private eventsService: EventsServices ) {}
+  
+  ngOnInit() {
+    this.onLoadData()
+  } 
 
-  // constructor(private usersservices: UsersServices) {
-  //   this.formData = new FormGroup({
-  //     title: new FormControl('', [Validators.required]),
-  //     description: new FormControl('', [Validators.required]),
-  //     date: new FormControl('', [Validators.required]),
-  //     address: new FormControl('', [Validators.required]),
-  //   });
-  // }
+  onLoadData(){
+    this.eventsService.getEvents().subscribe ({
+      next: ( data ) => {
+        console.log ( data )
+        this.events = data;
+      },
+      error: ( error ) => {
+        console.error ( error )
+      },
+      complete: () => {}
+    })
+  }
 
-
-  // onSubmit() {
-  //   console.log(
-  //     this.formData.valid,
-  //     this.formData.invalid,
-  //     this.formData.pristine,
-  //     this.formData.dirty,
-  //     this.formData.touched
-  //   );
-
-  //   if (this.formData.valid) {
-  //     console.log(this.formData.value);
-  //   }
-
-  //   if (this.formData.valid) {
-
-  //     console.log(this.formData.value);
-  //   }
-
-  //   this.formData.reset() // limpiamos los campos del formulario
-  // }
-
-  // ngOnInit() {
-  //   this.usersservices.getUsers().subscribe({
-  //     next: (data) => {
-  //       console.log(data);
-  //       this.users = data;
-  //     },
-  //     error: (error) => {
-  //       console.log(error)
-  //     },
-  //     complete: () => {
-  //       console.log('Complete')
-  //     }
-  //   })
-  // }
-  // ngOnDestroy() {
-  //   console.log('ngOnDestroy');
-  // }
+onDelete(id: string){
+  this.eventsService.deleteEvents(id).subscribe({
+    next: ( data ) => {
+        console.log ( data )
+        this.onLoadData()
+      },
+      error: ( error ) => {
+        console.error ( error )
+      },
+      complete: () => {}
+  })
+}
 
 }

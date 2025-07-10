@@ -1,30 +1,49 @@
-<!-- <form 
-[formGroup]="formData" 
-(submit)="onSubmit()"
-class="container" 
->
+<div class="page-events list">
+    <h1>Events List</h1>
 
+    <div class="page-events">
+        <a href="#" routerLink="/dashboard/events/new">Crear nuevo evento</a>
+        <table border="1">
+        <thead>
+            <th>
+                Image Cover
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                description
+            </th>
+            <th>
+                address
+            </th>
+        </thead>
+        <tbody>
+            @if( events.length > 0 ) {
+                @for ( event of events; track $index ) {
+                    <tr>
+                        <td>
+                            <img class="cover-image" [src]="events.cover_url" alt="">
+                        </td>
+                        <td>{{ event.title }}</td>
+                        <td>{{ event.description}}</td>
+                        <td>{{event.address}}</td>
+                        <td>
+                            <a class="btn btn-primary"  [routerLink]="['/dashboard','events','edit',event._id]">edit 1</a>
+                            <a class="btn btn-secondary" href="#"(click)="onDelete(event._id); $event.preventDefault() ">Delete </a>
+                        </td>
+                    </tr>
+                }   
+            }
+            @else {
+                <p>No hay eventos registrados</p>
+            }
 
-    <h1>Register events</h1>
+        
+        </tbody>
+    </table>
 
-    <div class="field">
-        <label for="events-title">title</label>
-        <input type="text" formControlName="title" id="events-title">
     </div>
-    <div class="field">
-        <label for="events-description">description</label>
-        <input type="text" formControlName="description" id="events-description">
-    </div>
-    <div class="field">
-        <label for="events-date">date</label>
-        <input type="date" formControlName="date" id="events-date">
-    </div>
+
     
-    <div class="field">
-        <label for="events-address">address</label>
-        <input type="string" formControlName="address" id="events-address">
-    </div>
-    <div class="field">
-        <button type="submit">Register events</button>
-    </div>
-</form> -->
+</div>

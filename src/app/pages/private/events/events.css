@@ -1,0 +1,16 @@
+.cover-image{
+    width: 9rem;
+    height: 9rem;
+    border-radius: 7rem;
+    border: 2px solid lightgray;
+    padding:1rem ;
+}
+
+
+.events-list{
+    display: flex;
+    justify-content: center;
+    align-items: normal;
+    margin: 3rem;
+    flex-direction: column;
+}
