@@ -1,0 +1,71 @@
+
+<form 
+    [formGroup]="formData" 
+    (submit)="onSubmit()"
+    class=" container container-header" 
+    >
+
+    <div class="container-main">
+        <h1>Edit your song</h1>
+        <div class="field">
+            <label for="song-title">Title: </label>
+            <input type="text" formControlName="title" id="song-title" value="" placeholder="Ej:Cancion para mi">
+        </div>
+
+        <div class="field">
+            <label for="song-cover">Cover url: </label>
+            <input type="text" formControlName="coverUrl" id="song-cover"  value="" placeholder="Ej:https://www.rrfsdfsde.com">
+        </div>
+
+
+        <div class="field">
+            <label for="song-file">File Url: </label>
+            <input type="text" formControlName="fileUrl" id="song-file" value="" placeholder="Ej:Cancion para mi">
+        </div>
+
+        <!-- <div class="field">
+            <label for="song-file">File: </label>
+            <input type="file" name="" id="song-file"  value="">
+        </div> -->
+
+        
+        <div class="field">
+            <label for="song-release">Release Date: </label>
+            <input type="date" formControlName="releaseDate" id="song-release"  value="">
+        </div>
+
+        <div class="field">
+            <label for="song-genre">Genero: </label>
+            <input type="text" formControlName="genre" id="song-genre"  value="">
+        </div>
+
+        <div class="field">
+            <label for="song-authors">Autores: </label>
+            <input type="text" formControlName="authors" id="song-authors"  value="">
+        </div>
+
+        <div class="field">
+            <label for="song-productors">Productores: </label>
+            <input type="text" formControlName="productors" id="song-productors"  value="">
+        </div>
+
+
+        
+        <div class="field">
+        <label for="song-albums">Album: </label>
+        <select formControlName="albumId" id="song-albums">
+            <option value="">Selected</option>
+            
+            @for (objAlbum of albums ; track $index) {
+                <option [value]="objAlbum._id">{{objAlbum.title}}</option>
+            }
+        </select>
+        
+    </div>
+
+
+        <div class="field">
+            <button type="submit">Register Songs</button>
+        </div>
+    </div>
+</form>

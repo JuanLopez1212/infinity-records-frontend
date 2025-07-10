@@ -12,6 +12,7 @@ import { SongsNewForm } from './pages/private/songs/new-form/new-form';
 import { Song } from './pages/private/songs/songs';
 
 import { authGuard } from './guards/auth-guard';
+import { SongEdit } from './pages/private/songs/song-edit/song-edit';
 
 export const routes: Routes = [
     { path: 'home', component: Home },
@@ -25,6 +26,7 @@ export const routes: Routes = [
     { path: 'dashboard/songs/new', component:SongsNewForm, canActivate:[authGuard]},
     { path: 'dashboard/users/new', component: UserNewForm,canActivate:[authGuard]},
     { path: 'dashboard/albums/new', component: AlbumNewForm, canActivate: [ authGuard ] },
+    { path: 'dashboard/songs/edit/:id', component:SongEdit, canActivate:[authGuard]},
     { path: '**', redirectTo: 'home', pathMatch: 'full' },
     { path: '', redirectTo: 'home', pathMatch: 'full' } 
 ];

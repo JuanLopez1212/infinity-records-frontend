@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SongsServices } from '../../../../services/songs-services';
+import { Albums } from '../../../../services/albums';
+import { Router } from '@angular/router';
 
 
 
@@ -17,7 +19,9 @@ formData!: FormGroup ;
 albums: any = [];
 
 constructor(
-  private songsServices: SongsServices
+  private songsServices: SongsServices,
+  private albumsServices : Albums,
+  private router: Router
   )
   {
   this.formData = new FormGroup({
@@ -48,6 +52,8 @@ onSubmit(){
     this.songsServices.registerSongs(this.formData.value).subscribe({
       next: ( data ) => {
         console.log(data);
+        this.router.navigateByUrl('/dashboard/songs')
+
       },
       error:(error)=> {
         console.error(error);
@@ -60,7 +66,7 @@ onSubmit(){
 }
 
 ngOnInit() {
-    this.songsServices.getSongs().subscribe({
+    this.albumsServices.getAlbums().subscribe({
       next: ( data ) => {
         console.log ( data );
         this.albums = data;

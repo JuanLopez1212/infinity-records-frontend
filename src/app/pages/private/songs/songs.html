@@ -1,9 +1,10 @@
-<div class="page-songs list">
+
+<div class="page-songs song-list">
     <h1>Songs List</h1>
-
-    <div class="song-list">
-
-        <table border="1">
+    <a href="#" routerLink="/dashboard/songs/new">Crear nueva reserva</a>
+    
+    @if (songs.length>0) {
+     <table border="1">
         <thead>
             <th>
                 title
@@ -29,6 +30,9 @@
             <th>
                 Album
             </th>
+            <td>
+                Acciones
+            </td>
         </thead>
         <tbody>
             @for (song of songs; track $index) {
@@ -37,23 +41,25 @@
                 <td>
                     <img class="cover-image" [src]="song.coverUrl" [alt]="song.title">
                 </td>
-                <td>{{ song.fileUrl }}</td>
-                <td>{{ song.releaseDate }}</td>
-                <td>{{ song.genre }}</td>
-                <td>{{ song.authors }}</td>
-                <td>{{ song.productors }}</td>
-                <td>{{ song.albumId }}</td>
+                <td>{{ song?.fileUrl }}</td>
+                <td>{{ song?.releaseDate | date}}</td>
+                <td>{{ song?.genre }}</td>
+                <td>{{ song?.authors }}</td>
+                <td>{{ song?.productors }}</td>
+                <td>{{ song?.albumId }}</td>
                 <td>
-                    <a class="btn btn-primary"  href="#">Edit 1</a>
-                    <a class="btn btn-primary"  href="#">Edit 2</a>
-                    <a class="btn btn-secondary" (click)="onDelete(song._id)">Delete </a>
+                    <a class="btn btn-primary" [routerLink]="['/dashboard', 'songs', 'edit', song._id]" href="#">Actualizar</a>
+        
+                    <a class="btn btn-secondary" href="#" (click)="onDelete(song._id); $event.preventDefault() ">Delete </a>
                 </td>
             </tr>
             }           
         </tbody>
     </table>
 
-    </div>
-
+    }
+    @else{
+        <h3>No hay canciones registradas</h3>
+    }
     
 </div>
