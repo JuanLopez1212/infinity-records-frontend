@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersServices } from '../../../../services/users-services';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Albums } from '../../../../services/albums';
+import { Albums } from '../../../../services/albums-services';
 
 @Component({
   selector: 'app-album-edit',

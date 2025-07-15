@@ -1,3 +1,18 @@
+:root {
+  /* 🎨 Colores */
+  --color-primary: #0ff;  /* Cian neon */
+  --color-accent: #0f0;   /* Verde neon */
+  --color-bg: #000;       /* Fondo negro */
+  --color-bg-section: #111; /* Fondo secciones */
+  --color-text: #fff;     /* Texto blanco */
+  --color-btn-hover: #0f0;
+}
+.album-card {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+
 .cover-image{
     width: 9rem;
     height: 9rem;
@@ -13,4 +28,95 @@
     align-items: normal;
     margin: 3rem;
     flex-direction: column;
+}
+
+.albums-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+}
+
+.album-card {
+  width: 200px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+
+
+.album-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.album-card .info {
+  padding: 15px;
+}
+
+.album-card .info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: rgb(255, 255, 255)
+}
+
+.album-card .info p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+
+.news-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.news-section h2 {
+  margin-bottom: 30px;
+  color: var(--Old-Gold);
+}
+
+.news-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.news-card {
+  width: 220px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+  transform: scale(1.05);
+}
+
+.news-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.news-card h3 {
+  margin: 10px 0 5px;
+  color: var(--Old-Gold);
+}
+
+.news-card p {
+  padding: 0 10px 15px;
+  color: #ccc;
+  font-size: 0.9rem;
 }

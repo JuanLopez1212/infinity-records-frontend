@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SongsServices } from '../../../../services/songs-services';
-import { Albums } from '../../../../services/albums';
+import { Albums } from '../../../../services/albums-services';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({

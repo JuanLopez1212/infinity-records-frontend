@@ -1,0 +1,36 @@
+<main>
+
+        <section class="albums-container">
+            @for (album of albums; track album._id) {
+            <div class="album-card" #albumCard>
+                <img [src]="album.cover_url" alt="album.title">
+                <div class="info">
+                    <h3>{{ album.title }}</h3>
+                    <p>{{ album.date_release | date }}</p>
+                </div>
+            </div>
+            }
+        </section>
+        <a href="#" routerLink="/dashboard/albums/new">Crear nuevo album</a>
+
+        <section class="news-section">
+            <h2>Últimos Lanzamientos</h2>
+            <div class="news-cards">
+                <div class="news-card">
+                    <img src="./img/yhlqmdlg.webp" alt="YHLQMDLG">
+                    <h3>YHLQMDLG</h3>
+                    <p>El álbum que redefinió el trap latino.</p>
+                </div>
+                <div class="news-card">
+                    <img src="./img/rauw-vice-versa.webp" alt="Vice Versa">
+                    <h3>Vice Versa</h3>
+                    <p>Rauw Alejandro sorprende con un estilo fresco y único.</p>
+                </div>
+                <div class="news-card">
+                    <img src="./img/el cantante del ghetto.webp" alt="El Cantante del Ghetto">
+                    <h3>El Cantante del Ghetto</h3>
+                    <p>Ryan Castro presenta su sonido callejero con pura energía.</p>
+                </div>
+            </div>
+        </section>
+    </main>

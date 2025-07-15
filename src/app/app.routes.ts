@@ -16,13 +16,19 @@ import { SongEdit } from './pages/private/songs/song-edit/song-edit';
 import { EventNew } from './pages/private/events/event-new/event-new';
 import { EventEdit } from './pages/private/events/event-edit/event-edit';
 import { AlbumEdit } from './pages/private/albums/album-edit/album-edit';
+import { adminGuard } from './guards/admin-guard';
 
 export const routes: Routes = [
     { path: 'home', component: Home },
     { path: 'login', component: Login },
     { path: 'register', component: Register },
     { path: 'dashboard', component: Dashboard, canActivate: [ authGuard ] },
-    { path: 'dashboard/users', component: Users,canActivate:[authGuard]},
+    {
+        path: 'dashboard/users',
+        component: Users,
+        canActivate: [authGuard, adminGuard],
+        data: { expectedRoles: ['admin'] }
+    },
     { path: 'dashboard/albums', component: Album, canActivate: [ authGuard ] },
     { path: 'dashboard/songs', component:Song ,canActivate:[authGuard] },
     { path: 'dashboard/events', component: Events, canActivate:[authGuard] },

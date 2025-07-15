@@ -4,17 +4,21 @@ import { AuthServices } from '../../../services/auth-services';
 
 @Component({
   selector: 'app-header',
-  imports: [ RouterLink],
+  imports: [ RouterLink ],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
 export class Header {
+  user: any = null
   
-  constructor ( private authService: AuthServices, private router: Router ) {}
+  constructor ( private authService: AuthServices, private router: Router ) {
+    this.user = this.authService.getCurrentUser()
+  }
 
   logout () {
-    this.authService.deleteLocalStorage ( 'token' );
-    this.authService.deleteLocalStorage ( 'userData' );
-    this.router.navigateByUrl ( 'home' )  // Esta ruta debe existir
+    console.log(this.user)
+    this.authService.deleteLocalStorage ( 'token' )
+    this.authService.deleteLocalStorage ( 'user' )
+    this.router.navigateByUrl ( 'home' )
   }
 }

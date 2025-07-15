@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersServices } from '../../../../services/users-services';
-import { Albums } from '../../../../services/albums';
+import { Albums } from '../../../../services/albums-services';
 
 
 @Component({
