@@ -12,8 +12,15 @@ export const authGuard: CanActivateFn = (route, state) => {
       console.log('User88888888:', isAuthenticated);
       if ( !isAuthenticated ) {
         router.navigateByUrl( 'login' )
+        return false;
       }
-      return isAuthenticated
+
+      return true;
+    }),
+    catchError( ( error ) => {
+      console.error( error );
+      router.navigateByUrl( 'home' );
+      return of( false );
     })
   )
 };

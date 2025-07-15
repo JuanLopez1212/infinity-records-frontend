@@ -33,7 +33,12 @@ export const routes: Routes = [
     { path: 'dashboard/songs', component:Song ,canActivate:[authGuard] },
     { path: 'dashboard/events', component: Events, canActivate:[authGuard] },
     { path: 'dashboard/events/new', component: EventNew, canActivate:[authGuard] },
-    { path: 'dashboard/songs/new', component:SongsNewForm, canActivate:[authGuard]},
+    { 
+        path: 'dashboard/songs/new', 
+        component:SongsNewForm, 
+        canActivate:[authGuard, adminGuard ],
+        data: { expectedRoles: ['admin', 'artists'] }
+    },
     { path: 'dashboard/users/new', component: UserNewForm,canActivate:[authGuard]},
     { path: 'dashboard/albums/new', component: AlbumNewForm, canActivate: [ authGuard ] },
     { path: 'dashboard/events/edit/:id', component: EventEdit, canActivate: [authGuard]},

@@ -12,6 +12,7 @@ export class AuthServices {
   loginUser ( credentials: any ) {    // Credenciales: 
     return this.http.post ( 'http://localhost:3000/api/auth/login', credentials ).pipe(
       tap(( resp: any) => {
+        console.log( resp );
         if ( resp.user ) {
           this.saveLocalStorage( 'user', JSON.stringify( resp.user ))
         }
@@ -23,24 +24,35 @@ export class AuthServices {
   }
 
   verifyUser () {
-    return this.http.get('http://localhost:3000/api/auth/re-new-token', { headers: this.getHeaders() }).pipe(
-      tap(( resp: any ) => {
-        console.log('User:', resp);
-        if ( resp.user ) {
-          this.saveLocalStorage( 'user', JSON.stringify( resp.user ))
-        }
-        if ( resp.token ) {
-          this.saveLocalStorage( 'token', resp.token )
-        }
-      }),
-      map(() => true ),
-          catchError( error => {
-          console.error( error );
-          localStorage.removeItem( 'token' );
-          localStorage.removeItem( 'authUserData' );
+    return this.http.get<any>('http://localhost:3000/api/auth/re-new-token', { headers: this.getHeaders() }).pipe(
+      // tap(( resp: any ) => {
+      //   console.log('User:', resp);
+      //   if ( resp.user ) {
+      //     this.saveLocalStorage( 'user', JSON.stringify( resp.user ))
+      //   }
+      //   if ( resp.token ) {
+      //     this.saveLocalStorage( 'token', resp.token )
+      //   }
+      // }),
+      map( ( data ) => {
+        console.log( data );
 
-          return of( false );
-        })
+        if( data && data.user && data.token ) {
+          this.saveLocalStorage( 'token', data.token );
+          this.saveLocalStorage( 'user', JSON.stringify( data.user ));
+
+          return true;
+        }
+
+        return false;
+      } ),
+      catchError( error => {
+      console.error( error );
+      this.deleteLocalStorage( 'token' );
+      this.deleteLocalStorage( 'user' );
+
+      return of( false );
+    })
     )
   }
 
