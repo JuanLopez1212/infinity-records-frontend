@@ -1,0 +1,16 @@
+<main>
+    <ul class="slider">
+        <li *ngFor="let item of items; let i = index" [class]="getItemClass(i)"
+            [style.background-image]="'url(' + item.img + ')'">
+            <div class="content" [class.show]="i === activeIndex">
+                <h2 class="title">{{ item.title }}</h2>
+                <p class="description">{{ item.description }}</p>
+                <button>Read More</button>
+            </div>
+        </li>
+    </ul>
+    <nav class="nav">
+        <button class="btn prev" (click)="prev()">←</button>
+        <button class="btn next" (click)="next()">→</button>
+    </nav>
+</main>
