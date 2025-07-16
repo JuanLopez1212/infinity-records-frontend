@@ -12,6 +12,7 @@ export class Register {
   formData!: FormGroup;
 users:any=["users", "artists", "manager", "company"]
 categories:any  = [];
+role: any;
 
   constructor(
     private usersServices: UsersService
@@ -21,7 +22,8 @@ categories:any  = [];
       username: new FormControl('',[Validators.required]),
       password: new FormControl('',[Validators.required]),
       email: new FormControl('', [Validators.required]),
-      role: new FormControl('', [Validators.required])
+      role: new FormControl('', [Validators.required]),
+
     });
   }
 

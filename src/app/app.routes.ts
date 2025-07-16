@@ -17,6 +17,8 @@ import { EventNew } from './pages/private/events/event-new/event-new';
 import { EventEdit } from './pages/private/events/event-edit/event-edit';
 import { AlbumEdit } from './pages/private/albums/album-edit/album-edit';
 import { adminGuard } from './guards/admin-guard';
+import { EventsComponent } from './pages/public/events-public/events-component';
+
 
 export const routes: Routes = [
     { path: 'home', component: Home },
@@ -33,6 +35,7 @@ export const routes: Routes = [
     { path: 'dashboard/songs', component:Song ,canActivate:[authGuard] },
     { path: 'dashboard/events', component: Events, canActivate:[authGuard] },
     { path: 'dashboard/events/new', component: EventNew, canActivate:[authGuard] },
+    { path: 'events', component: EventsComponent},
     { 
         path: 'dashboard/songs/new', 
         component:SongsNewForm, 

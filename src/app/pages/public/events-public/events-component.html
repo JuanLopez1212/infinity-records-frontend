@@ -1,0 +1,15 @@
+<div class="event-carrusel-wrapper">
+    <button (click)="scrollLeft()">&#10094;</button>
+
+    <div class="event-carrusel-container" #eventCarrusel>
+        <div class="event-card" *ngFor="let card of eventCards">
+            <img [src]="card.image || 'https://via.placeholder.com/300x400?text=Evento'" alt="Evento" />
+            <div class="event-info">
+                <h3>{{ card.title }}</h3>
+                <p>{{ card.date | date:'longDate' }} - {{ card.address }}</p>
+            </div>
+        </div>
+    </div>
+
+    <button (click)="scrollRight()">&#10095;</button>
+</div>

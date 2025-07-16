@@ -21,7 +21,8 @@ export class EventNew {
             title: new FormControl('', [Validators.required]),
             description: new FormControl('', [Validators.required]),
             date: new FormControl('', [Validators.required]),
-            address: new FormControl('', [Validators.required])
+            address: new FormControl('', [Validators.required]),
+            image: new FormControl ('', [Validators.required])
         });
     }
 

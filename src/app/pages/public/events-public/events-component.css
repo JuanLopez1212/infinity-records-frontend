@@ -1,0 +1,83 @@
+.event-carrusel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    margin: auto;
+    padding: 20px;
+}
+
+.event-carrusel-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.event-carrusel-container::-webkit-scrollbar {
+    display: none;
+}
+
+.event-card {
+    flex: 0 0 auto;
+    width: 280px;
+    height: 420px;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #121212;
+    color: black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.event-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    transition: filter 0.3s;
+}
+
+.event-card:hover img {
+    filter: brightness(1);
+}
+
+.event-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.event-info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.event-info p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #000000;
+}
+
+button {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}

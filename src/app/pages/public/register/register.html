@@ -1,8 +1,4 @@
-<form 
-[formGroup]="formData" 
-(submit)="onSubmit()"
-class="container" 
->
+<form [formGroup]="formData" (submit)="onSubmit()" class="container">
 
     <h1>Register users</h1>
 
@@ -18,7 +14,7 @@ class="container"
         <label for="users-password">password</label>
         <input type="password" formControlName="password" id="users-password">
     </div>
-    
+
     <div class="field">
         <label for="users-email">email</label>
         <input type="email" formControlName="email" id="users-email">
@@ -28,13 +24,18 @@ class="container"
         <select formControlName="role" id="users-role">
             <option value="">Selected</option>
             @for (user of users; track $index) {
-                <option [value]="user">{{ user }}</option>
+            <option [value]="user">{{ user }}</option>
             }
 
             
 
         </select>
     </div>
+
+   
+
+
+
     <div class="field">
         <button type="submit">Register user</button>
     </div>
