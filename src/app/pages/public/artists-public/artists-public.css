@@ -1,0 +1,52 @@
+.carrusel-wrapper {
+  overflow: hidden;
+  padding: 40px;
+}
+
+.carrusel-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Para Firefox */
+}
+
+.carrusel-container::-webkit-scrollbar {
+  display: none; /* Para Chrome, Safari y Edge */
+}
+
+.artista-card {
+  flex: 0 0 250px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+}
+
+.artista-card:hover {
+  transform: scale(1.05);
+}
+
+.artista-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.artista-card .info {
+  padding: 15px;
+}
+
+.artista-card .info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.artista-card .info p {
+  margin-top: 5px;
+  font-size: 0.95rem;
+  color: #ccc;
+}

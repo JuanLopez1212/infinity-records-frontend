@@ -17,12 +17,16 @@ import { EventNew } from './pages/private/events/event-new/event-new';
 import { EventEdit } from './pages/private/events/event-edit/event-edit';
 import { AlbumEdit } from './pages/private/albums/album-edit/album-edit';
 import { adminGuard } from './guards/admin-guard';
+import { ArtistsPublic } from './pages/public/artists-public/artists-public';
+import { AlbumsPublic } from './pages/public/albums-public/albums-public';
 
 export const routes: Routes = [
     { path: 'home', component: Home },
     { path: 'login', component: Login },
     { path: 'register', component: Register },
     { path: 'dashboard', component: Dashboard, canActivate: [ authGuard ] },
+    { path: 'artists', component: ArtistsPublic},
+    { path: 'albums', component: AlbumsPublic},
     {
         path: 'dashboard/users',
         component: Users,

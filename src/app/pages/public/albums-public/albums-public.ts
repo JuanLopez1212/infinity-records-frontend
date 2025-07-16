@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
   styleUrl: './albums-public.css'
 })
 
-export class Album {
+export class AlbumsPublic {
   albums: any[] = [];
 
   @ViewChildren('albumCard', { read: ElementRef }) albumCards!: QueryList<ElementRef>;

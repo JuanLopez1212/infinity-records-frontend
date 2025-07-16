@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthServices } from '../../../services/auth-services';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [ RouterLink ],
+  imports: [ RouterLink, CommonModule ],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
