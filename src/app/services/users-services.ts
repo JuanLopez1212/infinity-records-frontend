@@ -12,4 +12,8 @@ export class UsersServices {
     return this.http.get ( 'http://localhost:3000/api/users' )
   }
 
+  getArtists () {
+    return this.http.get ( 'http://localhost:3000/api/users/role/artist' )
+  }
+
 }

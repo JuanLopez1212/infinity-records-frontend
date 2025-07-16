@@ -17,14 +17,21 @@ import { EventNew } from './pages/private/events/event-new/event-new';
 import { EventEdit } from './pages/private/events/event-edit/event-edit';
 import { AlbumEdit } from './pages/private/albums/album-edit/album-edit';
 import { adminGuard } from './guards/admin-guard';
+<<<<<<< HEAD
 import { EventsComponent } from './pages/public/events-public/events-component';
 
+=======
+import { ArtistsPublic } from './pages/public/artists-public/artists-public';
+import { AlbumsPublic } from './pages/public/albums-public/albums-public';
+>>>>>>> bf70c980f549e5510be683a12f55ca07104b0237
 
 export const routes: Routes = [
     { path: 'home', component: Home },
     { path: 'login', component: Login },
     { path: 'register', component: Register },
     { path: 'dashboard', component: Dashboard, canActivate: [ authGuard ] },
+    { path: 'artists', component: ArtistsPublic},
+    { path: 'albums', component: AlbumsPublic},
     {
         path: 'dashboard/users',
         component: Users,
