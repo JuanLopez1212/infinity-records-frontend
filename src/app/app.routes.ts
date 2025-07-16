@@ -23,6 +23,8 @@ import { EventsComponent } from './pages/public/events-public/events-component';
 
 import { ArtistsPublic } from './pages/public/artists-public/artists-public';
 import { AlbumsPublic } from './pages/public/albums-public/albums-public';
+import { SliderComponent } from './pages/public/slider.component/slider.component';
+
 
 
 export const routes: Routes = [
@@ -43,6 +45,7 @@ export const routes: Routes = [
     { path: 'dashboard/events', component: Events, canActivate:[authGuard] },
     { path: 'dashboard/events/new', component: EventNew, canActivate:[authGuard] },
     { path: 'events', component: EventsComponent},
+    {path:'slider',component:SliderComponent},
     { 
         path: 'dashboard/songs/new', 
         component:SongsNewForm, 
