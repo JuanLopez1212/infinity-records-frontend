@@ -29,7 +29,7 @@
     border-radius: 16px;
     overflow: hidden;
     background-color: #121212;
-    color: black;
+    color: rgb(255, 255, 255);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
     cursor: pointer;
@@ -64,11 +64,11 @@
 .event-info p {
     margin: 4px 0 0;
     font-size: 14px;
-    color: #000000;
+    color: #ffffff;
 }
 
 button {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #0f0;
     border: none;
     color: rgb(0, 0, 0);
     font-size: 2rem;
@@ -79,5 +79,5 @@ button {
 }
 
 button:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #0ff;
 }

@@ -1,0 +1,124 @@
+/* Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700;900&display=swap');
+
+/* Variables globales */
+:root {
+  --color-primary: #0ff;
+  --color-accent: #0f0;
+  --color-bg: #000;
+  --color-bg-section: #111;
+  --color-text: #fff;
+  --color-btn-hover: #0f0;
+
+  --font-primary: 'Orbitron', sans-serif;
+  --font-secondary: 'Be Vietnam Pro', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  overflow-x: hidden;
+}
+
+/* Video opcional de fondo */
+#bg-video-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.4);
+}
+
+/* Formulario general */
+.container.container-header {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-primary);
+  box-sizing: border-box;
+}
+
+/* Contenedor principal interno */
+.container-main {
+  background: rgba(0, 0, 0, 0.75);
+  border: 2px solid var(--color-primary);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+/* Título del formulario */
+.container-main h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+}
+
+/* Campos */
+.field {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.field label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--color-bg-section);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+/* Botón de envío */
+.field button {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  font-weight: bold;
+  font-size: 1rem;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.field button:hover {
+  background-color: #00f0f0;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container-main {
+    padding: 2rem 1.5rem;
+  }
+
+  .container-main h1 {
+    font-size: 1.5rem;
+  }
+}

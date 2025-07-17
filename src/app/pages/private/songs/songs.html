@@ -1,8 +1,8 @@
 
-<div class="page-songs song-list">
+<div class="page-songs">
     <h1>Songs List</h1>
     <a href="#" routerLink="/dashboard/songs/new">Crear nueva canción</a>
-    
+    <div class="songs-list">
     @if (songs.length>0) {
      <table border="1">
         <thead>
@@ -61,5 +61,5 @@
     @else{
         <h3>No hay canciones registradas</h3>
     }
-    
+    </div>
 </div>

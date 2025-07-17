@@ -2,6 +2,7 @@
     <h1>Events List</h1>
 
     <div class="page-events">
+        <div class="events-list">
         <a href="#" routerLink="/dashboard/events/new">Crear nuevo evento</a>
         <table border="1">
         <thead>
@@ -29,7 +30,7 @@
                         <td>{{ event.description}}</td>
                         <td>{{event.address}}</td>
                         <td>
-                            <a class="btn btn-primary"  [routerLink]="['/dashboard','events','edit',event._id]">edit 1</a>
+                            <a class="btn btn-primary"  [routerLink]="['/dashboard','events','edit',event._id]">Actualizar</a>
                             <a class="btn btn-secondary" href="#"(click)="onDelete(event._id); $event.preventDefault() ">Delete </a>
                         </td>
                     </tr>

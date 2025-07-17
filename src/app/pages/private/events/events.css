@@ -1,16 +1,131 @@
-.cover-image{
-    width: 9rem;
-    height: 9rem;
-    border-radius: 7rem;
-    border: 2px solid lightgray;
-    padding:1rem ;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700;900&display=swap');
+
+:root {
+  --color-primary: #0ff;
+  --color-accent: #0f0;
+  --color-bg: #000;
+  --color-bg-section: #111;
+  --color-text: #fff;
+  --color-btn-hover: #0f0;
+
+  --font-primary: 'Orbitron', sans-serif;
+  --font-secondary: 'Be Vietnam Pro', sans-serif;
+}
+
+body {
+  background-color: var(--color-bg);
+  font-family: var(--font-primary);
+  color: var(--color-text);
+  margin: 0;
+  padding: 0;
+}
+
+/* -----------------------------
+   Lista de Álbumes (Tabla)
+----------------------------- */
+
+.page-events {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.page-events h1 {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+}
+
+.events-list {
+  max-width: 1000px;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.events-list table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--color-text);
+}
+
+.events-list th,
+.events-list td {
+  border: 1px solid var(--color-primary);
+  padding: 1rem;
+  text-align: center;
+}
+
+.events-list th {
+  background-color: #011;
+  color: var(--color-accent);
+}
+
+.events-list a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.events-list a:hover {
+  color: var(--color-accent);
+}
+
+.cover-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* -----------------------------
+   Estilo para Botones
+----------------------------- */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: 0 0.3rem;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background-color: black;
+  color: #000;
+}
+
+.btn-primary:hover {
+  background-color: #00f0f0;
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background-color: crimson;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: darkred;
+  transform: scale(1.05);
 }
 
 
-.events-list{
-    display: flex;
-    justify-content: center;
-    align-items: normal;
-    margin: 3rem;
-    flex-direction: column;
+@media (max-width: 768px) {
+  .page-events h1,
+  .news-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .events-list table th,
+  .events-list table td {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
 }

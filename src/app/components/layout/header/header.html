@@ -23,7 +23,7 @@
 <h2>{{ !!userLogged }}</h2> -->
 
 <header>
-    <h1><a routerLink="home">Infinity Records</a></h1>
+    <h1 routerLink="home">Infinity Records</h1>
     <nav>
         <ul class="main-menu">
                 <!-- TODO: Reorganizar lista de enlaces -->
@@ -43,11 +43,7 @@
                 <li><a routerLink="artists">Artistas</a></li>
                 <li><a routerLink="albums">Albums</a></li>  
 
-                @if( user?.role === 'admin' ) {
-                <li>
-                    <a routerLink="dashboard/users">Listar usuarios</a>
-                </li>
-                }
+              
 
                 <a class="btn btn-primary" routerLink="register">Register</a>
                 <a class="btn btn-primary" routerLink="login">login</a>

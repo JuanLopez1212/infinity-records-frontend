@@ -1,4 +1,4 @@
-<form 
+<!-- <form 
     class="form form-login"
     [formGroup]="formData"
     (ngSubmit)="onSubmit()"
@@ -10,11 +10,11 @@
             <label for="username">Email</label>
             <input type="text" placeholder="Ej: manuela@correo.co" id="username" formControlName="email">
             <div class="error">
-                <!-- Validar el estado del campo actual (email) -->
+                Validar el estado del campo actual (email)
                 @if(formData.get('email')?.invalid 
                 && (formData.get('email')?.dirty 
                 || formData.get('email')?.touched)){
-                    <!-- Validar las reglas para el campo -->
+                    Validar las reglas para el campo
                 @if( formData.get('email')?.errors?.['required']){
                     <span>El correo es obligatorio</span>
                 }
@@ -28,11 +28,11 @@
             <label for="password">Password</label>
             <input type="password" placeholder="Ej: 123456789" id="password" formControlName="password">
             <div class="error">
-                <!-- Validar el estado del campo actual (username) -->
+                Validar el estado del campo actual (username)
                 @if(formData.get('password')?.invalid 
                 && (formData.get('password')?.dirty 
                 || formData.get('password')?.touched)){
-                    <!-- Validar las reglas para el campo -->
+                    Validar las reglas para el campo
                     @if(formData.get('password')?.errors?.['required']){
                         <span>La contraseña es obligatoria</span>
                     }
@@ -51,4 +51,67 @@
 
         
     </div>
-</form>
+</form> -->
+
+<div class="ring">
+  <i style="--clr:#0ff;"></i>
+  <i style="--clr:#0f0;"></i>
+  <i style="--clr:#ffff;"></i>
+
+  <form class="login" [formGroup]="formData" (ngSubmit)="onSubmit()">
+    <h2>Login</h2>
+
+    <div class="inputBx">
+      <input
+        type="text"
+        placeholder="Email"
+        id="email"
+        formControlName="email"
+      />
+      <div class="error">
+        @if (formData.get('email')?.invalid &&
+              (formData.get('email')?.dirty || formData.get('email')?.touched)) {
+          @if (formData.get('email')?.errors?.['required']) {
+            <span>El correo es obligatorio</span>
+          }
+          @if (formData.get('email')?.errors?.['email']) {
+            <span>El formato de correo es inválido</span>
+          }
+        }
+      </div>
+    </div>
+
+    <div class="inputBx">
+      <input
+        type="password"
+        placeholder="Password"
+        id="password"
+        formControlName="password"
+      />
+      <div class="error">
+        @if (formData.get('password')?.invalid &&
+              (formData.get('password')?.dirty || formData.get('password')?.touched)) {
+          @if (formData.get('password')?.errors?.['required']) {
+            <span>La contraseña es obligatoria</span>
+          }
+          @if (formData.get('password')?.errors?.['minlength']) {
+            <span>Debe tener al menos 6 caracteres</span>
+          }
+          @if (formData.get('password')?.errors?.['maxlength']) {
+            <span>Debe tener máximo 12 caracteres</span>
+          }
+        }
+      </div>
+    </div>
+
+    <div class="inputBx">
+      <input type="submit" [disabled]="formData.invalid" value="Sign in" />
+    </div>
+
+    <div class="links">
+      <a href="#">¿Olvidaste tu contraseña?</a>
+      <a href="#">Crear cuenta</a>
+    </div>
+  </form>
+</div>
+
