@@ -1,0 +1,143 @@
+<input type="checkbox" name="play" id="play" checked="">
+<input type="checkbox" name="case" id="case" checked="">
+
+<div class="container">
+    <div class="wrapper">
+        <div class="swirl">
+            <samp> </samp>
+            <span>I</span>
+            <span>N</span>
+            <span>F</span>
+            <span>I</span>
+            <span>N</span>
+            <span>I</span>
+            <span>T</span>
+            <span>Y</span>
+            <span> </span>
+            <span>T</span>
+            <span>U</span>
+            <span> </span>
+            <span>U</span>
+            <span>N</span>
+            <span>I</span>
+            <span>V</span>
+            <span>E</span>
+            <span>R</span>
+            <span>S</span>
+            <span>O</span>
+            <span> </span>
+            <span>M</span>
+            <span>U</span>
+            <span>S</span>
+            <span>I</span>
+            <span>C</span>
+            <span>A</span>
+            <span>L</span>
+            <span></span>
+
+
+
+        </div>
+        <label for="play" class="playBtn" title="Press to play">
+            <div class="col">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="col">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="col">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="col">
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="col">
+                <div class="dot"></div>
+            </div>
+        </label>
+    </div>
+
+    <div class="wrapper">
+        <div class="swirl">
+            <samp> </samp>
+            <span>I</span>
+            <span>N</span>
+            <span>F</span>
+            <span>I</span>
+            <span>N</span>
+            <span>I</span>
+            <span>T</span>
+            <span>Y</span>
+            <span> </span>
+            <span>T</span>
+            <span>U</span>
+            <span> </span>
+            <span>U</span>
+            <span>N</span>
+            <span>I</span>
+            <span>V</span>
+            <span>E</span>
+            <span>R</span>
+            <span>S</span>
+            <span>O</span>
+            <span> </span>
+            <span>M</span>
+            <span>U</span>
+            <span>S</span>
+            <span>I</span>
+            <span>C</span>
+            <span>A</span>
+            <span>L</span>
+            <span></span>
+
+        </div>
+        <label for="play" class="pauseBtn" title="Press to pause">
+            <div class="col">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="col">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </label>
+    </div>
+</div>
+
+<div class="switchBox">
+    <label class="lowerCase" for="case" title="Switch text to lowercase"></label>
+    <label class="upperCase" for="case" title="Switch text to uppercase"></label>
+</div>
+
+<div class="event-carrusel-wrapper">
+    <button (click)="scrollLeft()">&#10094;</button>
+
+    <div class="event-carrusel-container" #eventCarrusel>
+        <div class="event-card" *ngFor="let songs of eventCards">
+            <img [src]="songs.coverUrl || 'https://via.placeholder.com/300x400?text=Evento'" alt="Evento" />
+            <div class="event-info">
+                <h3>{{ songs.title }}</h3>
+                <p>{{ songs.releaseDate | date:'longDate' }} - {{ songs.genre }}</p>
+            </div>
+        </div>
+    </div>
+
+    <button (click)="scrollRight()">&#10095;</button>
+</div>
+

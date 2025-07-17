@@ -1,15 +1,16 @@
-<!-- <main>
-  <div class="carrusel-wrapper" >
-    <div class="carrusel-container">
-      @for (artista of artistas(); track artista) {
-        <div class="artista-card">
-          <img [src]="artista.img" [alt]="artista.username" />
-          <div class="info">
-            <h3>{{ artista.username }}</h3>
-            <p>Género: {{ artista.genero }}</p>
-          </div>
-        </div>
-      }
-    </div>
-  </div>
-</main> -->
+<main>
+    <ul class="slider">
+        <li *ngFor="let item of items; let i = index" [class]="getItemClass(i)"
+            [style.background-image]="'url(' + item.profileImage + ')'">
+            <div class="content" [class.show]="i === activeIndex">
+                <h2 class="title">{{ item.name }}</h2>
+                <p class="description">{{ item.bio }}</p>
+                <button>Read More</button>
+            </div>
+        </li>
+    </ul>
+    <nav class="nav">
+        <button class="btn prev" (click)="prev()">←</button>
+        <button class="btn next" (click)="next()">→</button>
+    </nav>
+</main>

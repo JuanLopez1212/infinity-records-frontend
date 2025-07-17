@@ -24,6 +24,7 @@ import { EventsComponent } from './pages/public/events-public/events-component';
 import { ArtistsPublic } from './pages/public/artists-public/artists-public';
 import { AlbumsPublic } from './pages/public/albums-public/albums-public';
 import { SliderComponent } from './pages/public/slider.component/slider.component';
+import { SongsPublic } from './pages/public/songs-public/songs-public';
 
 
 
@@ -34,6 +35,7 @@ export const routes: Routes = [
     { path: 'dashboard', component: Dashboard, canActivate: [ authGuard ] },
     { path: 'artists', component: ArtistsPublic},
     { path: 'albums', component: AlbumsPublic},
+    { path: 'songs', component: SongsPublic},
     {
         path: 'dashboard/users',
         component: Users,
