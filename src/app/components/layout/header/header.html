@@ -18,34 +18,35 @@
 </header> -->
 
 
-<pre>{{ userLogged | json }}</pre>
+<!-- <pre>{{ userLogged | json }}</pre>
 <h1>{{ userLogged?.role }}</h1>
-<h2>{{ !!userLogged }}</h2>
+<h2>{{ !!userLogged }}</h2> -->
 
 <header>
-    <h1><a routerLink="home">Infinity Records</a></h1>
+    <h1 routerLink="home">Infinity Records</h1>
     <nav>
         <ul class="main-menu">
                 
                 <!-- <li><a routerLink="dashboard/users/new">users</a></li> -->
-                <li><a routerLink="dashboard/events">Events</a></li>
+               
 
                 @if( !!userLogged && userLogged.role == 'admin' ) {
-                    <li><a routerLink="dashboard/albums/new">Create albums</a></li>
                     <li><a routerLink='dashboard/songs'>List Songs</a></li>
                     <li><a routerLink="dashboard/albums">Listar álbumes</a></li>
-                    <li><a routerLink="dashboard/events">Listar eventos</a></li>
+                     <li><a routerLink="dashboard/events">List Events</a></li>
+                }
+                  @if( !!userLogged && userLogged.role == 'artists' ) {
+                    <li><a routerLink='dashboard/songs/new'>Create Songs</a></li>
+                    <li><a routerLink="dashboard/albums/new">Create álbumes</a></li>
+                     <li><a routerLink="dashboard/events/new">Create Events</a></li>
                 }
                 
                 <li><a routerLink="events">Events</a></li>
                 <li><a routerLink="artists">Artistas</a></li>
-                <li><a routerLink="albums">Albums</a></li>  
+                <li><a routerLink="albums">Albums</a></li> 
+                <li><a routerLink="songs">Songs</a></li> 
 
-                @if( user?.role === 'admin' ) {
-                <li>
-                    <a routerLink="dashboard/users">Listar usuarios</a>
-                </li>
-                }
+              
 
                 <a class="btn btn-primary" routerLink="register">Register</a>
                 <a class="btn btn-primary" routerLink="login">login</a>
