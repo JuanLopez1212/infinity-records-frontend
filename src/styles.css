@@ -576,6 +576,21 @@ button#next {
   .talento-card img {
     height: 160px;
   }
+
+  .carousel-card {
+    width: 170px;
+    min-width: 170px;
+    height: 250px;
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(300px);
+  }
+
+  .carousel-title {
+    font-size: 1rem;
+  }
+
+  .carousel-date {
+    font-size: 0.8rem;
+  }
 }
 
 /* Media Queries para móviles grandes */
@@ -610,6 +625,21 @@ button#next {
   .about-section p,
   .valores-section p {
     padding: 0 10px;
+  }
+
+  .carousel-card {
+    width: 140px;
+    min-width: 140px;
+    height: 210px;
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(250px);
+  }
+
+  .carousel-title {
+    font-size: 0.9rem;
+  }
+
+  .carousel-date {
+    font-size: 0.75rem;
   }
 }
 
@@ -654,6 +684,21 @@ button#next {
 
   .evento-card {
     width: 90%;
+  }
+
+  .carousel-card {
+    width: 110px;
+    min-width: 110px;
+    height: 180px;
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(200px);
+  }
+
+  .carousel-title {
+    font-size: 0.8rem;
+  }
+
+  .carousel-date {
+    font-size: 0.65rem;
   }
 }
 

@@ -10,16 +10,24 @@ import { CommonModule } from '@angular/common';
   styleUrl: './header.css'
 })
 export class Header {
-  user: any = null
+  user: any = null;
+  userLogged!: any; 
   
   constructor ( private authService: AuthServices, private router: Router ) {
     this.user = this.authService.getCurrentUser()
   }
 
+  ngOnInit() {
+    this.authService.user$.subscribe( userLogged => {
+      this.userLogged = userLogged;
+    });
+  }
+
   logout () {
-    console.log(this.user)
-    this.authService.deleteLocalStorage ( 'token' )
-    this.authService.deleteLocalStorage ( 'user' )
+    this.authService.logout();
+    // console.log(this.user)
+    // this.authService.deleteLocalStorage ( 'token' )
+    // this.authService.deleteLocalStorage ( 'user' )
     this.router.navigateByUrl ( 'home' )
   }
 }

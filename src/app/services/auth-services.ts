@@ -1,15 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServices {
+  private userSubject = new BehaviorSubject<any>(false);
+  user$: Observable<any> = this.userSubject.asObservable()
+  user!: any;
 
-  private userSubject = new BehaviorSubject<any>(null)
-  user$ = this.userSubject.asObservable()
-  
+
   constructor( private http: HttpClient ) {
     const user = this.getLocalStorage( 'user' )
     if ( user ) {
@@ -17,12 +18,17 @@ export class AuthServices {
     }
   }
 
+
+
   loginUser ( credentials: any ) {    // Credenciales: 
     return this.http.post ( 'http://localhost:3000/api/auth/login', credentials ).pipe(
       tap(( resp: any) => {
         console.log( resp );
+
         if ( resp.user ) {
           this.saveLocalStorage( 'user', JSON.stringify( resp.user ))
+          this.user = JSON.parse( localStorage.getItem( 'user' ) as any ) || {};
+          this.userSubject.next( this.user );
         }
         if ( resp.token ) {
           this.saveLocalStorage( 'token', resp.token )
@@ -80,7 +86,7 @@ export class AuthServices {
   logout () {
     this.deleteLocalStorage( 'token' )
     this.deleteLocalStorage( 'user' )
-    this.userSubject.next(null)
+    this.userSubject.next(null);
   }
 
   saveLocalStorage ( key: string, value: any ) {
@@ -131,7 +137,7 @@ export class AuthServices {
   }
 
   getLocalStorage ( key: string ) {
-    return localStorage.getItem(key)
+    return localStorage.getItem( key ) || '';
   }
 
   getCurrentUser () {
