@@ -368,3 +368,60 @@ footer {
     background: var(--color-bg);
     font-family: var(--font-secondary);
 }
+
+@media (min-width: 1440px) {
+    .hero h2 {
+        font-size: 80px;
+    }
+
+    .hero p {
+        font-size: 26px;
+    }
+
+    .hero button {
+        padding: 18px 50px;
+        font-size: 22px;
+    }
+
+    .carousel-slide img {
+        width: 40%;
+        max-height: 500px;
+    }
+
+    .carousel-slide h4 {
+        font-size: 1.5rem;
+    }
+
+    .card {
+        width: 350px;
+        height: 400px;
+    }
+
+    .card0, .card1, .card2 {
+        background-size: 350px;
+    }
+
+    .card0:hover, .card1:hover, .card2:hover {
+        background-size: 700px;
+    }
+
+    .tv-grid {
+        gap: 3rem;
+    }
+
+    .tv-video {
+        width: 350px;
+    }
+
+    .tv-video iframe {
+        height: 200px;
+    }
+
+    .infinity-tv h3 {
+        font-size: 6rem;
+    }
+
+    .container {
+        gap: 2rem;
+    }
+}
