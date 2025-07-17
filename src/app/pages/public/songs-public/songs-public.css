@@ -55,7 +55,7 @@ span {
   position: absolute;
   width: 50%;
   height: unset;
-  color: #fff;
+  color: #ffffff;
   font-family: monospace;
   font-weight: bold;
   font-size: calc(var(--h)/10);
@@ -314,7 +314,7 @@ input {
     bottom: 0;
     width: 100%;
     padding: 12px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.8), transparent);
 }
 
 .event-info h3 {
