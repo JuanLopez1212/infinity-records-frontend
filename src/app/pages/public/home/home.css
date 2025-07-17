@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700;900&display=swap');
+
+:root {
+    --color-primary: #0ff;
+    --color-accent: #0f0;
+    --color-bg: #000;
+    --color-bg-section: #111;
+    --color-text: #fff;
+    --color-btn-hover: #0f0;
+    --font-primary: 'Orbitron', sans-serif;
+    --font-secondary: 'Be Vietnam Pro', sans-serif;
+}
+
+body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+
+header h1 {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+nav {
+    position: relative;
+    left: -147px;
+}
+
+header nav a {
+    margin-left: 20px;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+header nav a:hover {
+    color: var(--color-accent);
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.4);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 60px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 22px;
+    margin-top: 10px;
+    font-family: var(--font-secondary);
+}
+
+.hero button {
+    margin-top: 30px;
+    background: var(--color-primary);
+    border: none;
+    padding: 15px 40px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.hero button:hover {
+    background: var(--color-btn-hover);
+}
+
+/* Secciones */
+section {
+    padding: 100px 50px;
+}
+
+/* Artist Carousel */
+.artist-carousel {
+    background: linear-gradient(to right, #000, #000000);
+    color: white;
+    padding: 3rem 1rem;
+    text-align: center;
+    position: relative;
+}
+
+.artist-carousel h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    margin: auto;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 30px;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+    position: relative;
+}
+
+.carousel-slide img {
+    width: 60%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0);
+    margin-bottom: 1rem;
+}
+
+.carousel-slide h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #f3f3f3;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 2px solid #00f;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 2;
+    padding: 0.2rem 0.8rem;
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+}
+
+.left-btn {
+    left: 10px;
+}
+
+.right-btn {
+    right: 10px;
+}
+
+.carousel-dots {
+    margin-top: 1rem;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 6px;
+    background-color: #444;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.dot.active {
+    background-color: #fff;
+}
+
+/* Cards */
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+}
+
+.card {
+    height: 379px;
+    width: 300px;
+    background: black;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 70px 63px -60px #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.card0 {
+    background: url('https://ak47full.net/wp-content/uploads/2025/02/W-Sound-Beele-Ovy-On-The-Drums-La-Plena-mp3-image-scaled.jpg') center center no-repeat;
+    background-size: 300px;
+}
+
+.card0:hover {
+    background-size: 600px;
+    background-position: left center;
+    transition: background 0.8s ease;
+}
+
+.card1 {
+    background: url('https://lh3.googleusercontent.com/DuirodSViBca-nPH-ZwCnMoohxqES2g0_I806tmmz_chKBtwX7tto_NwhdnZwHzoT2brN8IbSlNkQCTZkg') center center no-repeat;
+    background-size: 300px;
+}
+
+.card1:hover {
+    background-size: 600px;
+    background-position: left center;
+    transition: background 0.8s ease;
+}
+
+.card2 {
+    background: url('https://images.genius.com/97661fa88a68c2548698a0bdef933b1e.1000x1000x1.jpg') center center no-repeat;
+    background-size: 300px;
+}
+
+.card2:hover {
+    background-size: 600px;
+    background-position: left center;
+    transition: background 0.8s ease;
+}
+
+.border {
+    height: 369px;
+    width: 290px;
+    background: transparent;
+    border-radius: 10px;
+    position: relative;
+}
+
+h2 {
+    color: white;
+    margin: 20px;
+    transition: opacity 1s;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.slide{
+    min-width: 100%;
+}
+
+.fa {
+    opacity: 0;
+    transition: opacity 3s;
+}
+
+.card:hover h2,
+.card:hover .fa {
+    opacity: 1;
+    transition: 10s;
+}
+
+.icons {
+    position: absolute;
+    fill: #fff;
+    color: #fff;
+    height: 130px;
+    top: 226px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* Infinity TV */
+.infinity-tv {
+    padding: 3rem 2rem;
+    background-color: #000000;
+    color: #fff;
+    text-align: center;
+}
+
+.infinity-tv h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.infinity-tv .tv-subtitle {
+    font-size: 1rem;
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+.tv-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.tv-video {
+    background-color: #1c1c1c;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.tv-video:hover {
+    transform: scale(1.03);
+}
+
+.tv-video iframe {
+    width: 100%;
+    height: 170px;
+    border-radius: 8px;
+}
+
+.tv-video h4 {
+    margin-top: 0.8rem;
+    font-size: 1rem;
+    color: #f3f3f3;
+    font-weight: 600;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: var(--color-bg);
+    font-family: var(--font-secondary);
+}
