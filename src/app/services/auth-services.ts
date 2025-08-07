@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,19 +10,22 @@ export class AuthServices {
   private userSubject = new BehaviorSubject<any>(false);
   user$: Observable<any> = this.userSubject.asObservable()
   user!: any;
+  BASE_URL: string = environment.apiUrl;
 
 
   constructor( private http: HttpClient ) {
+
     const user = this.getLocalStorage( 'user' )
     if ( user ) {
       this.userSubject.next( JSON.parse(user))
     }
+    
   }
 
 
 
   loginUser ( credentials: any ) {    // Credenciales: 
-    return this.http.post ( 'http://localhost:3000/api/auth/login', credentials ).pipe(
+    return this.http.post ( `${this.BASE_URL}/auth/login`, credentials ).pipe(
       tap(( resp: any) => {
         console.log( resp );
 
@@ -38,7 +42,7 @@ export class AuthServices {
   }
 
   verifyUser () {
-    return this.http.get<any>('http://localhost:3000/api/auth/re-new-token', { headers: this.getHeaders() }).pipe(
+    return this.http.get<any>(`${this.BASE_URL}/auth/re-new-token`, { headers: this.getHeaders() }).pipe(
       // tap(( resp: any ) => {
       //   console.log('User:', resp);
       //   if ( resp.user ) {
@@ -100,7 +104,7 @@ export class AuthServices {
 
   // Verificar el usuario autenticado
   verifyAuthenticateUser () {
-    return this.http.get ( 'http://localhost:3000/api/auth/re-new-token', { headers: this.getHeaders() } )
+    return this.http.get ( `${this.BASE_URL}/auth/re-new-token`, { headers: this.getHeaders() } )
       .pipe(
         tap(( resp: any ) => {
           if ( resp.user ) {
@@ -115,7 +119,7 @@ export class AuthServices {
       )
 
     // Ejemplom para explicar como funciona rxjs
-    // return this.http.get ( 'http://localhost:3000/api/auth/re-new-token', { headers: this.getHeaders() } )
+    // return this.http.get ( `${this.BASE_URL}/auth/re-new-token', { headers: this.getHeaders() } )
     //             .pipe( 
     //               tap( ( data ) => {
     //                 console.log ( data )

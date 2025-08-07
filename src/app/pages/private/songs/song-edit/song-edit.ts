@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { SongsServices } from '../../../../services/songs-services';
 import { Albums } from '../../../../services/albums-services';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { SongsInterface } from '../../../../interfaces/songs-interface';
 
 @Component({
   selector: 'app-song-edit',
@@ -34,7 +35,7 @@ constructor(
   });
 }
 
-formatDateToYMD(dateStr: string): string {
+formatDateToYMD(dateStr: Date): string {
     const date = new Date(dateStr);
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0'); // meses 0-11

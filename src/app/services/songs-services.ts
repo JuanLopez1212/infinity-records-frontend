@@ -1,37 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthServices } from './auth-services';
-import { catchError, of, tap } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { SongsInterface } from '../interfaces/songs-interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongsServices {
 
+BASE_URL: string = environment.apiUrl;
+
     constructor(
       private http: HttpClient,
       private authServices: AuthServices
-    ){}
-
-    registerSongs(newSongs:any){
-       return this.http.post <any>('http://localhost:3000/api/songs', newSongs, { headers: this.authServices.getHeaders() });
+    ){
     }
 
-    getSongs(){
-     return this.http.get<any>('http://localhost:3000/api/songs' )
+    registerSongs(newSongs:SongsInterface): Observable <SongsInterface>{
+       return this.http.post <SongsInterface>(`${this.BASE_URL}/songs`, newSongs, { headers: this.authServices.getHeaders() });
     }
 
-    getSongsbyId(id:string){
-       return this.http.get<any>('http://localhost:3000/api/songs/'+ id , { headers: this.authServices.getHeaders() } )
+    getSongs():Observable <SongsInterface[]>{
+     return this.http.get<SongsInterface[]>(`${this.BASE_URL}/songs` )
+    }
+
+    getSongsbyId(id:string) :Observable <SongsInterface>{
+       return this.http.get<SongsInterface>(`${this.BASE_URL}/songs/`+ id , { headers: this.authServices.getHeaders() } )
     }
     
 
-    deleteSongs(id: string){
-      return this.http.delete<any>('http://localhost:3000/api/songs/' + id, { headers: this.authServices.getHeaders() }  )
+    deleteSongs(id: string) :Observable<SongsInterface>{
+      return this.http.delete<SongsInterface>(`${this.BASE_URL}/songs/` + id, { headers: this.authServices.getHeaders() }  )
     }
 
-    updateSongs (id: string , updateSongs : any){
-      return this.http.patch<any>('http://localhost:3000/api/songs/'+ id , updateSongs,  { headers: this.authServices.getHeaders() } )
+    updateSongs (id: string , updateSongs : SongsInterface) :Observable<SongsInterface>{
+      return this.http.patch<SongsInterface>(`${this.BASE_URL}/songs/`+ id , updateSongs,  { headers: this.authServices.getHeaders() } )
     }
 
 

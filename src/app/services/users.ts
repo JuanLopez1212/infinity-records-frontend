@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface User {
   id?: string;
@@ -14,15 +15,17 @@ export interface User {
   providedIn: 'root'
 })
 export class UsersService {
+BASE_URL: string = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+  }
 
   registerUsers (newUsers: any) {
-    return this.http.post('http://localhost:3000/api/users', newUsers)
+    return this.http.post(`${this.BASE_URL}/users`, newUsers)
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]> ('http://localhost:3000/api/users');
+    return this.http.get<User[]> (`${this.BASE_URL}/users`);
   }
 
   
