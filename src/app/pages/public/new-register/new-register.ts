@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { UsersService } from '../../../services/users';
 
@@ -13,18 +13,18 @@ export class NewRegister {
   public formData!: FormGroup;
   public roles: string[] = [ 'artists', 'users' ];
 
-  constructor( private userService: UsersService ) {
+  constructor( private usersServices: UsersService ) {
     this.formData = new FormGroup({
-      name: new FormControl(),
-      username: new FormControl(),
-      email: new FormControl(),
-      password: new FormControl(),
-      role: new FormControl('users'),
+      name: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      role: new FormControl('users', [Validators.required]),
       artists: new FormGroup({
-        name: new FormControl(),
-        bio: new FormControl(),
-        genres: new FormControl(),
-        profileImage: new FormControl()
+        name: new FormControl('', [Validators.required]),
+        bio: new FormControl('', [Validators.required]),
+        genres: new FormControl('', [Validators.required]),
+        profileImage: new FormControl('', [Validators.required])
       }),
       // users: new FormGroup({
       //   nombre: new FormControl(),
@@ -41,20 +41,19 @@ export class NewRegister {
   }
 
   onSubmit() {
-    if( this.formData.valid ) {
-      console.log( this.formData.value );
-
-      // this.userService.registerNewUser( this.formData.value ).subscribe({
-      //   next: ( data ) => {
-      //     console.log( data );
-      //   },
-      //   error: ( error ) => {
-      //     console.error( error );
-      //   },
-      //   complete: () => {
-      //     this.formData.reset()
-      //   }
-      // })
+    if(this.formData.valid){
+      console.log(this.formData.value);
+      this.usersServices.registerUsers(this.formData.value).subscribe({
+        next: ( data ) => {
+          console.log( data );
+        },
+        error: ( error ) => {
+          console.error( error );
+        },
+        complete: () => {
+          this.formData.reset();  //limpiamos los campos del formulario 
+        }
+      })
     }
   }
 

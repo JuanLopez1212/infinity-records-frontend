@@ -1,0 +1,102 @@
+/* Fuente moderna y legible desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+body {
+  background-color: #000;
+  color: #ddd;
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0 2rem;
+  line-height: 1.6;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+nav a {
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00ffaa;
+}
+
+/* Título principal */
+h1 {
+  color: #00ffff;
+  font-size: 2.5rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Imagen del artista */
+.artist-img {
+  display: block;
+  margin: 1rem auto;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 100px;
+  border: 2px solid #00ffff;
+}
+
+/* Nombre del artista y descripción */
+.artist-name {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.artist-bio {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+/* Secciones */
+.section-title {
+  color: #00ff00;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Discos y tracks */
+.discography, .top-tracks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.album-card {
+  text-align: center;
+  max-width: 180px;
+}
+
+.album-card img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,255,255,0.4);
+}
+
+.album-title {
+  font-weight: bold;
+  margin-top: 0.5rem;
+  color: #fff;
+}
+
+.album-meta {
+  font-size: 0.9rem;
+  color: #ccc;
+}

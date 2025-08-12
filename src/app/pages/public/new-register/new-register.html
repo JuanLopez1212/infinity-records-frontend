@@ -1,3 +1,10 @@
+<div class="ring">
+  <i style="--clr:#0ff;"></i>
+  <i style="--clr:#0f0;"></i>
+  <i style="--clr:#ffff;"></i>
+
+
+
 <form class="form form-register" [formGroup]="formData" (ngSubmit)="onSubmit()">
     <h1>Register</h1>
     <div class="form-content">
@@ -8,7 +15,15 @@
                 <label for="name">Name</label>
                 <input type="text" id="name" formControlName="name" />
                 <div class="error">
-                    Mensaje de error
+                    @if (formData.get('name')?.invalid &&
+                    (formData.get('name')?.dirty || formData.get('name')?.touched)) {
+                    @if (formData.get('name')?.errors?.['required']) {
+                    <span>El nombre es obligatorio</span>
+                    }
+                    @if (formData.get('name')?.errors?.['name']) {
+                    <span>El formato del nombre es inválido</span>
+                    }
+                    }
                 </div>
             </div>
 
@@ -16,7 +31,15 @@
                 <label for="username">Username</label>
                 <input type="username" id="username" formControlName="username" />
                 <div class="error">
-                    Mensaje de error
+                    @if (formData.get('username')?.invalid &&
+                    (formData.get('username')?.dirty || formData.get('username')?.touched)) {
+                    @if (formData.get('username')?.errors?.['required']) {
+                    <span>El nombre de usuario es obligatorio</span>
+                    }
+                    @if (formData.get('username')?.errors?.['username']) {
+                    <span>El formato del nombre de usuario es inválido</span>
+                    }
+                    }
                 </div>
             </div>
 
@@ -24,14 +47,31 @@
                 <label for="email">Email *</label>
                 <input type="email" id="email" formControlName="email" />
                 <div class="error">
-                    Mensaje de error
+                    @if (formData.get('email')?.invalid &&
+                    (formData.get('email')?.dirty || formData.get('email')?.touched)) {
+                    @if (formData.get('email')?.errors?.['required']) {
+                    <span>El email obligatorio</span>
+                    }
+                    @if (formData.get('email')?.errors?.['email']) {
+                    <span>El formato del email inválido</span>
+                    }
+                    }
                 </div>
+
             </div>
             <div class="field">
                 <label for="password">Password *</label>
                 <input type="password" id="password" formControlName="password" />
                 <div class="error">
-                    Mensaje de error
+                    @if (formData.get('password')?.invalid &&
+                    (formData.get('password')?.dirty || formData.get('password')?.touched)) {
+                    @if (formData.get('password')?.errors?.['required']) {
+                    <span>La contraseña es obligatoria</span>
+                    }
+                    @if (formData.get('password')?.errors?.['password']) {
+                    <span>El formato de la contraseña inválido</span>
+                    }
+                    }
                 </div>
             </div>
 
@@ -44,47 +84,85 @@
                     }
                 </select>
                 <div class="error">
-                    Mensaje de error
+                    @if (formData.get('role')?.invalid &&
+                    (formData.get('role')?.dirty || formData.get('role')?.touched)) {
+                    @if (formData.get('role')?.errors?.['required']) {
+                    <span>El role es obligatorio</span>
+                    }
+                    @if (formData.get('role')?.errors?.['role']) {
+                    <span>El formato del role es inválido</span>
+                    }
+                    }
                 </div>
             </div>
         </div>
 
         <!-- Condicionamos el despliegue de los campos adicionales de acuerdo al rol -->
         @if ( formData.get( 'role' )?.value === 'artists' ) {
-            <div 
-                class="form-artist" 
-                formGroupName="artists"
-            >
-                <h2>Datos del artista</h2>
-                <div class="field">
-                    <label for="artist-name">Name</label>
-                    <input type="text" id="artist-name" formControlName="name" />
-                    <div class="error">
-                        Mensaje de error
-                    </div>
-                </div>
-                <div class="field">
-                    <label for="description">Description</label>
-                    <input type="text" id="developer-stack" formControlName="bio" />
-                    <div class="error">
-                        Mensaje de error
-                    </div>
-                </div>
-                <div class="field">
-                    <label for="artist-genres">Genres *</label>
-                    <input type="text" id="artist-genres" formControlName="genres" />
-                    <div class="error">
-                        Mensaje de error
-                    </div>
-                </div>
-                <div class="field">
-                    <label for="artist-img">Profile picture</label>
-                    <input type="text" id="artist-img" formControlName="profileImage" />
-                    <div class="error">
-                        Mensaje de error
-                    </div>
+        <div class="form-artist" formGroupName="artists">
+            <h2>Datos del artista</h2>
+            <div class="field">
+                <label for="artist-name">Name</label>
+                <input type="text" id="artist-name" formControlName="name" />
+                <div class="error">
+                    @if (formData.get('name')?.invalid &&
+                    (formData.get('name')?.dirty || formData.get('name')?.touched)) {
+                    @if (formData.get('name')?.errors?.['required']) {
+                    <span>El nombre es obligatorio</span>
+                    }
+                    @if (formData.get('name')?.errors?.['name']) {
+                    <span>El formato del nombre inválido</span>
+                    }
+                    }
                 </div>
             </div>
+            <div class="field">
+                <label for="description">Description</label>
+                <input type="text" id="developer-stack" formControlName="bio" />
+                <div class="error">
+                    @if (formData.get('bio')?.invalid &&
+                    (formData.get('bio')?.dirty || formData.get('bio')?.touched)) {
+                    @if (formData.get('bio')?.errors?.['required']) {
+                    <span>La biografica es obligatoria</span>
+                    }
+                    @if (formData.get('bio')?.errors?.['bio']) {
+                    <span>El formato de la biografia inválido</span>
+                    }
+                    }
+                </div>
+
+            </div>
+            <div class="field">
+                <label for="artist-genres">Genres </label>
+                <input type="text" id="artist-genres" formControlName="genres" />
+                <div class="error">
+                    @if (formData.get('genres')?.invalid &&
+                    (formData.get('genres')?.dirty || formData.get('genres')?.touched)) {
+                    @if (formData.get('genres')?.errors?.['required']) {
+                    <span>El genero es obligatorio</span>
+                    }
+                    @if (formData.get('genres')?.errors?.['genres']) {
+                    <span>El formato del genero es inválido</span>
+                    }
+                    }
+                </div>
+            </div>
+            <div class="field">
+                <label for="artist-img">Profile picture Url</label>
+                <input type="text" id="artist-img" formControlName="profileImage" />
+                <div class="error">
+                    @if (formData.get('profileImage')?.invalid &&
+                    (formData.get('profileImage')?.dirty || formData.get('profileImage')?.touched)) {
+                    @if (formData.get('profileImage')?.errors?.['required']) {
+                    <span>La foto de perfil es obligatorio</span>
+                    }
+                    @if (formData.get('profileImage')?.errors?.['profileImage']) {
+                    <span>El formato de la foto de perfil inválido</span>
+                    }
+                    }
+                </div>
+            </div>
+        </div>
         }
         <!-- @if ( formData.get( 'role' )?.value === 'users' ) {
             <div 

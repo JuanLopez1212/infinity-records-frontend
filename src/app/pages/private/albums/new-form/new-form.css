@@ -118,3 +118,13 @@ body {
     font-size: 1.5rem;
   }
 }
+
+
+
+.error {
+    font-size: .73rem;
+    height: 1rem;
+    color: red;
+    font-style: italic;
+} 
+

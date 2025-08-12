@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { Home } from './pages/public/home/home';
 import { Login } from './pages/public/login/login';
-import { Register } from './pages/public/register/register';
+import { NewRegister } from './pages/public/new-register/new-register';
 import { Album } from './pages/private/albums/albums';
 import { AlbumNewForm } from './pages/private/albums/new-form/new-form';
 import { Dashboard } from './pages/private/dashboard/dashboard';
@@ -25,17 +25,19 @@ import { ArtistsPublic } from './pages/public/artists-public/artists-public';
 import { AlbumsPublic } from './pages/public/albums-public/albums-public';
 import { SliderComponent } from './pages/public/slider.component/slider.component';
 import { SongsPublic } from './pages/public/songs-public/songs-public';
+import { Artists } from './pages/private/artists/artists';
 
 
 
 export const routes: Routes = [
     { path: 'home', component: Home },
     { path: 'login', component: Login },
-    { path: 'register', component: Register },
+    { path: 'register', component: NewRegister },
     { path: 'dashboard', component: Dashboard, canActivate: [ authGuard ] },
     { path: 'artists', component: ArtistsPublic},
     { path: 'albums', component: AlbumsPublic},
     { path: 'songs', component: SongsPublic},
+    {path: 'artistsp', component: Artists},
     {
         path: 'dashboard/users',
         component: Users,
