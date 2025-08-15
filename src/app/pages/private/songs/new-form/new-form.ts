@@ -47,9 +47,27 @@ onSubmit(){
   );
 
   if(this.formData.valid){
+    let inputData;
+
+    if ( !this.formData.get('albumId')?.value ) {
+
+      inputData = {
+        title: this.formData.get( 'title' )?.value,
+        coverUrl: this.formData.get( 'coverUrl' )?.value,
+        fileUrl: this.formData.get( 'fileUrl' )?.value,
+        releaseDate: this.formData.get( 'releaseDate' )?.value,
+        genre: this.formData.get( 'genre' )?.value,
+        authors: this.formData.get( 'authors' )?.value,
+        productors: this.formData.get( 'productors' )?.value
+      }
+
+    }
+    else {
+      inputData = this.formData.value;
+    }
 
     console.log(this.formData.value);
-    this.songsServices.registerSongs(this.formData.value).subscribe({
+    this.songsServices.registerSongs(inputData).subscribe({
       next: ( data ) => {
         console.log(data);
         this.router.navigateByUrl('/dashboard/songs')
