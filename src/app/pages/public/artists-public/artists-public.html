@@ -1,13 +1,15 @@
 <main>
     <ul class="slider">
-        <li *ngFor="let item of items; let i = index" [class]="getItemClass(i)"
-            [style.background-image]="'url(' + item.profileImage + ')'">
+        @for ( artist of artists; track artist._id; let i = $index ) {
+        <li [style.background-image]="'url(' + artist.profileImage + ')'" [class]="getItemClass(i)">
             <div class="content" [class.show]="i === activeIndex">
-                <h2 class="title">{{ item.name }}</h2>
-                <p class="description">{{ item.bio }}</p>
+                <h2 class="title">{{ artist.stageName }}</h2>
+                <p class="description">{{ artist.bio }}</p>
                 <button>Read More</button>
             </div>
         </li>
+        }
+        
     </ul>
     <nav class="nav">
         <button class="btn prev" (click)="prev()">←</button>

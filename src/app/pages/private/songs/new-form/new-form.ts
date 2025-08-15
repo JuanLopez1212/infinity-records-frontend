@@ -52,7 +52,7 @@ onSubmit(){
     this.songsServices.registerSongs(this.formData.value).subscribe({
       next: ( data ) => {
         console.log(data);
-        this.router.navigateByUrl('/dashboard/songs')
+        this.router.navigateByUrl('/artistsp')
 
       },
       error:(error)=> {
