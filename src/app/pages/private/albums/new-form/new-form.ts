@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersServices } from '../../../../services/users-services';
 import { Albums } from '../../../../services/albums-services';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class AlbumNewForm {
 
   constructor ( 
     private userService: UsersServices, 
-    private albumService: Albums
+    private albumService: Albums,
+    private router: Router
   ) {
     this.formData = new FormGroup({
       title: new FormControl ( '', [ Validators.required ] ),
@@ -40,6 +42,7 @@ export class AlbumNewForm {
       this.albumService.registerAlbum( this.formData.value ).subscribe({
         next: ( data ) => {
           console.log ( data )
+          this.router.navigateByUrl('/artistsp')
         },
         error: ( error ) => {
           console.error ( error )

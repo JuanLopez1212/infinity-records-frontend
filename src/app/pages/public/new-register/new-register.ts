@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { UsersService } from '../../../services/users';
+import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-new-register',
-  imports: [ ReactiveFormsModule ],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './new-register.html',
   styleUrl: './new-register.css'
 })

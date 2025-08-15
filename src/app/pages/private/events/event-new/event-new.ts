@@ -2,20 +2,22 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersService } from '../../../../services/users';
 import { EventsServices } from '../../../../services/events';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-new',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,], 
   templateUrl: './event-new.html',
   styleUrl: './event-new.css'
 })
 export class EventNew {
     formData!: FormGroup;
     users: any = []
-
+  
     constructor(
         private userService: UsersService,
-        private EventsServices: EventsServices
+        private EventsServices: EventsServices,
+        private router: Router
     ) {
         this.formData = new FormGroup({
             title: new FormControl('', [Validators.required]),
@@ -41,6 +43,7 @@ export class EventNew {
             this.EventsServices.registerEvents(this.formData.value).subscribe({
                 next: (data) => {
                     console.log(data)
+                    this.router.navigateByUrl('/artistsp')
                 },
                 error: (error) => {
                     console.error(error)

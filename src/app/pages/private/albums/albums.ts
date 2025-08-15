@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Albums } from '../../../services/albums-services';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { ArtistsServices } from '../../../services/artists-services';
 
 
 @Component({
@@ -17,7 +18,9 @@ export class Album {
 
   @ViewChildren('albumCard', { read: ElementRef }) albumCards!: QueryList<ElementRef>;
 
-  constructor(private albumService: Albums) {}
+  constructor(
+    private albumService: Albums,
+  ) {}
 
   ngOnInit() {
     this.onLoadData();
