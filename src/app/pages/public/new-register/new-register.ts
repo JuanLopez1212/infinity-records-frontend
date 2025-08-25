@@ -7,7 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-new-register',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule],
   templateUrl: './new-register.html',
   styleUrl: './new-register.css'
 })
@@ -54,7 +54,8 @@ export class NewRegister {
           console.error( error );
         },
         complete: () => {
-          this.formData.reset();  //limpiamos los campos del formulario 
+          this.formData.reset();  //limpiamos los campos del formulari
+          //   o 
         }
       })
     }
