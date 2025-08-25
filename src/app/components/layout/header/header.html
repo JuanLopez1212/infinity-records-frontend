@@ -33,23 +33,56 @@
                 @if( !!userLogged && userLogged.role == 'admin' ) {
                     <li><a routerLink='dashboard/songs'>List Songs</a></li>
                     <li><a routerLink="dashboard/albums">Listar álbumes</a></li>
-                     <li><a routerLink="dashboard/events">List Events</a></li>
+                    <li><a routerLink="dashboard/events">List Events</a></li>
                 }
-                  @if( !!userLogged && userLogged.role == 'artists' ) {
-                    <li><a routerLink='dashboard/songs/new'>Create Songs</a></li>
-                    <li><a routerLink="dashboard/albums/new">Create álbumes</a></li>
-                     <li><a routerLink="dashboard/events/new">Create Events</a></li>
+
+
+                @if( !!userLogged && userLogged.role == 'artists' ) {
+                    <li><a routerLink="events">Events</a>
+                        <ul class=" submenu1">
+                            <li><a routerLink="dashboard/events/new">Create Events</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a routerLink="albums">Albums</a>
+                        <ul class=" submenu2 ">
+                            <li><a routerLink="dashboard/albums/new">Create Albums</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a routerLink="songs">Songs</a>
+                        <ul class=" submenu3">
+                            <li><a routerLink='dashboard/songs/new'>Create Songs</a></li>
+                        </ul>
+                    </li>
+
+                    
                 }
-                
-                <li><a routerLink="events">Events</a></li>
+
+
+                <!-- <li><a routerLink="events">Events</a></li>
                 <li><a routerLink="artists">Artistas</a></li>
                 <li><a routerLink="albums">Albums</a></li> 
-                <li><a routerLink="songs">Songs</a></li> 
+                <li><a routerLink="songs">Songs</a></li>  -->
 
 
-                <a class="btn btn-primary" routerLink="register">Register</a>
-                <a class="btn btn-primary" routerLink="login">login</a>
-                <a href="#" class="btn btn-primary" (click)="logout(); $event.preventDefault();">logout</a>
+                @if ( !userLogged ) {
+                    <li><a routerLink="events">Events</a></li>
+                    <li><a routerLink="artists">Artistas</a></li>
+                    <li><a routerLink="albums">Albums</a></li> 
+                    <li><a routerLink="songs">Songs</a></li> 
+                    <a class="btn btn-primary" routerLink="login">login</a>
+                    <a class="btn btn-primary" routerLink="register">Register</a>
+                }
+
+                 @if ( userLogged ) {
+                    <a href="#" class="btn btn-primary" (click)="logout(); $event.preventDefault();">Logout</a>
+                }
+
+
+                
+                
+                
             </ul>
     </nav>
 </header>

@@ -38,6 +38,7 @@ main {
     z-index: 1;
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 20px;
     box-shadow: 0 20px 30px rgba(255, 255, 255, 0.3) inset;
     transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
@@ -221,5 +222,5 @@ button {
     .item:nth-child(6) {
         left: calc(50% + 420px);
         opacity: 0;
-      }
+    }
 }

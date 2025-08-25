@@ -1,13 +1,14 @@
 
 <div class="page-songs">
     <h1>Songs List</h1>
-    <a href="#" routerLink="/dashboard/songs/new">Crear nueva canción</a>
+    
     <div class="songs-list">
+        <a href="#" routerLink="/dashboard/songs/new">Crear nueva canción</a>
     @if (songs.length>0) {
      <table border="1">
         <thead>
             <th>
-                title
+                Title
             </th>
             <th>
                 Cover Url
@@ -16,16 +17,16 @@
                 File Url
             </th>
             <th>
-                release Date
+                Release Date
             </th>
             <th>
                 Genre
             </th>
             <th>
-                authors
+                Authors
             </th>
             <th>
-                productors
+                Productors
             </th>
             <th>
                 Album

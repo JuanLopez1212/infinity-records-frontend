@@ -32,6 +32,24 @@ body {
   overflow-x: hidden;
 }
 
+
+/* Cambiar color del círculo del icono error */
+.my-error-icon.swal2-icon.swal2-error {
+  border-color: #0f0 !important; /* borde del círculo */
+}
+
+/* También las líneas de la X */
+.my-error-icon .swal2-x-mark-line-left,
+.my-error-icon .swal2-x-mark-line-right {
+  background-color: #0f0 !important;
+}
+
+.my-popup-error {
+  border: 1px solid rgb(97, 234, 188) !important; /* color y grosor del borde */
+  border-radius: 15px !important;       /* esquinas redondeadas */
+}
+
+
 /* header {
   display: flex;
   justify-content: space-between;
