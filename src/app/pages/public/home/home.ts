@@ -1,71 +1,125 @@
-import {
-  Component,
-  ElementRef,
-  Renderer2,
-  ViewChild,
-  AfterViewInit,
-} from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+interface Artist {
+  _id: string;
+  name: string;
+  profileImage?: string;
+  genres?: string[];
+  genresText?: string;
+}
+
+interface Event {
+  _id: string;
+  title: string;
+  description?: string;
+  date: string;
+  address?: string;
+  userId: string;
+  image?: string;
+}
+
+interface Song {
+  _id: string;
+  title: string;
+  coverUrl: string;
+}
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.html',
-  styleUrls: ['./home.css'],
+  styleUrls: ['./home.css']
 })
-export class Home implements AfterViewInit {
-  @ViewChild('carouselTrack') carouselTrack!: ElementRef;
-  @ViewChild('dots') dots!: ElementRef;
-  @ViewChild('bgVideo') bgVideo!: ElementRef;
+export class Home implements OnInit {
+  @ViewChild('artistCarousel') artistCarousel!: ElementRef;
+  @ViewChild('eventCarousel') eventCarousel!: ElementRef;
+  @ViewChild('songsCarousel') songsCarousel!: ElementRef;
 
-  currentSlide: number = 0;
+  artists: Artist[] = [];
+  events: Event[] = [];
+  songs: Song[] = [];
+prevSlide: any;
+nextSlide: any;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private http: HttpClient) {}
 
-  ngAfterViewInit(): void {
-    const videoEl: HTMLVideoElement = this.bgVideo.nativeElement;
-    videoEl.muted = true;
-    videoEl.play().catch(err => {
-      console.warn('El navegador bloqueó el autoplay:', err);
-    });
-    console.log('Carrusel inicializado')
-    this.updateCarousel();
-    setTimeout(() => this.updateCarousel(), 0);
+  ngOnInit(): void {
+    this.loadArtists();
+    this.loadEvents();
+    this.loadSongs();
   }
 
-  prevSlide(): void {
-    this.currentSlide =
-      (this.currentSlide - 1 + this.totalSlides()) % this.totalSlides();
-    this.updateCarousel();
-  }
-
-  nextSlide(): void {
-    this.currentSlide = (this.currentSlide + 1) % this.totalSlides();
-    this.updateCarousel();
-  }
-
-  totalSlides(): number {
-    if (!this.carouselTrack?.nativeElement) return 0;
-    return this.carouselTrack.nativeElement.children.length;
-  }
-
-  updateCarousel(): void {
-    const track = this.carouselTrack.nativeElement as HTMLElement;
-    const slideWidth = track.children[0].clientWidth;
-
-    const offset = -(this.currentSlide * slideWidth);
-    this.renderer.setStyle(track, 'transform', `translateX(${offset}px)`);
-
-    const dotsArr = this.dots.nativeElement.querySelectorAll('.dot');
-    dotsArr.forEach((dot: any, index: number) => {
-      if (index === this.currentSlide) {
-        this.renderer.addClass(dot, 'active');
-      } else {
-        this.renderer.removeClass(dot, 'active');
-      }
+  // ARTISTS
+  loadArtists(): void {
+    this.http.get<Artist[]>('http://localhost:3000/api/artists').subscribe({
+      next: (data) => {
+        this.artists = data.map(artist => ({
+          ...artist,
+          profileImage: artist.profileImage?.startsWith('http')
+            ? artist.profileImage
+            : `http://localhost:3000${artist.profileImage || ''}`,
+          genresText: artist.genres?.length
+            ? artist.genres.join(', ')
+            : 'Género no especificado'
+        }));
+      },
+      error: (err) => console.error('Error cargando artistas', err)
     });
   }
 
-  goToSlide(index: number): void {
-    this.currentSlide = index;
-    this.updateCarousel();
+  prevSlideArtists(): void {
+    this.artistCarousel?.nativeElement.scrollBy({ left: -300, behavior: 'smooth' });
+  }
+
+  nextSlideArtists(): void {
+    this.artistCarousel?.nativeElement.scrollBy({ left: 300, behavior: 'smooth' });
+  }
+
+  // EVENTS
+  loadEvents(): void {
+    this.http.get<Event[]>('http://localhost:3000/api/events').subscribe({
+      next: (data) => {
+        this.events = data.map(event => ({
+          ...event,
+          image: event.image?.startsWith('http')
+            ? event.image
+            : `http://localhost:3000${event.image || ''}`
+        }));
+      },
+      error: (err) => console.error('Error cargando eventos', err)
+    });
+  }
+
+  prevSlideEvents(): void {
+    this.eventCarousel?.nativeElement.scrollBy({ left: -300, behavior: 'smooth' });
+  }
+
+  nextSlideEvents(): void {
+    this.eventCarousel?.nativeElement.scrollBy({ left: 300, behavior: 'smooth' });
+  }
+
+  // SONGS
+  loadSongs(): void {
+    this.http.get<Song[]>('http://localhost:3000/api/songs').subscribe({
+      next: (data) => {
+        this.songs = data.map(song => ({
+          ...song,
+          coverUrl: song.coverUrl?.startsWith('http')
+            ? song.coverUrl
+            : `http://localhost:3000${song.coverUrl || ''}`
+        }));
+      },
+      error: (err) => console.error('Error cargando canciones', err)
+    });
+  }
+
+  prevSlideSongs(): void {
+    this.songsCarousel?.nativeElement.scrollBy({ left: -300, behavior: 'smooth' });
+  }
+
+  nextSlideSongs(): void {
+    this.songsCarousel?.nativeElement.scrollBy({ left: 300, behavior: 'smooth' });
   }
 }
+
+

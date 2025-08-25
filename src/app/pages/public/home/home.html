@@ -1,6 +1,6 @@
 <section class="hero">
     <video #bgVideo autoplay muted loop playsInline id="bg-video">
-        <source src="video/globe.mp4" type="video/mp4" />
+        <source src="video/globe.mp4" type="video/mp4" />
         Tu navegador no soporta video en HTML5.
     </video>
     <div class="hero-content">
@@ -10,115 +10,87 @@
     </div>
 </section>
 
-<!-- CARRUSEL DE ARTISTAS -->
-<section class="artist-carousel">
-    <h3>Nuestros Artistas</h3>
-    <div class="carousel-container">
-        <button class="carousel-btn left-btn" (click)="prevSlide()">&#10094;</button>
+<div class="Artists">
+    <h1>Artists</h1>
+</div>
 
-        <!-- ESTE div necesita el #carouselTrack -->
-        <div class="carousel-track" #carouselTrack>
-            <div class="carousel-slide">
-                <img src="https://wallpapers.com/images/hd/drake-pictures-ne5ff7iewc7cecfu.jpg" alt="Kris R" />
-                <h4>DRAKE</h4>
-            </div>
-            <div class="carousel-slide">
-                <img src="https://dynamic.appronet.es/noticias/6/20241202115907-noticia-actualidad-wizink-center.jpg" alt="Maluma" />
-                <h4>Maluma</h4>
-            </div>
-            <div class="carousel-slide">
-                <img src="https://wallpapercat.com/w/full/7/c/b/1586857-1707x2560-phone-hd-rauw-alejandro-background-image.jpg" alt="Rauw Alejandro" />
-                <h4>Rauw Alejandro</h4>
-            </div>
-            <div class="carousel-slide">
-                <img src="https://cdn-images.dzcdn.net/images/cover/e6089527c9a7e7b44ae87d6d7dd7f2dc/0x1900-000000-80-0-0.jpg" alt="Blessd" />
-                <h4>blessd</h4>
-            </div>
-            <div class="carousel-slide">
-                <img src="https://highxtar.com/wp-content/uploads/2024/12/highxtar-kris-r-entrevista-1-1440x1080.jpg" alt="Blessd" />
-                <h4>kris r</h4>
-            </div>
-            <div class="carousel-slide">
-                <img src="https://los40.com/resizer/v2/HLTJFJJM5FFZZGN63UC4X2MZMQ.tif?auth=9d635bf659f1fabcdf750614b2bdc01203251af6f5066947abdd8acf09dd3bf7&quality=70&width=1200&height=544&smart=true" alt="Blessd" />
-                <h4>Arcangel</h4>
-            </div>
-            <div class="carousel-slide">
-                <img src="https://www.billboard.com/wp-content/uploads/2024/07/karol-g-accor-arena-paris-2024-billboard-1548.jpg?w=942&h=623&crop=1" alt="Blessd" />
-                <h4>Karol g</h4>
+<div class="artist-wrapper">
+    <button (click)="prevSlide()">&#10094;</button>
+
+    <div class="artist-container" #artistContainer>
+        @for (artist of artists; track artist._id) {
+        <div class="artist-card">
+            <img [src]="artist.profileImage" [alt]="artist.name">
+            <div class="artist-info">
+                <h3>{{ artist.name }}</h3>
+                <p>{{ artist.genresText }}</p>
             </div>
         </div>
-
-        <button class="carousel-btn right-btn" (click)="nextSlide()">&#10095;</button>
+        }
     </div>
 
-    <div class="carousel-dots" #dots>
-        <span class="dot" (click)="goToSlide(0)"></span>
-        <span class="dot" (click)="goToSlide(1)"></span>
-        <span class="dot" (click)="goToSlide(2)"></span>
-        <span class="dot" (click)="goToSlide(3)"></span>
-    </div>
-</section>
+    <button (click)="nextSlide()">&#10095;</button>
+</div>
+
+<div class="background-infinity">
+    <h1>
+        RECORDS
+        MUSIC
+        TEAM
+    </h1>
+
+    <p>We turn passion into hits, and hits into history</p>
+</div>
+
 
 <!-- TARJETAS DE ARTISTAS -->
-<div class="container">
-    <div class="card card0">
-        <div class="border">
-            <h2></h2>
-            <div class="icons">
-                <i class="fa fa-codepen"></i>
-                <i class="fa fa-instagram"></i>
-                <i class="fa fa-dribbble"></i>
-                <i class="fa fa-twitter"></i>
-                <i class="fa fa-facebook"></i>
+<!-- Songs Section -->
+<div class="songs-section">
+    <h1>Songs</h1>
+
+    <div class="songs-wrapper">
+        <button class="nav-btn left" (click)="prevSlideSongs()">&#10094;</button>
+
+        <div class="songs-container" #songsCarousel>
+            @for (song of songs; track song._id) {
+            <div class="song-card">
+                <img [src]="song.coverUrl" [alt]="song.title" />
+                <div class="song-info">
+                    <h3>{{ song.title }}</h3>
+                </div>
             </div>
+            }
         </div>
-    </div>
-    <div class="card card1">
-        <div class="border">
-            <h2></h2>
-            <div class="icons">
-                <i class="fa fa-codepen"></i>
-                <i class="fa fa-instagram"></i>
-                <i class="fa fa-dribbble"></i>
-                <i class="fa fa-twitter"></i>
-                <i class="fa fa-facebook"></i>
-            </div>
-        </div>
-    </div>
-    <div class="card card2">
-        <div class="border">
-            <h2></h2>
-            <div class="icons">
-                <i class="fa fa-codepen"></i>
-                <i class="fa fa-instagram"></i>
-                <i class="fa fa-dribbble"></i>
-                <i class="fa fa-twitter"></i>
-                <i class="fa fa-facebook"></i>
-            </div>
-        </div>
+
+        <button class="nav-btn right" (click)="nextSlideSongs()">&#10095;</button>
     </div>
 </div>
 
+
 <!-- INFINITY TV -->
 <section class="infinity-tv">
-    <h3>Infinity TV</h3>
+    <h3>Events </h3>
     <p class="tv-subtitle">Conoce el movimiento desde adentro</p>
-
-    <div class="tv-grid">
-        <div class="tv-video">
-            <iframe src="https://www.youtube.com/embed/qEjkMRG1gEw" frameborder="0" allowfullscreen></iframe>
-            <h4>“Arcangel Vibes”</h4>
-        </div>
-        <div class="tv-video">
-            <iframe src="https://www.youtube.com/watch?v=DMXBiyM9a6E" frameborder="0" allowfullscreen></iframe>
-            <h4>Anuel X ibai</h4>
-        </div>
-        <div class="tv-video">
-            <iframe src="https://www.youtube.com/watch?v=2DLomsFdD94" frameborder="0" allowfullscreen></iframe>
-            <h4>Lilpump X Westcol</h4>
-        </div>
-    </div>
 </section>
+
+<div class="event-wrapper">
+    <button class="nav-btn" (click)="prevSlideEvents()">&#10094;</button>
+
+    <div class="event-container" #eventCarousel>
+        @for (event of events; track event._id) {
+        <div class="event-card">
+            <img [src]="event.image" [alt]="event.title">
+            <div class="event-info">
+                <h3>{{ event.title }}</h3>
+
+            </div>
+        </div>
+        }
+    </div>
+
+    <button class="nav-btn" (click)="nextSlideEvents()">&#10095;</button>
+</div>
+
 
 <!-- FOOTER -->
 <footer>

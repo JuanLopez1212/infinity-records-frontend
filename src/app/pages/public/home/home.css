@@ -115,200 +115,225 @@ section {
     padding: 100px 50px;
 }
 
-/* Artist Carousel */
-.artist-carousel {
-    background: linear-gradient(to right, #000, #000000);
-    color: white;
-    padding: 3rem 1rem;
-    text-align: center;
-    position: relative;
-}
-
-.artist-carousel h3 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.carousel-container {
-    position: relative;
-    overflow: hidden;
-    max-width: 100%;
-    margin: auto;
-}
-
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    gap: 30px;
-}
-
-.carousel-slide {
-    min-width: 100%;
-    box-sizing: border-box;
-    padding: 1rem;
-    position: relative;
-}
-
-.carousel-slide img {
-    width: 60%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0);
-    margin-bottom: 1rem;
-}
-
-.carousel-slide h4 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #f3f3f3;
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: 2px solid #00f;
-    color: #fff;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 2;
-    padding: 0.2rem 0.8rem;
-    border-radius: 50%;
-    backdrop-filter: blur(4px);
-}
-
-.left-btn {
-    left: 10px;
-}
-
-.right-btn {
-    right: 10px;
-}
-
-.carousel-dots {
-    margin-top: 1rem;
-}
-
-.dot {
-    height: 12px;
-    width: 12px;
-    margin: 0 6px;
-    background-color: #444;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background 0.3s ease;
-}
-
-.dot.active {
-    background-color: #fff;
-}
-
-/* Cards */
-.container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    padding: 40px 20px;
-}
-
-.card {
-    height: 379px;
-    width: 300px;
-    background: black;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 70px 63px -60px #000000;
+.Artists {
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: relative;
+    font-size: 3rem;
 }
 
-.card0 {
-    background: url('https://ak47full.net/wp-content/uploads/2025/02/W-Sound-Beele-Ovy-On-The-Drums-La-Plena-mp3-image-scaled.jpg') center center no-repeat;
-    background-size: 300px;
+
+/* cards para artistas new */
+.artist-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: auto;
+  padding: 20px;
 }
 
-.card0:hover {
-    background-size: 600px;
-    background-position: left center;
-    transition: background 0.8s ease;
+.artist-container {
+  display: flex;
+  gap: 50px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
-.card1 {
-    background: url('https://lh3.googleusercontent.com/DuirodSViBca-nPH-ZwCnMoohxqES2g0_I806tmmz_chKBtwX7tto_NwhdnZwHzoT2brN8IbSlNkQCTZkg') center center no-repeat;
-    background-size: 300px;
+.artist-container::-webkit-scrollbar {
+  display: none;
 }
 
-.card1:hover {
-    background-size: 600px;
-    background-position: left center;
-    transition: background 0.8s ease;
+.artist-card {
+  flex: 0 0 auto;
+  width: 280px;
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #121212;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  position: relative;
 }
 
-.card2 {
-    background: url('https://images.genius.com/97661fa88a68c2548698a0bdef933b1e.1000x1000x1.jpg') center center no-repeat;
-    background-size: 300px;
+.artist-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+  transition: filter 0.3s;
 }
 
-.card2:hover {
-    background-size: 600px;
-    background-position: left center;
-    transition: background 0.8s ease;
+.artist-card:hover img {
+  filter: brightness(1);
 }
 
-.border {
-    height: 369px;
-    width: 290px;
-    background: transparent;
-    border-radius: 10px;
-    position: relative;
+.artist-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
 }
 
-h2 {
-    color: white;
-    margin: 20px;
-    transition: opacity 1s;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-.slide{
-    min-width: 100%;
+.artist-info h3 {
+  margin: 0;
+  font-size: 18px;
 }
 
-.fa {
-    opacity: 0;
-    transition: opacity 3s;
+.artist-info p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #ffffff;
 }
 
-.card:hover h2,
-.card:hover .fa {
-    opacity: 1;
-    transition: 10s;
+.artist-wrapper button {
+  background-color: black;
+  border: none;
+  color:white;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s;
 }
 
-.icons {
-    position: absolute;
-    fill: #fff;
-    color: #fff;
-    height: 130px;
-    top: 226px;
-    width: 50px;
+/* .artist-wrapper button:hover {
+  background-color: #0ff;
+} */
+
+
+.background-infinity {
+        display: flex;
+    justify-content: space-between;
+    font-size: 4.2rem;
+    height: 30rem;
+}
+.background-infinity {
+  background: linear-gradient(-45deg, #0ff, #0f0, #000, #fff);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  color: var(--color-text);
+  text-align: center;
+  padding: 5rem 2rem;
+  border-radius: 1rem;
+}
+
+.background-infinity h1 {
+  font-size: 7rem;
+  line-height: 1.2;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.background-infinity p {
+  font-size: 3rem;
+  max-width: 16rem;
+  margin: 0 auto;
+}
+
+/* Animación del fondo */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+h1 {
+    padding: 0rem 0rem 0rem;
+}
+p {
+    padding: 86px;
+}
+
+/* songs */
+/* SONGS SECTION */
+.songs-section {
+  margin-top: 40px;
+}
+
+.songs-section h1 {
+color: white;
+    font-size: 6rem;
+    margin-bottom: 44px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
+
+.songs-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.songs-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+}
+
+.songs-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.song-card {
+  min-width: 250px;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.song-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.song-info {
+  padding: 12px;
+  color: white;
+}
+
+.nav-btn {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.nav-btn.left {
+  position: absolute;
+  left: -10px;
+}
+
+.nav-btn.right {
+  position: absolute;
+  right: -10px;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 
 /* Infinity TV */
 .infinity-tv {
-    padding: 3rem 2rem;
+    padding: 0rem 2rem;
     background-color: #000000;
     color: #fff;
     text-align: center;
@@ -328,38 +353,164 @@ h2 {
     margin-bottom: 2rem;
 }
 
-.tv-grid {
+.event-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 10px;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.event-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+}
+
+.event-container:active {
+  cursor: grabbing;
+}
+
+.event-container::-webkit-scrollbar {
+  display: none;
+}
+
+.event-card {
+  flex: 0 0 auto;
+  width: 280px;
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #121212;
+  color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.event-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+  transition: filter 0.3s ease;
+}
+
+.event-card:hover img {
+  filter: brightness(1);
+}
+
+.event-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.event-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.event-info p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #ddd;
+}
+
+.nav-btn {
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+.nav-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+
+
+.About-us-title {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    font-size: 3rem;
+    margin: 60px 0 0 0;
 }
+/* about us */
 
-.tv-video {
-    background-color: #1c1c1c;
-    padding: 1rem;
-    border-radius: 10px;
-    width: 300px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-    transition: transform 0.3s ease;
-}
 
-.tv-video:hover {
-    transform: scale(1.03);
-}
 
-.tv-video iframe {
+.titleAbout1 {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 0 0 0;
+    color: white;
     width: 100%;
-    height: 170px;
-    border-radius: 8px;
+}
+.about-us {
+  padding: 60px 20px;
+  background-color: #000;
 }
 
-.tv-video h4 {
-    margin-top: 0.8rem;
-    font-size: 1rem;
-    color: #f3f3f3;
-    font-weight: 600;
+.about-us-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }
+
+.about-us-section {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.about-us-section.reverse {
+  flex-direction: row-reverse;
+}
+
+
+
+.about-us-img img {
+  width: 100%;
+  height: 80rem;        /* 👈 mantiene proporción */
+  display: flex;      /* 👈 evita espacios fantasmas */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  flex-direction: column;
+}
+
+.about-us-text {
+  flex: 1 1 50%;
+}
+
+.about-us-text h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.about-us-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+
 
 /* Footer */
 footer {
