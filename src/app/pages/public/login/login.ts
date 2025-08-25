@@ -58,7 +58,6 @@ export class Login {
         },
         error: (error) => {
           // console.log ( error )
-
           Swal.fire({
             icon: "error",
             title: "Oops...",
@@ -67,7 +66,6 @@ export class Login {
             color: "#ffffff",       // Color de texto
             confirmButtonText: "Volver a intentar", // Texto del botón
             confirmButtonColor: "#ff4d4d", // Color del botón
-
           });
 
         },

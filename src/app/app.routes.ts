@@ -25,7 +25,7 @@ import { ArtistsPublic } from './pages/public/artists-public/artists-public';
 import { AlbumsPublic } from './pages/public/albums-public/albums-public';
 import { SliderComponent } from './pages/public/slider.component/slider.component';
 import { SongsPublic } from './pages/public/songs-public/songs-public';
-import { Artists } from './pages/private/artists/artists';
+import { Artists } from './pages/public/artistsProfile/artists';
 
 
 
@@ -37,7 +37,7 @@ export const routes: Routes = [
     { path: 'artists', component: ArtistsPublic},
     { path: 'albums', component: AlbumsPublic},
     { path: 'songs', component: SongsPublic},
-    {path: 'artistsp', component: Artists},
+    {path: 'artistsProfile', component: Artists},
     {
         path: 'dashboard/users',
         component: Users,
@@ -50,12 +50,12 @@ export const routes: Routes = [
     { path: 'dashboard/events/new', component: EventNew, canActivate:[authGuard] },
     { path: 'events', component: EventsComponent},
     {path:'slider',component:SliderComponent},
-    { 
-        path: 'dashboard/songs/new', 
-        component:SongsNewForm, 
-        canActivate:[authGuard, adminGuard ],
-        data: { expectedRoles: ['admin', 'artists'] }
-    },
+        { 
+            path: 'dashboard/songs/new', 
+            component:SongsNewForm, 
+            canActivate:[authGuard, adminGuard ],
+            data: { expectedRoles: ['admin', 'artists'] }
+        },
     { path: 'dashboard/users/new', component: UserNewForm,canActivate:[authGuard]},
     { path: 'dashboard/albums/new', component: AlbumNewForm, canActivate: [ authGuard ] },
     { path: 'dashboard/events/edit/:id', component: EventEdit, canActivate: [authGuard]},
