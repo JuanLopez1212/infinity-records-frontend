@@ -7,7 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-new-register',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule],
   templateUrl: './new-register.html',
   styleUrl: './new-register.css'
 })
@@ -29,9 +29,9 @@ export class NewRegister {
         genres: new FormControl('', [Validators.required]),
         profileImage: new FormControl('', [Validators.required]),
         socials: new FormGroup({
-          instagram: new FormControl('', [Validators.pattern(/^https?:\/\/(www\.)?instagram\.com\/[a-zA-Z0-9._-]+$/), Validators.required]),
-          youtube: new FormControl('', [Validators.pattern(/^https?:\/\/(www\.)?youtube\.com\/(channel|c|user)\/[a-zA-Z0-9._-]+$/), Validators.required]),
-          facebook: new FormControl('', [Validators.pattern(/^https?:\/\/(www\.)?facebook\.com\/[a-zA-Z0-9._-]+$/), Validators.required])
+          instagram: new FormControl('', [ Validators.required]),
+          youtube: new FormControl('', [ Validators.required]),
+          facebook: new FormControl('', [ Validators.required])
             })
           }),
     })
