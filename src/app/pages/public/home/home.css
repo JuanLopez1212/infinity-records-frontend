@@ -212,16 +212,44 @@ section {
         display: flex;
     justify-content: space-between;
     font-size: 4.2rem;
-    height: 42rem;
-    background: darkslategrey;
-    color: aquamarine;
+    height: 30rem;
+}
+.background-infinity {
+  background: linear-gradient(-45deg, #0ff, #0f0, #000, #fff);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  color: var(--color-text);
+  text-align: center;
+  padding: 5rem 2rem;
+  border-radius: 1rem;
+}
+
+.background-infinity h1 {
+  font-size: 7rem;
+  line-height: 1.2;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.background-infinity p {
+  font-size: 3rem;
+  max-width: 16rem;
+  margin: 0 auto;
+}
+
+/* Animación del fondo */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 h1 {
-    padding: 0rem 4rem 0rem;
+    padding: 0rem 0rem 0rem;
 }
 p {
-    padding: 40px;
+    padding: 86px;
 }
 
 /* songs */
@@ -411,6 +439,75 @@ color: white;
 
 .nav-btn:hover {
   background: rgba(0, 0, 0, 0.8);
+}
+
+
+
+.About-us-title {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    margin: 60px 0 0 0;
+}
+/* about us */
+
+
+
+.titleAbout1 {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 0 0 0;
+    color: white;
+    width: 100%;
+}
+.about-us {
+  padding: 60px 20px;
+  background-color: #000;
+}
+
+.about-us-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.about-us-section {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.about-us-section.reverse {
+  flex-direction: row-reverse;
+}
+
+
+
+.about-us-img img {
+  width: 100%;
+  height: 80rem;        /* 👈 mantiene proporción */
+  display: flex;      /* 👈 evita espacios fantasmas */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  flex-direction: column;
+}
+
+.about-us-text {
+  flex: 1 1 50%;
+}
+
+.about-us-text h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.about-us-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
 }
 
 
