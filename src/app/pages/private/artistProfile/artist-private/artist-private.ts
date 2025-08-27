@@ -3,10 +3,11 @@ import { ArtistsServices } from '../../../../services/artists-services';
 import { Albums } from '../../../../services/albums-services';
 import { SongsServices } from '../../../../services/songs-services';
 import { AuthServices } from '../../../../services/auth-services';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-artist-private',
-  imports: [],
+  imports: [ DatePipe ],
   templateUrl: './artist-private.html',
   styleUrl: './artist-private.css'
 })
@@ -41,9 +42,5 @@ export class ArtistPrivate {
       this.songService.getSongsByArtistId(userId).subscribe((songs: any[])=>{
         this.songs = songs;
       })
-  
-  
-  
-  
     }
 }
