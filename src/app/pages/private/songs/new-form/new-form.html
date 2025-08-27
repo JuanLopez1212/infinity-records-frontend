@@ -50,18 +50,6 @@
         </div>
 
 
-        
-        <div class="field">
-        <label for="song-albums">Album: </label>
-        <select formControlName="albumId" id="song-albums">
-            <option value="">Selected</option>
-            
-            @for (objAlbum of albums ; track $index) {
-                <option [value]="objAlbum._id">{{objAlbum.title}}</option>
-            }
-        </select>
-        
-    </div>
 
 
         <div class="field">

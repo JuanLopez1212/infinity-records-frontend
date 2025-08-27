@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArtistsServices } from '../../../services/artists-services';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -14,7 +15,7 @@ export class ArtistsPublic {
   artists: any[] = [];
   items: any
 
-  constructor(private artistService: ArtistsServices) {}
+  constructor(private artistService: ArtistsServices, private router: Router) {}
 
   ngOnInit() {
     this.onLoadData();
@@ -28,6 +29,13 @@ export class ArtistsPublic {
       error: (error: any) => {
         console.error('Error fetching artists:', error);
       } 
+    });
+  }
+
+  navigateToArtistProfile(artistId: string) {
+    console.log('Navegando a perfil del artista:', artistId);
+    this.router.navigate(['/artistsProfile'], {
+      state: { artistId: artistId }
     });
   }
 

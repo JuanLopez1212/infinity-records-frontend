@@ -1,0 +1,151 @@
+.artist-container {
+  padding: 2rem;
+  color: white;
+  background: #121212;
+  min-height: 100vh;
+}
+
+.artist-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.artist-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+  object-fit: cover;
+  margin-right: 1.5rem;
+}
+
+.artist-info h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.artist-info p {
+  font-size: 1rem;
+  color: #aaa;
+}
+
+section {
+  margin-top: 2rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.music-card {
+  background: #181818;
+  border-radius: 12px;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.music-card:hover {
+  transform: scale(1.05);
+}
+
+.cover-container {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* cuadrado */
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+}
+
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.play-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #1db954;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cover-container:hover .play-btn {
+  opacity: 1;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  color: white;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin: 0;
+}
+
+.artist-socials {
+  display: flex;
+  gap: 12px;
+  justify-content: center; /* centra los íconos */
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.artist-socials .social-link {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  cursor: default; /* no parece link clickeable */
+  transition: all 0.3s ease;
+}
+
+/* Colores de cada red */
+.artist-socials .instagram {
+  background: linear-gradient(45deg, #feda75, #d62976, #962fbf, #4f5bd5);
+}
+
+.artist-socials .youtube {
+  background: #ff0000;
+}
+
+.artist-socials .facebook {
+  background: #1877f2;
+}
+
+/* Hover: agrandar un poquito y sombra */
+.artist-socials .social-link:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+

@@ -26,6 +26,10 @@ export class ArtistsServices {
     return this.http.get<any>(`${this.BASE_URL}/artists/` + id, { headers: this.authService.getHeaders() });
   }
 
+  getArtistByUserId(userId: string) {
+  return this.http.get<any>(`${this.BASE_URL}/artists/user/` + userId, {headers: this.authService.getHeaders()});
+}
+
   deleteArtist(id: string) {
     return this.http.delete<any>(`${this.BASE_URL}/artists/` + id, { headers: this.authService.getHeaders() });
   }

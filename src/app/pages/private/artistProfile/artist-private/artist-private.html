@@ -1,0 +1,72 @@
+<div class="artist-container">
+
+  @if (artistData) {
+  <!-- Perfil del artista -->
+  <div class="artist-header">
+    <img [src]="artistData.profileImage" alt="Foto del artista" class="artist-photo" />
+    <div class="artist-info">
+      <h1>{{ artistData.stageName }}</h1>
+      <p>{{ artistData.bio }}</p>
+
+      <!-- Redes sociales -->
+      <div class="artist-socials">
+        <span class="social-link instagram">
+          <i class="fab fa-instagram"></i>
+        </span>
+        <span class="social-link youtube">
+          <i class="fab fa-youtube"></i>
+        </span>
+        <span class="social-link facebook">
+          <i class="fab fa-facebook"></i>
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Álbumes -->
+  @if (albums.length > 0) {
+  <section class="albums">
+    <h2>Álbumes</h2>
+    <div class="card-grid">
+      @for (album of albums; track album.id) {
+      <div class="music-card">
+        <div class="cover-container">
+          <img [src]="album.cover_url" alt="{{ album.title }}" class="cover" />
+          <a [href]="album.fileUrl" target="_blank" class="play-btn">
+            ▶
+          </a>
+        </div>
+        <p class="title">{{ album.title }}</p>
+        <p class="subtitle">Creado por {{ artistData.stageName }}</p>
+      </div>
+      }
+    </div>
+  </section>
+  }
+
+  <!-- Canciones -->
+  @if (songs.length > 0) {
+  <section class="songs">
+    <h2>Canciones</h2>
+    <div class="card-grid">
+      @for (song of songs; track song.id) {
+      <div class="music-card">
+        <div class="cover-container">
+          <img [src]="song.coverUrl" alt="{{ song.title }}" class="cover" />
+          <a [href]="song.fileUrl" target="_blank" class="play-btn">
+            ▶
+          </a>
+        </div>
+        <p class="title">{{ song.title }}</p>
+        <p class="subtitle">Creada por {{ song.nameArtist }}</p>
+      </div>
+      }
+    </div>
+  </section>
+  }
+  } @else {
+  <p>No se encontró información del artista.</p>
+  }
+
+</div>

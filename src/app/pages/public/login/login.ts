@@ -54,7 +54,7 @@ export class Login {
           this.authService.saveLocalStorage('token', data.token)
           // TODO: Revisar que guarde en el localStorage los datos del usuario
           // this.authService.saveLocalStorage( 'userData', data.user );
-          this.router.navigateByUrl('dashboard')  // Esta ruta debe existir
+          this.router.navigateByUrl('home')  // Esta ruta debe existir
         },
         error: (error) => {
           // console.log ( error )

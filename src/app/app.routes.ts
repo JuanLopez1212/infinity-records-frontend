@@ -25,7 +25,9 @@ import { ArtistsPublic } from './pages/public/artists-public/artists-public';
 import { AlbumsPublic } from './pages/public/albums-public/albums-public';
 import { SliderComponent } from './pages/public/slider.component/slider.component';
 import { SongsPublic } from './pages/public/songs-public/songs-public';
-import { Artists } from './pages/public/artistsProfile/artists';
+import { ArtistPublic } from './pages/public/artistsProfile/artists';
+import { ArtistPrivate } from './pages/private/artistProfile/artist-private/artist-private';
+
 
 
 
@@ -37,7 +39,8 @@ export const routes: Routes = [
     { path: 'artists', component: ArtistsPublic},
     { path: 'albums', component: AlbumsPublic},
     { path: 'songs', component: SongsPublic},
-    {path: 'artistsProfile', component: Artists},
+    {path: 'artistsProfile', component: ArtistPublic},
+    { path: 'profilePrivate', component: ArtistPrivate },
     {
         path: 'dashboard/users',
         component: Users,
