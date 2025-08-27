@@ -68,7 +68,7 @@
   display: flex;
   gap: 30px;
   align-items: center;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  box-shadow: 0 8px 32px rgba(31, 135, 37, 100);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
@@ -267,7 +267,7 @@
   transform: scale(1.1);
 }
 
-.play-overlay {
+/* .play-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -279,7 +279,7 @@
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
-}
+} */
 
 .music-card:hover .play-overlay {
   opacity: 1;
