@@ -576,3 +576,76 @@ footer {
         gap: 2rem;
     }
 }
+
+.premios-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  height: 100vh;
+}
+
+.premio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #000; /* fondo tipo cuadro */
+  border: 5px solid gold;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+/* Disco base */
+.disco {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: relative;
+  animation: spin 6s linear infinite;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+
+/* Centro del disco */
+.disco::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: black;
+  box-shadow: inset 0 0 5px rgba(255,255,255,0.3);
+}
+
+/* Disco dorado */
+.oro {
+  background: conic-gradient(
+    #ffd700 0%,
+    #fff3b0 20%,
+    #ffd700 40%,
+    #b8860b 60%,
+    #ffd700 80%,
+    #fff3b0 100%
+  );
+}
+
+/* Placa */
+.placa {
+  margin-top: 15px;
+  padding: 5px 15px;
+  background: linear-gradient(145deg, #d4af37, #9e7c1d);
+  color: black;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
+  text-transform: uppercase;
+}
+
+/* Animación de giro */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

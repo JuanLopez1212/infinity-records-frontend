@@ -86,16 +86,220 @@
 }
 
 button {
-    background-color: #0f0;
+        margin-top: 30px;
+    background: black;
     border: none;
-    color: rgb(0, 0, 0);
-    font-size: 2rem;
-    padding: 10px;
+    color: white;
+    font-size: 20px;
     cursor: pointer;
-    border-radius: 50%;
-    transition: background-color 0.3s;
+    border-radius: 50px;
+    transition: 0.3s;
 }
+
+
 
 button:hover {
     background-color: #0ff;
+}
+
+/* title */
+.events-header {
+    display: flex;
+    justify-content: center;
+}
+
+.neon-glitch {
+    font-size: clamp(4.8rem, 4.5vw, 3.5rem);
+    font-weight: 800;
+    color: #0ff;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    animation: glow 2.4s infinite alternate;
+    font-family: 'Orbitron', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    text-shadow: 0 0 6px #0ff, 0 0 18px #0ff, 0 0 30px #0ff;
+    will-change: filter, text-shadow, transform;
+}
+
+
+.neon-glitch::before,
+.neon-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+    pointer-events: none;
+}
+
+
+.neon-glitch::before {
+    transform: translate(2px, 0);
+    text-shadow: -2px 0 #ff0033;
+    mix-blend-mode: screen;
+    animation: glitchSlice 2.2s infinite linear alternate-reverse;
+}
+
+
+.neon-glitch::after {
+    transform: translate(-2px, 0);
+    text-shadow: 2px 0 #00aaff;
+    mix-blend-mode: screen;
+    animation: glitchSlice 3s infinite linear alternate-reverse;
+}
+
+
+@keyframes glow {
+    0% {
+        color: #00ffff;
+        text-shadow: 0 0 6px #0ff, 0 0 18px #0ff, 0 0 30px #0ff;
+    }
+
+    50% {
+        color: #0f0;
+        text-shadow: 0 0 6px #0f0, 0 0 18px #0f0, 0 0 30px #0f0;
+    }
+
+    100% {
+        color: #ffff;
+        text-shadow: 0 0 6px #ffff, 0 0 18px #ffff, 0 0 30px #ffff;
+    }
+}
+
+
+@keyframes glitchSlice {
+    0% {
+        clip-path: inset(10% 0 65% 0);
+    }
+
+    10% {
+        clip-path: inset(80% 0 5% 0);
+    }
+
+    20% {
+        clip-path: inset(30% 0 55% 0);
+    }
+
+    30% {
+        clip-path: inset(60% 0 15% 0);
+    }
+
+    40% {
+        clip-path: inset(40% 0 40% 0);
+    }
+
+    50% {
+        clip-path: inset(5% 0 80% 0);
+    }
+
+    60% {
+        clip-path: inset(65% 0 10% 0);
+    }
+
+    70% {
+        clip-path: inset(15% 0 60% 0);
+    }
+
+    80% {
+        clip-path: inset(50% 0 25% 0);
+    }
+
+    90% {
+        clip-path: inset(25% 0 50% 0);
+    }
+
+    100% {
+        clip-path: inset(55% 0 20% 0);
+    }
+}
+
+
+.neon-glitch.shake {
+    animation: glow 2.4s infinite alternate, shake 90ms 12 linear;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(1px, -1px) skewX(0.2deg);
+    }
+
+    40% {
+        transform: translate(-1px, 1px) skewY(-0.2deg);
+    }
+
+    60% {
+        transform: translate(1px, 1px) skewX(-0.2deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) skewY(0.2deg);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .neon-glitch,
+    .neon-glitch::before,
+    .neon-glitch::after {
+        animation: none !important;
+    }
+}
+
+
+
+/* prueba */
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  background: #111;
+  padding: 15px 0;
+  border-top: 2px solid #00f7ff;
+  border-bottom: 2px solid #00f7ff;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 15s linear infinite;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  margin: 0 25px;
+}
+
+/* Botón Glow */
+.btn-glow {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color:#111;
+  background: #ffff;
+  border-radius: 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+}
+
+.btn-glow:hover {
+  background: #ff0077;
+  box-shadow: 0 0 15px #ff0077, 0 0 30px #ff0077;
+  transform: scale(1.1);
+}
+
+/* Animación infinita */
+@keyframes scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

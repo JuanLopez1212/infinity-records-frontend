@@ -17,17 +17,20 @@
 <div class="artist-wrapper">
     <button (click)="prevSlide()">&#10094;</button>
 
-    <div class="artist-container" #artistContainer>
-        @for (artist of artists; track artist._id) {
+       <div class="artist-container" #artistContainer>
+    @for (artist of artists; track artist._id) {
+      <a routerLink="/artists">
         <div class="artist-card">
-            <img [src]="artist.profileImage" [alt]="artist.name">
-            <div class="artist-info">
-                <h3>{{ artist.name }}</h3>
-                <p>{{ artist.genresText }}</p>
-            </div>
+          <img [src]="artist.profileImage" [alt]="artist.name">
+          <div class="artist-info">
+            <h3>{{ artist.name }}</h3>
+            <p>{{ artist.genresText }}</p>
+          </div>
         </div>
-        }
-    </div>
+      </a>
+    }
+  </div>
+
 
     <button (click)="nextSlide()">&#10095;</button>
 </div>
@@ -53,13 +56,16 @@
 
         <div class="songs-container" #songsCarousel>
             @for (song of songs; track song._id) {
+                <a routerLink="/songs">
             <div class="song-card">
                 <img [src]="song.coverUrl" [alt]="song.title" />
                 <div class="song-info">
                     <h3>{{ song.title }}</h3>
                 </div>
             </div>
+            </a>
             }
+
         </div>
 
         <button class="nav-btn right" (click)="nextSlideSongs()">&#10095;</button>
@@ -78,6 +84,7 @@
 
     <div class="event-container" #eventCarousel>
         @for (event of events; track event._id) {
+            <a routerLink="/events">
         <div class="event-card">
             <img [src]="event.image" [alt]="event.title">
             <div class="event-info">
@@ -85,14 +92,12 @@
 
             </div>
         </div>
+        </a>
         }
     </div>
+
+    
 
     <button class="nav-btn" (click)="nextSlideEvents()">&#10095;</button>
 </div>
 
-
-<!-- FOOTER -->
-<footer>
-    <p>© 2025 Infinity Records</p>
-</footer>

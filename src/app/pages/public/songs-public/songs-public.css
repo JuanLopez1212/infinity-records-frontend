@@ -294,7 +294,7 @@ input {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
     cursor: pointer;
-    position: relative;
+    position: relative;   
 }
 
 .event-card img {
@@ -314,18 +314,20 @@ input {
     bottom: 0;
     width: 100%;
     padding: 12px;
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.8), transparent);
 }
 
 .event-info h3 {
     margin: 0;
     font-size: 18px;
+    color:#ffff;
+    max-width: 266px;
 }
 
 .event-info p {
-    margin: 4px 0 0;
-    font-size: 14px;
-    color: #000000;
+    margin: 0;
+    font-size: 18px;
+    color: white;
+
 }
 
 button {
@@ -342,3 +344,214 @@ button {
 button:hover {
     background-color: rgba(0, 0, 0, 0.3);
 }   
+
+
+/* === EFECTO FLOAT PARA LAS CARDS === */
+.event-card {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+
+.events-header {
+    display: flex;
+    justify-content: center;
+}
+
+.neon-glitch {
+    font-size: clamp(4.8rem, 4.5vw, 3.5rem);
+    font-weight: 800;
+    color: #0ff;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    animation: glow 2.4s infinite alternate;
+    font-family: 'Orbitron', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    text-shadow: 0 0 6px #0ff, 0 0 18px #0ff, 0 0 30px #0ff;
+    will-change: filter, text-shadow, transform;
+}
+
+
+.neon-glitch::before,
+.neon-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+    pointer-events: none;
+}
+
+
+.neon-glitch::before {
+    transform: translate(2px, 0);
+    text-shadow: -2px 0 #ff0033;
+    mix-blend-mode: screen;
+    animation: glitchSlice 2.2s infinite linear alternate-reverse;
+}
+
+
+.neon-glitch::after {
+    transform: translate(-2px, 0);
+    text-shadow: 2px 0 #00aaff;
+    mix-blend-mode: screen;
+    animation: glitchSlice 3s infinite linear alternate-reverse;
+}
+
+
+@keyframes glow {
+    0% {
+        color: #00ffff;
+        text-shadow: 0 0 6px #0ff, 0 0 18px #0ff, 0 0 30px #0ff;
+    }
+
+    50% {
+        color: #0f0;
+        text-shadow: 0 0 6px #0f0, 0 0 18px #0f0, 0 0 30px #0f0;
+    }
+
+    100% {
+        color: #ffff;
+        text-shadow: 0 0 6px #ffff, 0 0 18px #ffff, 0 0 30px #ffff;
+    }
+}
+
+
+@keyframes glitchSlice {
+    0% {
+        clip-path: inset(10% 0 65% 0);
+    }
+
+    10% {
+        clip-path: inset(80% 0 5% 0);
+    }
+
+    20% {
+        clip-path: inset(30% 0 55% 0);
+    }
+
+    30% {
+        clip-path: inset(60% 0 15% 0);
+    }
+
+    40% {
+        clip-path: inset(40% 0 40% 0);
+    }
+
+    50% {
+        clip-path: inset(5% 0 80% 0);
+    }
+
+    60% {
+        clip-path: inset(65% 0 10% 0);
+    }
+
+    70% {
+        clip-path: inset(15% 0 60% 0);
+    }
+
+    80% {
+        clip-path: inset(50% 0 25% 0);
+    }
+
+    90% {
+        clip-path: inset(25% 0 50% 0);
+    }
+
+    100% {
+        clip-path: inset(55% 0 20% 0);
+    }
+}
+
+
+.neon-glitch.shake {
+    animation: glow 2.4s infinite alternate, shake 90ms 12 linear;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(1px, -1px) skewX(0.2deg);
+    }
+
+    40% {
+        transform: translate(-1px, 1px) skewY(-0.2deg);
+    }
+
+    60% {
+        transform: translate(1px, 1px) skewX(-0.2deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) skewY(0.2deg);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .neon-glitch,
+    .neon-glitch::before,
+    .neon-glitch::after {
+        animation: none !important;
+    }
+}
+
+
+.notes-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+  background: transparent;
+}
+
+.note {
+  position: absolute;
+  top: -5%;
+  font-size: calc(30px + (25 - 15) * random);
+  color: #ffd700;
+  animation: fall linear infinite;
+  left: var(--x, 50%);
+  animation-duration: calc(8s + var(--i) * 0.3s);
+  animation-delay: calc(-1s * var(--i));
+  opacity: 0.8;
+}
+
+.note::before {
+  content: attr(data-note);
+}
+
+.note.gold {
+  color: gold;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.note.silver {
+  color: silver;
+  text-shadow: 0 0 10px rgba(192, 192, 192, 0.8);
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10%) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg) scale(1.2);
+    opacity: 0;
+  }
+}

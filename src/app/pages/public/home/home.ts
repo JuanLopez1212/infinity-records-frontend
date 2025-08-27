@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
 
 interface Artist {
   _id: string;
@@ -27,6 +28,7 @@ interface Song {
 
 @Component({
   selector: 'app-home',
+  imports: [RouterLink],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
