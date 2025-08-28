@@ -54,9 +54,15 @@
                         <ul class=" submenu3">
                             <li><a routerLink='dashboard/songs/new'>Create Songs</a></li>
                         </ul>
-                    </li>
+                    </li>   
+                    <a routerLink="profilePrivate">Perfil</a>
+                }
 
-                    
+                @if ( !!userLogged && userLogged.role == 'users' ) {
+                    <li><a routerLink="events">Events</a></li>
+                    <li><a routerLink="artists">Artistas</a></li>
+                    <li><a routerLink="albums">Albums</a></li> 
+                    <li><a routerLink="songs">Songs</a></li> 
                 }
 
 
@@ -78,11 +84,6 @@
                  @if ( userLogged ) {
                     <a href="#" class="btn btn-primary" (click)="logout(); $event.preventDefault();">Logout</a>
                 }
-
-
-                
-                
-                
             </ul>
     </nav>
 </header>

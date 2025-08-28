@@ -1,61 +1,9 @@
 /* Contenedor principal */
-.artist-public-container {
+.artist-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #000000 0%, #000000 100%);
   padding: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Loading */
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 50vh;
-  color: white;
-}
-
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top: 4px solid #ffffff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 20px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Navegación de regreso */
-.back-navigation {
-  margin-bottom: 30px;
-}
-
-.back-btn {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  padding: 12px 20px;
-  border-radius: 25px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.back-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Header del artista */
@@ -267,7 +215,7 @@
   transform: scale(1.1);
 }
 
-/* .play-overlay {
+.play-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -279,7 +227,7 @@
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
-} */
+}
 
 .music-card:hover .play-overlay {
   opacity: 1;
@@ -401,26 +349,9 @@
   margin: 0 0 30px 0;
 }
 
-.retry-btn {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  padding: 12px 25px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.retry-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
-  .artist-public-container {
+  .artist-container {
     padding: 15px;
   }
 

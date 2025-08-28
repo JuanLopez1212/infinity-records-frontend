@@ -28,6 +28,14 @@ export class Albums {
   getAlbumById ( id: string ) {
     return this.http.get<any> ( `${this.BASE_URL}/albums/` + id, { headers: this.authService.getHeaders() } )
   }
+  
+  getPublicAlbumsByArtistId(userId: string) {
+    return this.http.get<any>(`${this.BASE_URL}/albums/users/` + userId);
+  }
+
+  getAlbumByArtistId( userId: string ) {
+    return this.http.get<any> ( `${this.BASE_URL}/albums/users/` + userId, { headers: this.authService.getHeaders()})
+  }
 
   deleteAlbum ( id: string ) {
     return this.http.delete<any> ( `${this.BASE_URL}/albums/` + id, { headers: this.authService.getHeaders() } )

@@ -29,9 +29,9 @@ export class NewRegister {
         genres: new FormControl('', [Validators.required]),
         profileImage: new FormControl('', [Validators.required]),
         socials: new FormGroup({
-          instagram: new FormControl('', [ Validators.required]),
-          youtube: new FormControl('', [ Validators.required]),
-          facebook: new FormControl('', [ Validators.required])
+          instagram: new FormControl('',),
+          youtube: new FormControl('',),
+          facebook: new FormControl('',)
             })
           }),
     })
