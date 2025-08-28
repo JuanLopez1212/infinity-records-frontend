@@ -4,6 +4,7 @@ import { Albums } from '../../../../services/albums-services';
 import { SongsServices } from '../../../../services/songs-services';
 import { AuthServices } from '../../../../services/auth-services';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-artist-private',
@@ -20,13 +21,19 @@ export class ArtistPrivate {
       private artistService: ArtistsServices,
       private albumService: Albums,
       private songService: SongsServices,
-      private authService: AuthServices
+      private authService: AuthServices,
+      public router : Router
     ) {}
   
     ngOnInit(): void {
       this.loadData();
     }
-  
+    
+
+    getSafeImageUrl(url: string | null, defaultUrl: string): string {
+    return url || defaultUrl;
+  }
+
     loadData() {
       const userId = this.authService.getCurrentUser()?._id;
   

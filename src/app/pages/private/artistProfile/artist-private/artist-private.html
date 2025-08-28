@@ -1,178 +1,178 @@
 <div class="artist-container">
-
   @if (artistData) {
-  <!-- Perfil del artista -->
-  <div class="artist-header">
-    <div class="artist-cover">
-      <img [src]="artistData.profileImage || 'assets/images/default-artist.jpg'" 
-           alt="Foto de {{ artistData.stageName }}" 
-           class="artist-photo" 
-           onerror="this.src='assets/images/default-artist.jpg'" />
-    </div>
-    
-    <div class="artist-info">
-      <h1 class="artist-name">{{ artistData.stageName }}</h1>
-      <p class="artist-bio">{{ artistData.bio || 'Sin biografía disponible' }}</p>
+    <!-- Perfil del artista -->
+    <div class="artist-header">
+      <div class="artist-cover">
+        <img [src]="getSafeImageUrl(artistData.profileImage, 'assets/images/default-artist.jpg')" 
+             alt="Foto de {{ artistData.stageName }}" 
+             class="artist-photo" />
+      </div>
       
-      <!-- Información adicional del artista -->
-      <div class="artist-details">
-        @if (artistData.genre) {
-          <span class="detail-tag">{{ artistData.genre }}</span>
-        }
-        @if (artistData.location) {
-          <span class="detail-tag">{{ artistData.location }}</span>
-        }
-      </div>
-
-      <!-- Redes sociales -->
-      <div class="artist-socials">
-        @if (artistData.socialMedia?.instagram) {
-          <a [href]="artistData.socialMedia.instagram" target="_blank" class="social-link instagram">
-            <i class="fab fa-instagram"></i>
-            <span>Instagram</span>
-          </a>
-        }
-        @if (artistData.socialMedia?.youtube) {
-          <a [href]="artistData.socialMedia.youtube" target="_blank" class="social-link youtube">
-            <i class="fab fa-youtube"></i>
-            <span>YouTube</span>
-          </a>
-        }
-        @if (artistData.socialMedia?.facebook) {
-          <a [href]="artistData.socialMedia.facebook" target="_blank" class="social-link facebook">
-            <i class="fab fa-facebook"></i>
-            <span>Facebook</span>
-          </a>
-        }
-        @if (artistData.socialMedia?.spotify) {
-          <a [href]="artistData.socialMedia.spotify" target="_blank" class="social-link spotify">
-            <i class="fab fa-spotify"></i>
-            <span>Spotify</span>
-          </a>
-        }
-      </div>
-    </div>
-  </div>
-
-  <!-- Estadísticas del artista -->
-  <div class="artist-stats">
-    <div class="stat-item">
-      <span class="stat-number">{{ albums.length }}</span>
-      <span class="stat-label">Álbumes</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-number">{{ songs.length }}</span>
-      <span class="stat-label">Canciones</span>
-    </div>
-  </div>
-
-  <!-- Álbumes -->
-  @if (albums.length > 0) {
-  <section class="content-section albums-section">
-    <div class="section-header">
-      <h2 class="section-title">
-        <i class="fas fa-compact-disc"></i>
-        Álbumes
-      </h2>
-      <p class="section-subtitle">{{ albums.length }} álbum{{ albums.length !== 1 ? 'es' : '' }} disponible{{ albums.length !== 1 ? 's' : '' }}</p>
-    </div>
-    
-    <div class="music-grid">
-      @for (album of albums; track album.id || album._id) {
-        <div class="music-card album-card">
-          <div class="card-image">
-            <img [src]="album.cover_url || 'assets/images/default-album.jpg'" 
-                 alt="{{ album.title }}" 
-                 class="cover-image"
-                 onerror="this.src='assets/images/default-album.jpg'" />
-            <div class="play-overlay">
-              @if (album.fileUrl) {
-                <a [href]="album.fileUrl" target="_blank" class="play-button">
-                  <i class="fas fa-play"></i>
-                </a>
-              } @else {
-                <div class="play-button disabled">
-                  <i class="fas fa-play"></i>
-                </div>
-              }
-            </div>
-          </div>
-          
-          <div class="card-content">
-            <h3 class="card-title">{{ album.title }}</h3>
-            <p class="card-artist">{{ artistData.stageName }}</p>
-            @if (album.releaseDate) {
-              <p class="card-date">{{ album.releaseDate | date:'yyyy' }}</p>
-            }
-            @if (album.description) {
-              <p class="card-description">{{ album.description }}</p>
-            }
-          </div>
+      <div class="artist-info">
+        <div class="artist-info-header">
+          <h1 class="artist-name">{{ artistData.stageName }}</h1>
+          <button class="btn btn-edit-profile" (click)="router.navigateByUrl('/dashboard/artistProfile/edit/:id')">
+            <i class="fas fa-edit"></i> Editar Perfil
+          </button>
         </div>
-      }
-    </div>
-  </section>
-  }
-
-  <!-- Canciones -->
-  @if (songs.length > 0) {
-  <section class="content-section songs-section">
-    <div class="section-header">
-      <h2 class="section-title">
-        <i class="fas fa-music"></i>
-        Canciones
-      </h2>
-      <p class="section-subtitle">{{ songs.length }} canción{{ songs.length !== 1 ? 'es' : '' }} disponible{{ songs.length !== 1 ? 's' : '' }}</p>
-    </div>
-    
-    <div class="music-grid">
-      @for (song of songs; track song.id || song._id) {
-        <div class="music-card song-card">
-          <div class="card-image">
-            <img [src]="song.coverUrl || 'assets/images/default-song.jpg'" 
-                 alt="{{ song.title }}" 
-                 class="cover-image"
-                 onerror="this.src='assets/images/default-song.jpg'" />
-            <div class="play-overlay">
-              @if (song.fileUrl) {
-                <a [href]="song.fileUrl" target="_blank" class="play-button">
-                  <i class="fas fa-play"></i>
-                </a>
-              } @else {
-                <div class="play-button disabled">
-                  <i class="fas fa-play"></i>
-                </div>
-              }
-            </div>
-          </div>
-          
-          <div class="card-content">
-            <h3 class="card-title">{{ song.title }}</h3>
-            <p class="card-artist">{{ song.nameArtist || artistData.stageName }}</p>
-            @if (song.duration) {
-              <p class="card-duration">{{ song.duration }}</p>
-            }
-            @if (song.genre) {
-              <span class="genre-tag">{{ song.genre }}</span>
-            }
-          </div>
+        <p class="artist-bio">{{ artistData.bio || 'Sin biografía disponible' }}</p>
+        
+        <!-- Información adicional del artista -->
+        <div class="artist-details">
+          @if (artistData.genre) {
+            <span class="detail-tag">{{ artistData.genre }}</span>
+          }
+          @if (artistData.location) {
+            <span class="detail-tag">{{ artistData.location }}</span>
+          }
         </div>
-      }
-    </div>
-  </section>
-  }
 
-  <!-- Mensaje cuando no hay contenido -->
-  @if (albums.length === 0 && songs.length === 0) {
-    <div class="no-content">
-      <div class="no-content-icon">
-        <i class="fas fa-music"></i>
+        <!-- Redes sociales -->
+        <div class="artist-socials">
+          @if (artistData.socialMedia?.instagram) {
+            <a [href]="artistData.socialMedia.instagram" target="_blank" class="social-link instagram">
+              <i class="fab fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+          }
+          @if (artistData.socialMedia?.youtube) {
+            <a [href]="artistData.socialMedia.youtube" target="_blank" class="social-link youtube">
+              <i class="fab fa-youtube"></i>
+              <span>YouTube</span>
+            </a>
+          }
+          @if (artistData.socialMedia?.facebook) {
+            <a [href]="artistData.socialMedia.facebook" target="_blank" class="social-link facebook">
+              <i class="fab fa-facebook"></i>
+              <span>Facebook</span>
+            </a>
+          }
+          @if (artistData.socialMedia?.spotify) {
+            <a [href]="artistData.socialMedia.spotify" target="_blank" class="social-link spotify">
+              <i class="fab fa-spotify"></i>
+              <span>Spotify</span>
+            </a>
+          }
+        </div>
       </div>
-      <h3>Sin contenido musical</h3>
-      <p>Este artista aún no ha subido álbumes ni canciones.</p>
     </div>
-  }
 
+    <!-- Estadísticas del artista -->
+    <div class="artist-stats">
+      <div class="stat-item">
+        <span class="stat-number">{{ albums.length }}</span>
+        <span class="stat-label">Álbumes</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{ songs.length }}</span>
+        <span class="stat-label">Canciones</span>
+      </div>
+    </div>
+
+    <!-- Álbumes -->
+    @if (albums.length > 0) {
+      <section class="content-section albums-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-compact-disc"></i>
+            Álbumes
+          </h2>
+          <p class="section-subtitle">{{ albums.length }} álbum{{ albums.length !== 1 ? 'es' : '' }} disponible{{ albums.length !== 1 ? 's' : '' }}</p>
+        </div>
+        
+        <div class="music-grid">
+          @for (album of albums; track album.id || album._id) {
+            <div class="music-card album-card">
+              <div class="card-image">
+                <img [src]="getSafeImageUrl(album.cover_url, 'assets/images/default-album.jpg')" 
+                     alt="{{ album.title }}" 
+                     class="cover-image" />
+                <div class="play-overlay">
+                  @if (album.fileUrl) {
+                    <a [href]="album.fileUrl" target="_blank" class="play-button">
+                      <i class="fas fa-play"></i>
+                    </a>
+                  } @else {
+                    <div class="play-button disabled">
+                      <i class="fas fa-play"></i>
+                    </div>
+                  }
+                </div>
+              </div>
+              
+              <div class="card-content">
+                <h3 class="card-title">{{ album.title }}</h3>
+                <p class="card-artist">{{ artistData.stageName }}</p>
+                @if (album.releaseDate) {
+                  <p class="card-date">{{ album.releaseDate | date:'yyyy' }}</p>
+                }
+                @if (album.description) {
+                  <p class="card-description">{{ album.description }}</p>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </section>
+    }
+
+    <!-- Canciones -->
+    @if (songs.length > 0) {
+      <section class="content-section songs-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-music"></i>
+            Canciones
+          </h2>
+          <p class="section-subtitle">{{ songs.length }} canción{{ songs.length !== 1 ? 'es' : '' }} disponible{{ songs.length !== 1 ? 's' : '' }}</p>
+        </div>
+        
+        <div class="music-grid">
+          @for (song of songs; track song.id || song._id) {
+            <div class="music-card song-card">
+              <div class="card-image">
+                <img [src]="getSafeImageUrl(song.coverUrl, 'assets/images/default-song.jpg')" 
+                     alt="{{ song.title }}" 
+                     class="cover-image" />
+                <div class="play-overlay">
+                  @if (song.fileUrl) {
+                    <a [href]="song.fileUrl" target="_blank" class="play-button">
+                      <i class="fas fa-play"></i>
+                    </a>
+                  } @else {
+                    <div class="play-button disabled">
+                      <i class="fas fa-play"></i>
+                    </div>
+                  }
+                </div>
+              </div>
+              
+              <div class="card-content">
+                <h3 class="card-title">{{ song.title }}</h3>
+                <p class="card-artist">{{ song.nameArtist || artistData.stageName }}</p>
+                @if (song.duration) {
+                  <p class="card-duration">{{ song.duration }}</p>
+                }
+                @if (song.genre) {
+                  <span class="genre-tag">{{ song.genre }}</span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </section>
+    }
+
+    <!-- Mensaje cuando no hay contenido -->
+    @if (albums.length === 0 && songs.length === 0) {
+      <div class="no-content">
+        <div class="no-content-icon">
+          <i class="fas fa-music"></i>
+        </div>
+        <h3>Sin contenido musical</h3>
+        <p>Este artista aún no ha subido álbumes ni canciones.</p>
+      </div>
+    }
   } @else {
     <!-- Error cuando no se encuentra el artista -->
     <div class="error-container">
@@ -183,5 +183,4 @@
       <p>No se pudo cargar la información del artista. Por favor, intenta nuevamente.</p>
     </div>
   }
-
-</div>
+</div>  

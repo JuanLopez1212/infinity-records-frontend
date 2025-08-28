@@ -27,6 +27,7 @@ import { SliderComponent } from './pages/public/slider.component/slider.componen
 import { SongsPublic } from './pages/public/songs-public/songs-public';
 import { ArtistPublic } from './pages/public/artistsProfile/artists';
 import { ArtistPrivate } from './pages/private/artistProfile/artist-private/artist-private';
+import { ArtistProfileEdit } from './pages/private/artistProfile/artist-profile-edit/artist-profile-edit';
 
 
 
@@ -64,6 +65,7 @@ export const routes: Routes = [
     { path: 'dashboard/events/edit/:id', component: EventEdit, canActivate: [authGuard]},
     { path: 'dashboard/albums/edit/:id', component: AlbumEdit, canActivate: [authGuard]},
     { path: 'dashboard/songs/edit/:id', component:SongEdit, canActivate:[authGuard]},
+    { path: 'dashboard/artistProfile/edit/:id', component: ArtistProfileEdit },
     { path: '**', redirectTo: 'home', pathMatch: 'full' },
     { path: '', redirectTo: 'home', pathMatch: 'full' } 
 ];
