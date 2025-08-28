@@ -209,50 +209,79 @@ section {
 
 
 .background-infinity {
-        display: flex;
-    justify-content: space-between;
-    font-size: 4.2rem;
-    height: 30rem;
-}
-.background-infinity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 9rem 2rem;
+  height: auto;
+  border-radius: 1rem;
   background: linear-gradient(-45deg, #0ff, #0f0, #000, #fff);
   background-size: 400% 400%;
   animation: gradientBG 10s ease infinite;
+
   color: var(--color-text);
-  text-align: center;
-  padding: 5rem 2rem;
-  border-radius: 1rem;
 }
 
 .background-infinity h1 {
-  font-size: 7rem;
+  font-size: 6rem;
   line-height: 1.2;
   font-weight: bold;
   letter-spacing: 2px;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
 .background-infinity p {
-  font-size: 3rem;
-  max-width: 16rem;
-  margin: 0 auto;
+  font-size: 2rem;
+  max-width: 22rem;
+  margin: 0;
+  text-align: right;
 }
 
-/* Animación del fondo */
+/* Tablets */
+@media (max-width: 1024px) {
+  .background-infinity {
+    padding: 3rem 1.5rem;
+  }
+
+  .background-infinity h1 {
+    font-size: 4rem;
+  }
+
+  .background-infinity p {
+    font-size: 1.5rem;
+    max-width: 18rem;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .background-infinity {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .background-infinity h1 {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .background-infinity p {
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 100%;
+  }
+}
+
+
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-h1 {
-    padding: 0rem 0rem 0rem;
-}
-p {
-    padding: 86px;
-}
 
-/* songs */
 /* SONGS SECTION */
 .songs-section {
   margin-top: 40px;
@@ -277,11 +306,11 @@ color: white;
   gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none; 
 }
 
 .songs-container::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none; 
 }
 
 .song-card {
@@ -487,8 +516,8 @@ color: white;
 
 .about-us-img img {
   width: 100%;
-  height: 80rem;        /* 👈 mantiene proporción */
-  display: flex;      /* 👈 evita espacios fantasmas */
+  height: 80rem;        
+  display: flex;      
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   flex-direction: column;
@@ -518,6 +547,83 @@ footer {
     padding: 30px;
     background: var(--color-bg);
     font-family: var(--font-secondary);
+}
+
+.premios-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  height: 100vh;
+}
+
+.premio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #000; 
+  border: 5px solid gold;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+
+.disco {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: relative;
+  animation: spin 6s linear infinite;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+
+
+.disco::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: black;
+  box-shadow: inset 0 0 5px rgba(255,255,255,0.3);
+}
+
+
+.oro {
+  background: conic-gradient(
+    #ffd700 0%,
+    #fff3b0 20%,
+    #ffd700 40%,
+    #b8860b 60%,
+    #ffd700 80%,
+    #fff3b0 100%
+  );
+}
+
+.placa {
+  margin-top: 15px;
+  padding: 5px 15px;
+  background: linear-gradient(145deg, #d4af37, #9e7c1d);
+  color: black;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
+  text-transform: uppercase;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+a {
+  text-decoration: none; 
+  color: inherit;        
 }
 
 @media (min-width: 1440px) {
@@ -575,77 +681,154 @@ footer {
     .container {
         gap: 2rem;
     }
+    h1 {
+    font-size: 45px;
+}
 }
 
-.premios-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  height: 100vh;
+
+@media (max-width: 1024px) {
+  header {
+    padding: 15px 30px;
+  }
+
+  nav {
+    left: 0; 
+  }
+
+  .hero h2 {
+    font-size: 40px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .artist-container, 
+  .songs-container, 
+  .event-container {
+    gap: 20px;
+  }
+
+  .about-us-section {
+    flex-direction: column; 
+    text-align: center;
+  }
+
+  .about-us-img img {
+    height: auto;
+    max-height: 400px;
+  }
+
+  .about-us-text {
+    flex: 1 1 100%;
+  }
+  h1 {
+    font-size: 45px;
+}
 }
 
-.premio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #000; /* fondo tipo cuadro */
-  border: 5px solid gold;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 20px;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: static;
+  }
+
+  header nav a {
+    margin: 10px;
+    font-size: 14px;
+  }
+
+  .hero h2 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  section {
+    padding: 50px 20px;
+  }
+
+  .artist-card {
+    width: 220px;
+    height: 320px;
+  }
+
+  .background-infinity h1 {
+    font-size: 3rem;
+  }
+
+  .background-infinity p {
+    font-size: 1.5rem;
+  }
+
+  .songs-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .infinity-tv h3 {
+    font-size: 2.5rem;
+  }
+  h1 {
+    font-size: 45px;
+}
 }
 
-/* Disco base */
-.disco {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  position: relative;
-  animation: spin 6s linear infinite;
-  box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
-}
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .hero h2 {
+    font-size: 24px;
+  }
 
-/* Centro del disco */
-.disco::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: black;
-  box-shadow: inset 0 0 5px rgba(255,255,255,0.3);
-}
+  .hero p {
+    font-size: 14px;
+  }
 
-/* Disco dorado */
-.oro {
-  background: conic-gradient(
-    #ffd700 0%,
-    #fff3b0 20%,
-    #ffd700 40%,
-    #b8860b 60%,
-    #ffd700 80%,
-    #fff3b0 100%
-  );
-}
+  .hero button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 
-/* Placa */
-.placa {
-  margin-top: 15px;
-  padding: 5px 15px;
-  background: linear-gradient(145deg, #d4af37, #9e7c1d);
-  color: black;
-  font-weight: bold;
-  border-radius: 6px;
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
-  text-transform: uppercase;
-}
+  .artist-card {
+    width: 180px;
+    height: 260px;
+  }
 
-/* Animación de giro */
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  .songs-section h1 {
+    font-size: 2.8rem;
+  }
+
+  .background-infinity h1 {
+    font-size: 2.2rem;
+  }
+
+  .background-infinity p {
+    font-size: 1.2rem;
+  }
+
+  .about-us-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-us-text p {
+    font-size: 0.95rem;
+  }
+  h1 {
+    font-size: 50px;
+}
 }

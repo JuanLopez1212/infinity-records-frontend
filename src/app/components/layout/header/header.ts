@@ -7,14 +7,17 @@ import { CommonModule } from '@angular/common';
   selector: 'app-header',
   imports: [ RouterLink, CommonModule ],
   templateUrl: './header.html',
-  styleUrl: './header.css'
+  styleUrls: ['./header.css']
 })
 export class Header {
   user: any = null;
   userLogged!: any; 
-  
+
+  // Estado del menú hamburguesa
+  menuOpen: boolean = false;
+
   constructor ( private authService: AuthServices, private router: Router ) {
-    this.user = this.authService.getCurrentUser()
+    this.user = this.authService.getCurrentUser();
   }
 
   ngOnInit() {
@@ -23,11 +26,14 @@ export class Header {
     });
   }
 
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
   logout () {
     this.authService.logout();
-    // console.log(this.user)
-    // this.authService.deleteLocalStorage ( 'token' )
-    // this.authService.deleteLocalStorage ( 'user' )
-    this.router.navigateByUrl ( 'home' )
+    this.router.navigateByUrl('home');
   }
 }
+
+

@@ -1,8 +1,9 @@
+/* ====== HEADER BASE ====== */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
+  padding: 15px 30px;
   position: sticky;
   top: 0;
   width: 100%;
@@ -11,46 +12,119 @@ header {
   backdrop-filter: blur(5px);
 }
 
-header h1 {
+header .logo {
   font-weight: 700;
   color: var(--color-primary);
+  cursor: pointer;
 }
 
-nav {
+/* ====== NAV MENU ====== */
+.main-menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.main-menu li {
   position: relative;
-  left: -147px;
 }
 
-header ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-}
-
-header nav a {
-  margin-left: 20px;
+.main-menu a {
   color: var(--color-primary);
   text-decoration: none;
+  transition: color 0.3s;
+}
+
+.main-menu a:hover {
+  color: var(--color-accent);
+}
+
+/* ====== SUBMENU ====== */
+.submenu {
+  display: none;
+  position: absolute;
+  background: #222;
+  list-style: none;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 4px;
+}
+
+li:hover > .submenu {
+  display: block;
+}
+
+.submenu li {
+  padding: 8px 15px;
+}
+
+.submenu a {
+  color: var(--color-primary);
+}
+
+.submenu a:hover {
+  color: var(--color-accent);
+}
+
+/* ====== BOTÓN HAMBURGUESA ====== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 3px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 23px 37px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
   transition: 0.3s;
 }
 
-header nav a:hover {
-  color: var(--color-accent);
-} 
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
 
-header a {
-    font-style: none
+  nav {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+  }
+
+  .main-menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    gap: 15px;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .main-menu.open {
+    display: flex;
+  }
+
+  .submenu {
+    position: static;
+    background: none;
+    padding: 0;
+  }
+
+  .submenu li {
+    padding: 5px 0 5px 15px;
+  }
 }
 
-.submenu {
-    display: none;
-    position: absolute;
-    background: #556;
-    list-style: none;
-    top: 100%;
-    left: 0;
-    min-width: 160px;
-    padding: 0;
-    margin: 0;
-    border-radius: 4px;
+nav {
+    margin: 0 34px;
 }

@@ -87,9 +87,9 @@
 
 button {
         margin-top: 30px;
-    background: black;
+    background:#00ffff;
     border: none;
-    color: white;
+    color: black;
     font-size: 20px;
     cursor: pointer;
     border-radius: 50px;
@@ -255,7 +255,48 @@ button:hover {
     }
 }
 
+@media (max-width: 1024px) {
+  .event-card {
+    width: 240px;
+    height: 360px;
+  }
 
+  .neon-glitch {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .event-card {
+    width: 200px;
+    height: 300px;
+  }
+
+  .neon-glitch {
+    font-size: 2.2rem;
+  }
+
+  .btn-glow {
+    font-size: 1rem;
+    padding: 10px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-card {
+    width: 160px;
+    height: 240px;
+  }
+
+  .neon-glitch {
+    font-size: 1.5rem;
+  }
+
+  .btn-glow {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+}
 
 /* prueba */
 .carousel-container {

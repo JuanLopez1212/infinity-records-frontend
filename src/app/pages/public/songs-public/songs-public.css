@@ -555,3 +555,40 @@ button:hover {
     opacity: 0;
   }
 }
+
+@media (max-width: 1024px) {
+  .note {
+    font-size: clamp(14px, 3.5vw, 26px);
+    animation-duration: calc(9s + var(--i) * 0.4s);
+  }
+
+  .neon-glitch {
+    font-size: clamp(2.8rem, 6vw, 3.2rem);
+  }
+}
+
+/* Celulares grandes */
+@media (max-width: 768px) {
+  .note {
+    font-size: clamp(12px, 5vw, 22px);
+    animation-duration: calc(10s + var(--i) * 0.5s);
+  }
+
+  .neon-glitch {
+    font-size: clamp(2.2rem, 7vw, 2.6rem);
+    letter-spacing: .08em;
+  }
+}
+
+/* Celulares pequeños */
+@media (max-width: 480px) {
+  .note {
+    font-size: clamp(10px, 6vw, 18px);
+    animation-duration: calc(11s + var(--i) * 0.6s);
+  }
+
+  .neon-glitch {
+    font-size: clamp(1.8rem, 8vw, 2.2rem);
+    letter-spacing: .05em;
+  }
+}

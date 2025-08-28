@@ -1,6 +1,6 @@
 <section class="hero">
     <video #bgVideo autoplay muted loop playsInline id="bg-video">
-        <source src="video/globe.mp4" type="video/mp4" />
+        <source src="video/globe.mp4" type="video/mp4"   />
         Tu navegador no soporta video en HTML5.
     </video>
     <div class="hero-content">
@@ -11,25 +11,25 @@
 </section>
 
 <div class="Artists">
-    <h1>Artists</h1>
+    <h1>Artistas</h1>
 </div>
 
 <div class="artist-wrapper">
     <button (click)="prevSlide()">&#10094;</button>
 
-       <div class="artist-container" #artistContainer>
-    @for (artist of artists; track artist._id) {
-      <a routerLink="/artists">
-        <div class="artist-card">
-          <img [src]="artist.profileImage" [alt]="artist.name">
-          <div class="artist-info">
-            <h3>{{ artist.name }}</h3>
-            <p>{{ artist.genresText }}</p>
-          </div>
-        </div>
-      </a>
-    }
-  </div>
+    <div class="artist-container" #artistContainer>
+        @for (artist of artists; track artist._id) {
+        <a routerLink="/artists">
+            <div class="artist-card">
+                <img [src]="artist.profileImage" [alt]="artist.name">
+                <div class="artist-info">
+                    <h3>{{ artist.name }}</h3>
+                    <p>{{ artist.genresText }}</p>
+                </div>
+            </div>
+        </a>
+        }
+    </div>
 
 
     <button (click)="nextSlide()">&#10095;</button>
@@ -49,20 +49,20 @@
 <!-- TARJETAS DE ARTISTAS -->
 <!-- Songs Section -->
 <div class="songs-section">
-    <h1>Songs</h1>
+    <h1>Canciones</h1>
 
     <div class="songs-wrapper">
         <button class="nav-btn left" (click)="prevSlideSongs()">&#10094;</button>
 
         <div class="songs-container" #songsCarousel>
             @for (song of songs; track song._id) {
-                <a routerLink="/songs">
-            <div class="song-card">
-                <img [src]="song.coverUrl" [alt]="song.title" />
-                <div class="song-info">
-                    <h3>{{ song.title }}</h3>
+            <a routerLink="/songs">
+                <div class="song-card">
+                    <img [src]="song.coverUrl" [alt]="song.title" />
+                    <div class="song-info">
+                        <h3>{{ song.title }}</h3>
+                    </div>
                 </div>
-            </div>
             </a>
             }
 
@@ -75,7 +75,7 @@
 
 <!-- INFINITY TV -->
 <section class="infinity-tv">
-    <h3>Events </h3>
+    <h3>Eventos </h3>
     <p class="tv-subtitle">Conoce el movimiento desde adentro</p>
 </section>
 
@@ -84,20 +84,19 @@
 
     <div class="event-container" #eventCarousel>
         @for (event of events; track event._id) {
-            <a routerLink="/events">
-        <div class="event-card">
-            <img [src]="event.image" [alt]="event.title">
-            <div class="event-info">
-                <h3>{{ event.title }}</h3>
+        <a routerLink="/events">
+            <div class="event-card">
+                <img [src]="event.image" [alt]="event.title">
+                <div class="event-info">
+                    <h3>{{ event.title }}</h3>
 
+                </div>
             </div>
-        </div>
         </a>
         }
     </div>
 
-    
+
 
     <button class="nav-btn" (click)="nextSlideEvents()">&#10095;</button>
 </div>
-
