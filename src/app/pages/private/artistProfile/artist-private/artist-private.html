@@ -1,33 +1,20 @@
-<div class="artist-public-container">
-  <!-- Loading spinner -->
-  @if (isLoading) {
-    <div class="loading-container">
-      <div class="spinner"></div>
-      <p>Cargando información del artista...</p>
-    </div>
-  }
-
-  <!-- Botón para regresar -->
-  <div class="back-navigation">
-    <button class="back-btn" (click)="goBack()">
-      <i class="fas fa-arrow-left"></i>
-      Volver a artistas
-    </button>
-  </div>
-
-  <!-- Contenido principal del artista -->
-  @if (!isLoading && artistData) {
-    <!-- Header del perfil del artista -->
+<div class="artist-container">
+  @if (artistData) {
+    <!-- Perfil del artista -->
     <div class="artist-header">
       <div class="artist-cover">
-        <img [src]="artistData.profileImage || 'assets/images/default-artist.jpg'" 
+        <img [src]="getSafeImageUrl(artistData.profileImage, 'assets/images/default-artist.jpg')" 
              alt="Foto de {{ artistData.stageName }}" 
-             class="artist-photo" 
-             onerror="this.src='assets/images/default-artist.jpg'" />
+             class="artist-photo" />
       </div>
       
       <div class="artist-info">
-        <h1 class="artist-name">{{ artistData.stageName }}</h1>
+        <div class="artist-info-header">
+          <h1 class="artist-name">{{ artistData.stageName }}</h1>
+          <button class="btn btn-edit-profile" (click)="router.navigateByUrl('/dashboard/artistProfile/edit/:id')">
+            <i class="fas fa-edit"></i> Editar Perfil
+          </button>
+        </div>
         <p class="artist-bio">{{ artistData.bio || 'Sin biografía disponible' }}</p>
         
         <!-- Información adicional del artista -->
@@ -82,7 +69,7 @@
       </div>
     </div>
 
-    <!-- Sección de Álbumes -->
+    <!-- Álbumes -->
     @if (albums.length > 0) {
       <section class="content-section albums-section">
         <div class="section-header">
@@ -97,10 +84,9 @@
           @for (album of albums; track album.id || album._id) {
             <div class="music-card album-card">
               <div class="card-image">
-                <img [src]="album.cover_url || 'assets/images/default-album.jpg'" 
+                <img [src]="getSafeImageUrl(album.cover_url, 'assets/images/default-album.jpg')" 
                      alt="{{ album.title }}" 
-                     class="cover-image"
-                     onerror="this.src='assets/images/default-album.jpg'" />
+                     class="cover-image" />
                 <div class="play-overlay">
                   @if (album.fileUrl) {
                     <a [href]="album.fileUrl" target="_blank" class="play-button">
@@ -130,7 +116,7 @@
       </section>
     }
 
-    <!-- Sección de Canciones -->
+    <!-- Canciones -->
     @if (songs.length > 0) {
       <section class="content-section songs-section">
         <div class="section-header">
@@ -145,10 +131,9 @@
           @for (song of songs; track song.id || song._id) {
             <div class="music-card song-card">
               <div class="card-image">
-                <img [src]="song.coverUrl || 'assets/images/default-song.jpg'" 
+                <img [src]="getSafeImageUrl(song.coverUrl, 'assets/images/default-song.jpg')" 
                      alt="{{ song.title }}" 
-                     class="cover-image"
-                     onerror="this.src='assets/images/default-song.jpg'" />
+                     class="cover-image" />
                 <div class="play-overlay">
                   @if (song.fileUrl) {
                     <a [href]="song.fileUrl" target="_blank" class="play-button">
@@ -188,8 +173,7 @@
         <p>Este artista aún no ha subido álbumes ni canciones.</p>
       </div>
     }
-
-  } @else if (!isLoading && !artistData) {
+  } @else {
     <!-- Error cuando no se encuentra el artista -->
     <div class="error-container">
       <div class="error-icon">
@@ -197,9 +181,6 @@
       </div>
       <h2>Artista no encontrado</h2>
       <p>No se pudo cargar la información del artista. Por favor, intenta nuevamente.</p>
-      <button class="retry-btn" (click)="goBack()">
-        Volver a artistas
-      </button>
     </div>
   }
 </div>

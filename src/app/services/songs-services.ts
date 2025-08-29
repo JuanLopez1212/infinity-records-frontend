@@ -29,7 +29,15 @@ BASE_URL: string = environment.apiUrl;
     getSongsbyId(id:string) :Observable <SongsInterface>{
        return this.http.get<SongsInterface>(`${this.BASE_URL}/songs/`+ id , { headers: this.authServices.getHeaders() } )
     }
+
+    getSongsByArtistId( userId: string ) {
+    return this.http.get<any> ( `${this.BASE_URL}/songs/users/` + userId, { headers: this.authServices.getHeaders()})
+  }
     
+  getPublicSongsByArtistId(userId: string) {
+    // Sin headers de autenticación  
+    return this.http.get<any>(`${this.BASE_URL}/songs/users/` + userId);
+  }
 
     deleteSongs(id: string) :Observable<SongsInterface>{
       return this.http.delete<SongsInterface>(`${this.BASE_URL}/songs/` + id, { headers: this.authServices.getHeaders() }  )

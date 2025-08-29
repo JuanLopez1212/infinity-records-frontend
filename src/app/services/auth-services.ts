@@ -8,7 +8,9 @@ import { environment } from '../../environments/environment';
 })
 export class AuthServices {
   private userSubject = new BehaviorSubject<any>(false);
+  private userData = new BehaviorSubject<any>( false )
   user$: Observable<any> = this.userSubject.asObservable()
+  public artistData$: Observable<object> = this.userData.asObservable()
   user!: any;
   BASE_URL: string = environment.apiUrl;
 
@@ -33,6 +35,7 @@ export class AuthServices {
           this.saveLocalStorage( 'user', JSON.stringify( resp.user ))
           this.user = JSON.parse( localStorage.getItem( 'user' ) as any ) || {};
           this.userSubject.next( this.user );
+          this.userData.next( this.user )
         }
         if ( resp.token ) {
           this.saveLocalStorage( 'token', resp.token )

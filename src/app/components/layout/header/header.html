@@ -1,82 +1,69 @@
-<!-- <header>
-    <div class="header__search">
-        <nav class="navbar-menu">
-            <ul class="main-menu">
-                TODO: Reorganizar lista de enlaces
-                <li><a routerLink="dashboard/users">peooo</a></li>
-                <li><a routerLink="dashboard/users/new">users</a></li>
-                <li><a routerLink="dashboard/events/new">Events</a></li>
-                <li><a routerLink='dashboard/songs'>List Songs</a></li>
-                <li><a routerLink='dashboard/songs/new'>Create Songs</a></li>
-                <li><a routerLink="dashboard/albums">Listar álbumes</a></li>
-
-                <a class="btn btn-primary" routerLink="login">login</a>
-                <a href="#" class="btn btn-primary" (click)="logout(); $event.preventDefault();">logout</a>
-            </ul>
-        </nav>
-    </div>
-</header> -->
-
-
-<!-- <pre>{{ userLogged | json }}</pre>
-<h1>{{ userLogged?.role }}</h1>
-<h2>{{ !!userLogged }}</h2> -->
-
 <header>
-    <h1 routerLink="home" class="logo">Infinity Records</h1>
+  <h1 routerLink="home" class="logo">Infinity Records</h1>
 
-    <!-- Botón hamburguesa solo visible en móviles -->
-    <button class="hamburger" (click)="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+  <!-- Botón hamburguesa solo visible en móviles -->
+  <button class="hamburger" (click)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-    <nav>
-        <ul class="main-menu" [class.open]="menuOpen">
+  <nav>
+    <ul class="main-menu" [class.open]="menuOpen">
 
-            @if( !!userLogged && userLogged.role == 'admin' ) {
-            <li><a routerLink="dashboard/songs">List Songs</a></li>
-            <li><a routerLink="dashboard/albums">Listar álbumes</a></li>
-            <li><a routerLink="dashboard/events">List Events</a></li>
-            }
+      @if( !!userLogged && userLogged.role == 'admin' ) {
+        <li><a routerLink="dashboard/songs">Listar Canciones</a></li>
+        <li><a routerLink="dashboard/albums">Listar álbumes</a></li>
+        <li><a routerLink="dashboard/events">Listar eventos</a></li>
+      }
 
-            @if( !!userLogged && userLogged.role == 'artists' ) {
-            <li>
-                <a routerLink="events">Events</a>
-                <ul class="submenu">
-                    <li><a routerLink="dashboard/events/new">Create Events</a></li>
-                </ul>
-            </li>
+      @if( !!userLogged && userLogged.role == 'artists' ) {
+        <li>
+          <a href="#" (click)="toggleSubmenu('events', $event)">Eventos</a>
+          <ul class="submenu" [class.open]="openSubmenu === 'events'">
+            <li><a routerLink="dashboard/events/new">Crear eventos</a></li>
+          </ul>
+        </li>
 
-            <li>
-                <a routerLink="albums">Albums</a>
-                <ul class="submenu">
-                    <li><a routerLink="dashboard/albums/new">Create Albums</a></li>
-                </ul>
-            </li>
+        <li>
+          <a href="#" (click)="toggleSubmenu('albums', $event)">Álbumes</a>
+          <ul class="submenu" [class.open]="openSubmenu === 'albums'">
+            <li><a routerLink="dashboard/albums/new">Crear álbumes</a></li>
+          </ul>
+        </li>
 
-            <li>
-                <a routerLink="songs">Songs</a>
-                <ul class="submenu">
-                    <li><a routerLink="dashboard/songs/new">Create Songs</a></li>
-                </ul>
-            </li>
-            }
+        <li>
+          <a href="#" (click)="toggleSubmenu('songs', $event)">Canciones</a>
+          <ul class="submenu" [class.open]="openSubmenu === 'songs'">
+            <li><a routerLink="dashboard/songs/new">Crear canciones</a></li>
+          </ul>
+        </li>
 
-            @if ( !userLogged ) {
-            <li><a routerLink="events">Events</a></li>
-            <li><a routerLink="artists">Artistas</a></li>
-            <li><a routerLink="albums">Albums</a></li>
-            <li><a routerLink="songs">Songs</a></li>
-            <li><a class="btn" routerLink="login">Login</a></li>
-            <li><a class="btn" routerLink="register">Register</a></li>
-            }
+        <li><a routerLink="artists">Artistas</a></li>
 
-            @if ( userLogged ) {
-            <li><a href="#" class="btn" (click)="logout(); $event.preventDefault();">Logout</a></li>
-            }
+        <li><a routerLink="profilePrivate">Perfil</a></li>
+      }
 
-        </ul>
-    </nav>
+      @if ( !!userLogged && userLogged.role == 'users' ) {
+        <li><a routerLink="events">Eventos</a></li>
+        <li><a routerLink="artists">Artistas</a></li>
+        <li><a routerLink="albums">Álbumes</a></li> 
+        <li><a routerLink="songs">Canciones</a></li> 
+      }
+
+      @if ( !userLogged ) {
+        <li><a routerLink="events">Eventos</a></li>
+        <li><a routerLink="artists">Artistas</a></li>
+        <li><a routerLink="albums">Álbumes</a></li>
+        <li><a routerLink="songs">Canciones</a></li>
+        <li><a class="btn" routerLink="login">Acceder</a></li>
+        <li><a class="btn" routerLink="register">Registrarse</a></li>
+      }
+
+      @if ( userLogged ) {
+        <a href="#" class="btn btn-primary" (click)="logout(); $event.preventDefault();">Salir</a>
+      }
+
+    </ul>
+  </nav>
 </header>

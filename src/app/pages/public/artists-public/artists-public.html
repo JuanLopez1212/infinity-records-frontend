@@ -5,7 +5,9 @@
             <div class="content" [class.show]="i === activeIndex">
                 <h2 class="title">{{ artist.stageName }}</h2>
                 <p class="description">{{ artist.bio }}</p>
-                <button>Ver Perfil</button>
+
+                <button (click)="navigateToArtistProfile(artist._id)">Ver Perfil</button>
+
             </div>
         </li>
         }

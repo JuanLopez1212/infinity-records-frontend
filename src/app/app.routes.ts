@@ -25,7 +25,10 @@ import { ArtistsPublic } from './pages/public/artists-public/artists-public';
 import { AlbumsPublic } from './pages/public/albums-public/albums-public';
 import { SliderComponent } from './pages/public/slider.component/slider.component';
 import { SongsPublic } from './pages/public/songs-public/songs-public';
-import { Artists } from './pages/public/artistsProfile/artists';
+import { ArtistPublic } from './pages/public/artistsProfile/artists';
+import { ArtistPrivate } from './pages/private/artistProfile/artist-private/artist-private';
+import { ArtistProfileEdit } from './pages/private/artistProfile/artist-profile-edit/artist-profile-edit';
+
 
 
 
@@ -37,7 +40,11 @@ export const routes: Routes = [
     { path: 'artists', component: ArtistsPublic},
     { path: 'albums', component: AlbumsPublic},
     { path: 'songs', component: SongsPublic},
-    {path: 'artistsProfile', component: Artists},
+    {path: 'artistsProfile', component: ArtistPublic},
+    { path: 'profilePrivate', component: ArtistPrivate },
+    { path: 'events', component: EventsComponent},
+    {path:'slider',component:SliderComponent},
+
     {
         path: 'dashboard/users',
         component: Users,
@@ -48,8 +55,7 @@ export const routes: Routes = [
     { path: 'dashboard/songs', component:Song ,canActivate:[authGuard] },
     { path: 'dashboard/events', component: Events, canActivate:[authGuard] },
     { path: 'dashboard/events/new', component: EventNew, canActivate:[authGuard] },
-    { path: 'events', component: EventsComponent},
-    {path:'slider',component:SliderComponent},
+    
         { 
             path: 'dashboard/songs/new', 
             component:SongsNewForm, 
@@ -61,6 +67,7 @@ export const routes: Routes = [
     { path: 'dashboard/events/edit/:id', component: EventEdit, canActivate: [authGuard]},
     { path: 'dashboard/albums/edit/:id', component: AlbumEdit, canActivate: [authGuard]},
     { path: 'dashboard/songs/edit/:id', component:SongEdit, canActivate:[authGuard]},
+    { path: 'dashboard/artistProfile/edit/:id', component: ArtistProfileEdit },
     { path: '**', redirectTo: 'home', pathMatch: 'full' },
     { path: '', redirectTo: 'home', pathMatch: 'full' } 
 ];

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArtistsServices } from '../../../services/artists-services';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -14,7 +15,7 @@ export class ArtistsPublic {
   artists: any[] = [];
   items: any
 
-  constructor(private artistService: ArtistsServices) {}
+  constructor(private artistService: ArtistsServices, private router: Router) {}
 
   ngOnInit() {
     this.onLoadData();
@@ -31,6 +32,13 @@ export class ArtistsPublic {
     });
   }
 
+  navigateToArtistProfile(artistId: string) {
+    console.log('Navegando a perfil del artista:', artistId);
+    this.router.navigate(['/artistsProfile'], {
+      state: { artistId: artistId }
+    });
+  }
+
 
   getItemClass(i: number): string {
     switch (i) {
@@ -40,6 +48,14 @@ export class ArtistsPublic {
       case 3: return 'item item-4';
       case 4: return 'item item-5';
       case 5: return 'item item-6';
+      case 6: return 'item item-7';
+      case 7: return 'item item-8';
+      case 8: return 'item item-9';
+      case 9: return 'item item-10';
+      case 10: return 'item item-11';
+      case 11: return 'item item-12';
+      case 12: return 'item item-13';
+
       default: return 'item';
     }
   }

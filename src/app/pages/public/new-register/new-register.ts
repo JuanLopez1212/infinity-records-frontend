@@ -28,11 +28,6 @@ export class NewRegister {
         bio: new FormControl('', [Validators.required]),
         genres: new FormControl('', [Validators.required]),
         profileImage: new FormControl('', [Validators.required]),
-        socials: new FormGroup({
-          instagram: new FormControl('', [ Validators.required]),
-          youtube: new FormControl('', [ Validators.required]),
-          facebook: new FormControl('', [ Validators.required])
-            })
           }),
     })
   }
@@ -47,14 +42,15 @@ export class NewRegister {
       console.log(this.formData.value);
       this.usersServices.registerUsers(this.formData.value).subscribe({
         next: ( data ) => {
-          console.log( data );
+         
           this.router.navigate(['/login']);
         },
         error: ( error ) => {
           console.error( error );
         },
         complete: () => {
-          this.formData.reset();  //limpiamos los campos del formulario 
+          this.formData.reset();  //limpiamos los campos del formulari
+          //   o 
         }
       })
     }

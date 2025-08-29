@@ -1,1 +1,111 @@
-<p>artist-profile-edit works!</p>
+<div class="edit-profile-container">
+  <div class="form-card">
+    <h2>Editar Perfil de Artista</h2>
+    
+    <form [formGroup]="formData" (ngSubmit)="onSubmit()" (submit)="onSubmit()" class="edit-form" novalidate>
+      
+      <!-- Foto de perfil -->
+      <div class="photo-section">
+        @if (formData.get('profileImage')?.value) {
+          <div class="current-photo">
+            <img [src]="formData.get('profileImage')?.value || '/assets/default-avatar.png'" 
+                 alt="Foto de perfil" 
+                 class="profile-image">
+          </div>
+        }
+        
+        <div class="form-group">
+          <label for="profileImage">URL de la imagen de perfil:</label>
+          <input 
+            type="url" 
+            id="profileImage" 
+            formControlName="profileImage"
+            class="form-control"
+            placeholder="https://ejemplo.com/mi-foto.jpg">
+          
+          @if (formData.get('profileImage')?.invalid && formData.get('profileImage')?.touched) {
+            <div class="error-message">
+              @if (formData.get('profileImage')?.errors?.['required']) {
+                <span>La URL de la imagen es obligatoria</span>
+              }
+              @if (formData.get('profileImage')?.errors?.['invalidImageUrl']) {
+                <span>La URL debe ser una imagen válida (.jpg, .jpeg o .png)</span>
+              }
+            </div>
+          }
+        </div>
+        <div class="form-divider"></div>
+      </div>
+
+      <!-- Nombre artístico -->
+      <div class="form-group">
+        <label for="stageName">Nombre artístico:</label>
+        <input 
+          type="text" 
+          id="stageName" 
+          formControlName="stageName"
+          class="form-control"
+          placeholder="Ingresa tu nombre artístico">
+        
+        @if (formData.get('stageName')?.invalid && formData.get('stageName')?.touched) {
+          <div class="error-message">
+            @if (formData.get('stageName')?.errors?.['required']) {
+              <span>El nombre artístico es obligatorio</span>
+            }
+          </div>
+        }
+        <div class="form-divider"></div>
+      </div>
+
+      <!-- Biografía -->
+      <div class="form-group">
+        <label for="bio">Biografía:</label>
+        <textarea 
+          id="bio" 
+          formControlName="bio"
+          class="form-control textarea"
+          rows="4"
+          placeholder="Cuéntanos sobre tu música, estilo, influencias..."></textarea>
+        
+        @if (formData.get('bio')?.invalid && formData.get('bio')?.touched) {
+          <div class="error-message">
+            @if (formData.get('bio')?.errors?.['required']) {
+              <span>La biografía es obligatoria</span>
+            }
+          </div>
+        }
+        <div class="form-divider"></div>
+      </div>
+
+      <!-- Géneros musicales -->
+      <div class="form-group">
+        <label for="genres">Géneros musicales:</label>
+        <input 
+          type="url" 
+          id="genres" 
+          formControlName="genres"
+          class="form-control"
+          placeholder="Ej: Rock, Pop, Jazz">
+        
+        @if (formData.get('genres')?.invalid && formData.get('genres')?.touched) {
+          <div class="error-message">
+            @if (formData.get('genres')?.errors?.['required']) {
+              <span>Los géneros musicales son obligatorios</span>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Botones -->
+      <div class="form-actions">
+        <button type="reset" class="btn btn-secondary" (click)="goProfile()">
+          Cancelar
+        </button>
+
+        <button type="submit" class="btn btn-primary" >
+          Guardar cambios
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

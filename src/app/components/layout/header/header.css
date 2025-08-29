@@ -54,7 +54,7 @@ header .logo {
 }
 
 li:hover > .submenu {
-  display: block;
+  display: block; /* Desktop: hover */
 }
 
 .submenu li {
@@ -114,17 +114,77 @@ li:hover > .submenu {
     display: flex;
   }
 
+  /* En móvil el submenu abre con clase .open */
   .submenu {
     position: static;
     background: none;
-    padding: 0;
+    padding-left: 15px;
   }
 
-  .submenu li {
-    padding: 5px 0 5px 15px;
+  .submenu.open {
+    display: block;
+  }
+
+  li:hover > .submenu {
+    display: none; /* desactivar hover en móvil */
   }
 }
 
 nav {
-    margin: 0 34px;
+  margin: 0 6rem;
+}
+
+
+
+/* ====== SUBMENU ====== */
+.submenu {
+  display: none;
+  position: absolute;
+  background: #222;
+  list-style: none;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 4px;
+}
+
+li:hover > .submenu {
+  display: block; /* Desktop: hover */
+}
+
+.submenu li {
+  padding: 8px 15px;
+}
+
+.submenu a {
+  color: var(--color-primary);
+}
+
+.submenu a:hover {
+  color: var(--color-accent);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .submenu {
+    display: block; /* siempre bloque para animar */
+    position: static;
+    background: none;
+    padding-left: 15px;
+
+    /* transición */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .submenu.open {
+    max-height: 500px; /* lo suficiente para mostrar contenido */
+  }
+
+  li:hover > .submenu {
+    display: block; /* desactivar hover en móvil */
+  }
 }

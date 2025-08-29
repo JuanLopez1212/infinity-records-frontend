@@ -160,49 +160,7 @@
                         }
                     </div>
                 </div>
-                <div formGroupName="socials">
-                    <h3>Redes Sociales</h3>
-
-                    <div class="field">
-                        <label for="artist-instagram">Instagram</label>
-                        <input type="text" id="artist-instagram" formControlName="instagram" />
-                        <div class="error">
-                            @if (formData.get('artists.socials.instagram')?.invalid &&
-                            (formData.get('artists.socials.instagram')?.dirty ||
-                            formData.get('artists.socials.instagram')?.touched)) {
-                            @if (formData.get('artists.socials.instagram')?.errors?.['pattern']) {
-                            <span>Debe ser un enlace válido de Instagram</span>
-                            }
-                            }
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="artist-youtube">YouTube</label>
-                        <input type="text" id="artist-youtube" formControlName="youtube" />
-                        <div class="error">
-                            @if (formData.get('artists.socials.youtube')?.invalid &&
-                            (formData.get('artists.socials.youtube')?.dirty || formData.get('artists.socials.youtube')?.touched)) {
-                            @if (formData.get('artists.socials.youtube')?.errors?.['pattern']) {
-                            <span>Debe ser un enlace válido de YouTube</span>
-                            }
-                            }
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="artist.facebook">Facebook</label>
-                        <input type="text" id="artist.facebook" formControlName="facebook" />
-                        <div class="error">
-                            @if (formData.get('artists.facebook')?.invalid &&
-                            (formData.get('artists.facebook')?.dirty || formData.get('artists.facebook')?.touched)) {
-                            @if (formData.get('artists.facebook')?.errors?.['pattern']) {
-                            <span>Debe ser un enlace válido de Facebook</span>
-                            }
-                            }
-                        </div>
-                    </div>
-                </div>
+                
             </div>
 
 

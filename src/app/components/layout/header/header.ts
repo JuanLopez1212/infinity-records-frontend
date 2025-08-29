@@ -16,6 +16,9 @@ export class Header {
   // Estado del menú hamburguesa
   menuOpen: boolean = false;
 
+  // Control de submenús
+  openSubmenu: string | null = null;
+
   constructor ( private authService: AuthServices, private router: Router ) {
     this.user = this.authService.getCurrentUser();
   }
@@ -28,6 +31,12 @@ export class Header {
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
+    this.openSubmenu = null; // cerrar submenús al abrir/cerrar menú
+  }
+
+  toggleSubmenu(menu: string, event: Event) {
+    event.preventDefault(); // evitar navegación
+    this.openSubmenu = this.openSubmenu === menu ? null : menu;
   }
 
   logout () {
@@ -35,5 +44,4 @@ export class Header {
     this.router.navigateByUrl('home');
   }
 }
-
-
+  

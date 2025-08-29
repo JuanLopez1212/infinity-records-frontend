@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 
 export class SongsNewForm {
 formData!: FormGroup ;
-albums: any = [];
+albums: any[] = [];
 
 constructor(
   private songsServices: SongsServices,
@@ -32,7 +32,7 @@ constructor(
     genre: new FormControl('', [Validators.required]),
     authors:new FormControl('',[Validators.required]),
     productors:new FormControl('',[Validators.required]),
-    albumId: new FormControl('',[Validators.required])
+    albumId: new FormControl('',)
   });
 }
 
@@ -83,20 +83,18 @@ onSubmit(){
   }
 }
 
-ngOnInit() {
-    this.albumsServices.getAlbums().subscribe({
-      next: ( data ) => {
-        console.log ( data );
-        this.albums = data;
+ngOnInit(): void {
+  const artistId = localStorage.getItem('userId'); // o desde AuthService
+  if (artistId) {
+    this.albumsServices.getAlbumByArtistId(artistId).subscribe({
+      next: (res) => {
+        console.log('Álbumes del artista logueado:', res);
+        this.albums = res;
       },
-      error: ( error ) => {
-        console.log ( error )
-      },
-      complete: () => {
-        console.log ( 'Complete' )
-      }
-    })
+      error: (err) => console.error(err)
+    });
   }
+}
   ngOnDestroy() {
     console.log( 'ngOnDestroy' );
   }
